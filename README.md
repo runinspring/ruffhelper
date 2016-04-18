@@ -34,6 +34,11 @@ npm install 安装各种包,需要翻墙，可以使用 [cnpm](https://npm.taoba
 3. 制作安装包
 4. 自动更新，不需要每次重新下载整个应用的包
 
+###发布版本地址
+[git最大附件25M，只能放百度网盘了](http://pan.baidu.com/s/1kVRI98b#path=%252Fruffhelper)
+
+
+
 
 
 
