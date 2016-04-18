@@ -1,0 +1,36 @@
+antd -- react ui
+http://ant.design/components/collapse/
+淘宝镜像
+https://npm.taobao.org/mirrors/electron/
+
+配置环境变量
+/private/etc/bashrc
+export RUFF_HOME=/Volumes/D/apps/ruff-sdk-mac-0.8.0
+export PATH=$PATH:$RUFF_HOME/bin
+
+
+electron-packager platform参数有 --all：全部；或者 --platform=darwin 、linux、mas、win32
+
+
+然后在 electron-packager/index.js 第104行增加 mirror 的属性
+version: opts.version,
+cache: opts.cache,
+mirror: opts.mirror,
+
+打包教程
+http://www.open-open.com/lib/view/open1451121270448.html
+https://www.sdk.cn/news/732
+
+
+win icon 16*16、32*32、48*48和256*256
+
+
+Mac
+配置文件经常保存在/Library/Preferences/com.xxxxxxx.plist和/Library/Application Support/xxxxxx,还有/User/user name/Library/Application Support里面(xxxxx表示要卸载的程序名称)
+不过不一定都在这里面,所以建议用卸载软件能自动找比较方便
+
+/usr/local/share/vim/vimrc 全局配置文件
+还可以参考sublime插件的位置
+
+配置文件相对路径的问题，参考这个文章
+http://www.css88.com/archives/4497
