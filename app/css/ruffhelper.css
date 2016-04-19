@@ -32,7 +32,7 @@ body{
 ::-webkit-scrollbar-thumb { background-color:#6fcbfa;}
 ::-webkit-scrollbar-thumb:horizontal{background-color: #fff}
 
-.btnEmpty {height: 22px;width: 22px}
+.btnEmpty {height: 22px;width: 22px;border:0px;opacity:0}
 .btnEmpty:focus {outline: none;}
 .btnBlue {margin:0 0 0 0;padding: 4px 6px 4px 6px;background-color: #2db7f5;border: 0px;border-radius:3px;font-size: 12px;color: #fff; line-height: 100%}
 .btnBlue:hover{background-color: #64ccfb;}
@@ -43,7 +43,9 @@ body{
 .btnGreen:focus {outline: none;}
 .btnGreen:disabled {background-color: #d9d9d9;}
 .btnGray {border: 0px;background-color: #ffffff ;color:#666666;width: 167px;height: 22px;font-size: 12px;text-align: left;}
+.btnGray p{color:#fff}
 .btnGray:hover{background-color: #f4f4f4;}
+.btnGray:hover p{color:#666666}
 .btnGray:focus {outline: none;}
 /*border-bottom:1px #e9e9e9 solid;*/
 .btnSelect {display: block; background-color: #FFF;border: 0px;width:100%;height:24px;line-height: 24px;font-size: 12px;color: #666666;border-bottom:1px #e9e9e9 solid; text-align: left}

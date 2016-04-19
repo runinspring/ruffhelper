@@ -6,6 +6,7 @@ import NewProject from  './left/NewProject.jsx';
 import RuffSDK from  './left/RuffSDK.jsx';
 import {tr} from '../lib/Utils'
 import { Collapse } from 'antd';
+import config from '../config';
 const Panel = Collapse.Panel;
 class LeftArea extends React.Component {
     constructor(props){
@@ -21,13 +22,27 @@ class LeftArea extends React.Component {
         //console.log(123,this.props.config)
         //0--Rap 命令 ; 1--选择项目 ; 2--新建项目  10--ruff sdk
         //默认是打开 1 2 3
+        //console.log('public:',config.isPublic)
+        //if(!config.isPublic){
+        //    return (<div style={{margin:'4px 4px 4px 4px'}}>
+        //        <div className="bg"/>
+        //        <div className="leftArea">
+        //            <div style={{width:150}}>
+        //                <Collapse defaultActiveKey={['1']}>
+        //                    <Panel header={tr(1)} key="1">
+        //                        <OpenProject/>
+        //                    </Panel>
+        //                </Collapse>
+        //            </div>
+        //        </div>
+        //    </div>)
+        //}
         return(
             <div style={{margin:'4px 4px 4px 4px'}}>
                 <div className="bg"/>
                 <div className="leftArea">
                     <div style={{width:150}}>
                         <Collapse defaultActiveKey={['1','2']}>
-
                             <Panel header={tr(0)} key="1">
                                 <RapCommand/>
                             </Panel>
@@ -42,7 +57,6 @@ class LeftArea extends React.Component {
                             </Panel>
                         </Collapse>
                     </div>
-                    
                 </div>
             </div>
         )

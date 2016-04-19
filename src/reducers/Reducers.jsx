@@ -49,8 +49,8 @@ var config = function (state = initConfig, action) {
                     break;
                 }
             }
-            if (histrory.size > 10) {
-                histrory = histrory.slice(0, 10);
+            if (histrory.size > 20) {
+                histrory = histrory.slice(0, 20);
             }
             // console.log('histrory:',histrory)
             result.histrory = histrory;

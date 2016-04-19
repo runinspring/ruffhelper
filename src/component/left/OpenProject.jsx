@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {dialog} from 'remote';
-import {tr,format} from '../../lib/Utils'
+import {tr,format,cutCharByLength} from '../../lib/Utils'
 import {escapePath} from '../../lib/FileUtil'
 import {Icon} from 'antd';
 import {openRuffProject,addOutputCooked,removeProject} from '../../actions/AppActions.jsx';
@@ -28,7 +28,7 @@ class OpenProject extends React.Component {
     onOpenFolderEnd(paths):void {
         console.log('打开文件夹的路径:', paths);
         if (paths) {
-            var projectPath = paths[0];
+            var projectPath = escapePath(paths[0]);
             //console.log(123123,path,this.props.config.projectPath);
             if (this.props.config.projectPath != projectPath) {//打开了新的文件夹
                 var files = ['app.json', 'package.json', 'ruff_box.json'];
@@ -40,7 +40,7 @@ class OpenProject extends React.Component {
                     }
                 }
                 if(existProject){
-                    var baseName = path.basename(escapePath(projectPath));
+                    var baseName = path.basename(projectPath);
                     openRuffProject({name:baseName,path:projectPath});//打开项目
                     // changConfig({projectPath: projectPath, save: true});
                     addOutputCooked(tr(204,baseName),true);//切换至项目
@@ -58,11 +58,13 @@ class OpenProject extends React.Component {
         // <button  style={{width:20,textAlign:'center',position:'relative',top:-20,left:30}} onClick={this.onOpenFolderByHistrory.bind(this,item.path)} className="btnBlue" ></button>
         var self = this;
         var getHistrory = this.props.histrory.map((item,index)=>{
-            return(<div  key={"histrory"+index}>
-                <button  style={{margin:"0 0 0 -16px",paddingLeft:18}} onClick={this.onOpenFolderByHistrory.bind(this,item.path)} className="btnGray" >{item.name}</button>
+            return(<div key={"histrory"+index}>
+                <button  className="btnGray"  style={{margin:"0 0 0 -16px",paddingLeft:18}} onClick={(e)=>{self.onOpenFolderByHistrory(item.path)}}>
+                    <p style={{width:30,height:30,position:'absolute',left:136,border:"1px"}} onClick={(e)=>{e.preventDefault();e.stopPropagation();removeProject({path:item.path});}}>X</p>
+                    {cutCharByLength(item.name,16)}
+                </button>
             </div>)
         })
-            //
         return (
             <div style={{margin:'-12px -12px -12px -12px'}}>
                 <button style={{width:'100%'}} className="btnGreen" onClick={this.onOpenFolder.bind(this)}>{tr(1)}</button>

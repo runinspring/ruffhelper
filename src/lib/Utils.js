@@ -27,7 +27,7 @@ function format(text, args) {
  * @param num 要取的字符数，一个中文算2个
  * @constructor
  */
-exports.cutCharByLength = function (str, num) {
+exports.cutCharToCenter = function (str, num) {
     var arr = str.split("");
     //console.log("str:", str)
     var strFront = "";
@@ -56,10 +56,32 @@ exports.cutCharByLength = function (str, num) {
     //console.log("arr:", arr)
     //console.log("arrFront:", strFront);
     //console.log("arrBack:", strBack);
-    if(isBreak){
-        strFront += "\\...\\";
+    if (isBreak) {
+        strFront += "....";
     }
     return strFront + strBack;
+}
+/**
+ * 截取字符串
+ * @param str 原始的字符串
+ * @param num 要取的字符数，一个中文算2个
+ * @constructor
+ */
+exports.cutCharByLength = function (str, num) {
+    var arr = str.split("");
+    var w = 0;
+    var strEnd = '';
+    while (arr.length > 0) {
+        var str = arr.shift();
+        w += countCharCode(str);
+        if (w > num) {
+            strEnd += '...'
+            break;
+        }else {
+            strEnd += str;
+        }
+    }
+    return strEnd;
 }
 function countCharCode(str) {
     var c = str.charCodeAt(0);

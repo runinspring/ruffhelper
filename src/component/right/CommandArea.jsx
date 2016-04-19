@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {tr,cutCharByLength} from '../../lib/Utils'
+import {tr,cutCharToCenter} from '../../lib/Utils'
 //var BrowserWindow = require('browser-window');
 import {shell} from 'electron';
 //import {BrowserWindow} from 'remote';
@@ -38,7 +38,7 @@ class CommandArea  extends React.Component {
             var strPath = this.props.projectPath?this.props.projectPath:tr(54);//54 请选择项目
             //var str = "E:/ZhiHuaSiStudio/2016/RuffHelper/node_modules/babel-preset-es2015/node_modules/test1";
             //strPath = cutCharByLength(strPath,60);
-            strPath = cutCharByLength(strPath,52);
+            strPath = cutCharToCenter(strPath,52);
             this.setState({projectPath:this.props.projectPath,strPath:strPath});
         }
         if(this.props.version!=this.state.version){

@@ -1,3 +1,25 @@
+//--------------最新版流程-------
+0. 修改 app/package.json 里的版本号
+1. config.js 里要设置为发布版本
+2. npm run deploy 发布最终版
+3. http-server 启动本地服务器，使用electron本地镜像，避免翻墙
+4. npm run packageXXX 发布对应的版本
+
+//electron 打包的注意事项
+需要全局安装的包
+npm install asar -g
+npm install gulp -g
+npm install http-server -g
+
+mac 图标的后缀为 icns
+win 图标的后缀为 ico
+asar 打包的 app 文件夹内必须有个package.json文件，表明启动文件"main": "index.js"
+注意 app 文件夹内一定不能有中文名
+
+npm run asar 发布 app.asar 可以单独替换 asar 文件，打包出来的文件名一定要是 app.asar。放在应用的 resource 文件夹内，替换原来的
+win 打包的 inno ，是以  iss 代码位置为相对路径的起点的
+
+//---------------老的流程------
 0. 修改 app/package.json 里的版本号
 1. config.js 里要设置为发布版本
 2. npm run deploy 发布最终版
@@ -5,18 +27,3 @@
 3. serve 启动本地服务器
 4. npm run packageXXX 发布对应的版本
 5. 把 app.asar 拷贝到对应的文件夹内，比如 RuffHelper-win32-x64\resources，同时删除原有的 app 文件夹
-
-
-
-//electron 打包的注意事项
-mac 图标的后缀为 icns
-win 图标的后缀为 ico
-asar 打包的 app 文件夹内必须有个package.json文件，表明启动文件"main": "index.js"
-
-需要全局安装的包 asar
-npm install -g asar
-
-
-注意文件夹内一定不能有中文名，打包出来的文件名一定要是 app.asar;
-把app.asar放到resources下，删除原来的app文件夹
-

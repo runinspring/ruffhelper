@@ -18,7 +18,7 @@ class RuffSDK extends React.Component {
     componentDidMount() {
         if(this.props.ruffSDKLocation){
             this.setState({ruffSDKLocation: this.props.ruffSDKLocation})
-            getVersion();
+            //getVersion();
         }
     }
     componentWillReceiveProps(props){
