@@ -9,24 +9,23 @@ class SDKSelect extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            sdkExist: true,
+            // sdkExist: true,
             ruffSDKLocation: '',
             info: ''
         }
     }
 
-    componentDidMount() {
-        if (!this.props.ruffSDKLocation) {
-            //console.log('sdk 路径无效');
-            this.setState({sdkExist: false});//
-        }
-        //console.log('789')
-        //if(existRapSDK(this.props.ruffSDKLocation,this.props.osType)){
-
-    }
+    // componentDidMount() {
+    //     if (!this.props.ruffSDKLocation) {
+    //         //console.log('sdk 路径无效');
+    //         this.setState({sdkExist: false});//
+    //     }
+    //     //console.log('789')
+    //     //if(existRapSDK(this.props.ruffSDKLocation,this.props.osType)){
+    // }
 
     getSDKPath(value) {
-        if (!value) {
+        if (value == this.state.ruffSDKLocation) {
             return;
         }
         this.setState({ruffSDKLocation: value})
@@ -36,7 +35,7 @@ class SDKSelect extends React.Component {
         if (sdkPath == null) {//211 不是有效的 Ruff SDK
             this.setState({info: tr(211)})
         } else {
-            this.setState({sdkExist: true})
+            // this.setState({sdkExist: true})
             setRuffSDKLocation(sdkPath)
         }
     }
@@ -44,9 +43,9 @@ class SDKSelect extends React.Component {
     render() {
         var self = this;
         // console.log('this.state.sdkExist:',this.state.sdkExist)
-        if (this.state.sdkExist) {
-            return (<div/>)
-        }
+        // if (this.state.sdkExist) {
+        //     return (<div/>)
+        // }
         //tr 55 请选择 Ruff SDK 的路径
         return (
             <div className="alertItem sdkSelector">

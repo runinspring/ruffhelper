@@ -113,7 +113,9 @@ class MainShell extends React.Component {
         var self = this;
         console.log('初始化数据2：', data)
         init(this.props.dispatch, this.props, data);
-        getVersion();
+        if(data.ruffSDKLocation){
+            getVersion();
+        }
         setTimeout(function () {
             self.setState({loadEnd: true});
         }, this.state.numFadeOutDelay)
