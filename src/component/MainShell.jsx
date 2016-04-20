@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import LeftArea from './LeftArea.jsx';
 import CommandArea from './right/CommandArea.jsx';
 import LogArea from './right/LogArea.jsx';
-import SDKSelect from './SDKSelect.jsx'
+import Alerts from './Alerts.jsx';
 class MainShell extends React.Component {
     constructor(props){
         super(props)
@@ -11,12 +11,18 @@ class MainShell extends React.Component {
     render(){
         return(
             <div>
+                <div>3123123123</div>
+                <Alerts/>
+            </div>
+        )
+        return(
+            <div>
                 <div className="rightArea">
                     <CommandArea/>
                     <LogArea/>
                 </div>
                 <LeftArea/>
-                <SDKSelect/>
+                <Alerts/>
             </div>
         )
     }

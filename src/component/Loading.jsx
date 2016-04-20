@@ -37,8 +37,8 @@ class MainShell extends React.Component {
         var data = {}
         data.language = app.getLocale();
         if (data.language == 'zh-CN') {//加载语言包
-            require('../lib/locales/zh_CN');
-            //require('../lib/locales/en_US');
+            //require('../lib/locales/zh_CN');
+            require('../lib/locales/en_US');
         } else {
             require('../lib/locales/en_US');
         }

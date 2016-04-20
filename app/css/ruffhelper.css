@@ -57,7 +57,7 @@ body{
 .textArea{
     cursor:auto;//光标
 }
-
+.layoutAusolute{position: absolute;top: 0}
 .stage{width:730px;height: 530px;line-height:530px;}
 
 .loading{background:#a5e8e5;}
@@ -71,7 +71,9 @@ body{
 /*@keyframes loadIn2{from {background: red;}to {background: yellow;}}*/
 /*b6e8e6*/
 /*.logo {background:url(logo.svg);width:400px;height:209px;}*/
-.sdkSelector{width: 240px;height: 100px; line-height:18px;background-color: #fff;border-radius: 8px;padding: 26px 10px 4px 16px;}
+/*.alerts{text-align: center}!*整个警告页面*!*/
+.alertItem{background-color: #fff;display: inline-block;vertical-align: middle;text-align: left;}/*单一警告小面板*/
+.sdkSelector{width: 240px;height: 100px; line-height:18px;border-radius: 8px;padding: 26px 0 0 14px;}
 
 .leftArea{
     width: 153px;
