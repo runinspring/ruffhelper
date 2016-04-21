@@ -5,3 +5,4 @@ test/
 build/electronzip/
 build/prerelease/
 build/release/
+config/
