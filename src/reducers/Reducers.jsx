@@ -14,7 +14,6 @@ let initConfig = {
     projectPath: '',//代码项目的路径
     ruffSDKLocation: '',//sdk的位置
     histrory: List([]),// 打开的历史记录，最多10个 {name:'',path:''}
-
 }
 var config = function (state = initConfig, action) {
     var result = Object.assign({}, state);
@@ -108,6 +107,20 @@ var logContent = function (state = "", action) {
         default:
             return state;
     }
+}
+
+let initAlert = {
+    language: '',//语言默认中文 zh_CN
+    rapVersion: "",//rap 版本号
+    rapVersionDec: "",//版本号的描述信息  比如:未安装rap
+    osType: "",//操作系统 Windows Mac
+    appPath: '',//应用的路径
+    projectPath: '',//代码项目的路径
+    ruffSDKLocation: '',//sdk的位置
+    histrory: List([]),// 打开的历史记录，最多10个 {name:'',path:''}
+}
+var alert = function(state='',action){
+    return state
 }
 const appreducer = combineReducers({
     config, outputContent, logContent

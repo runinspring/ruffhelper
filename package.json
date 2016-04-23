@@ -1,6 +1,6 @@
 {
   "name": "ruffhelper",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -33,6 +33,7 @@
     "electron-prebuilt": "^0.37.5",
     "event-stream": "^3.3.2",
     "gulp": "^3.9.1",
+    "gulp-zip": "^3.2.0",
     "iconv-lite": "^0.4.13",
     "immutable": "^3.7.6",
     "json-loader": "^0.5.4",

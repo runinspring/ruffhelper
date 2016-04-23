@@ -5,23 +5,42 @@ var path = require('path');
 var fs = require('fs');
 var inno = require('./build/install/win32/inno');
 var datas = {platform: '', version: ''}
+var preleasePath = './build/prerelease/';
 var npmCmd={}
-gulp.task("all", ["getVersion","getPackageCmd"], function () {
+gulp.task("default", ["getVersion","getPackageCmd","win","mac","linux"], function () {
+});
+gulp.task("win", ['getVersion',"getPackageCmd"], function () {
     if (process.platform == "win32") {
         publishWin("win32", function () {
             publishWin('win64')
         })
-        //publishWin32(publishWin64);
-    } else {
-        console.log(324234)
     }
 });
-gulp.task("win64", ['getVersion',"getPackageCmd"], function () {
-    publishWin('win64');
-});
 gulp.task("mac", ['getVersion',"getPackageCmd"], function () {
-    publichMac();
+    var cmd = 'npm run packagemac';
+    commands(cmd,function () {
+        var dmg = require('./build/install/darwin/dmg');
+        dmg(datas,null);
+    })
 });
+
+gulp.task("linux", ['getVersion',"getPackageCmd"], function () {
+    if (process.platform == "win32") {
+        return null;
+    }
+    var srcPath = preleasePath+'RuffHelper-linux-x64-v'+datas.version+'/*';
+    var cmd = 'npm run packagelinux';
+    commands(cmd,function () {
+        var srcPath = './build/prerelease/RuffHelper-linux-x64/*';
+        var zipName = 'RuffHelper-linux-v'+datas.version+'.zip';
+        var zipPath = './build/release';
+        const zip = require('gulp-zip');
+        return gulp.src(srcPath)
+            .pipe(zip(zipName))
+            .pipe(gulp.dest(zipPath));
+    })
+})
+
 function publishWin(platform, next) {
     datas.platform = platform;
     //var compil = path.resolve(path.join(__dirname, 'inno/ISCC.exe'));
@@ -34,12 +53,6 @@ function publishWin(platform, next) {
     })
     //if(next)next();
 }
-function publichMac() {
-
-}
-function publichLinux(next) {
-
-}
 gulp.task("getVersion", function () {
     //读取版本号
     var jsonPath = path.join(__dirname, '/app/package.json');
@@ -50,6 +63,7 @@ gulp.task("getVersion", function () {
 });
 gulp.task("getPackageCmd", function () {
     //读取package里的npm 命令
+    console.log('getPackageCmd')
     var jsonPath = path.join(__dirname, '/package.json');
     var jsonStr = fs.readFileSync(jsonPath, "utf-8");
     var obj = JSON.parse(jsonStr);
@@ -59,7 +73,7 @@ gulp.task("getPackageCmd", function () {
 function commands(command, callBack) {
     console.log('command:', command)
     //console.log('arg:', args)
-    console.log(process.cwd())
+    console.log('cwd:',process.cwd())
     var run = cp_exec(command);
     run.stdout.on('data', function (data) {
         console.log(data.toString('utf8').trim());

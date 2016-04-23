@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import SDKSelect from './alerts/SDKSelect.jsx'
+import Selecter from './alerts/Selecter.jsx'
+import cfg from '../config';
 class Alerts extends React.Component {
     constructor(props) {
         super(props);
@@ -19,13 +21,19 @@ class Alerts extends React.Component {
     }
     getState(){
         // console.log("getSDKState",this.props.ruffSDKLocation,this.state.sdkSelect)
+        //if(!cfg.isPublic){
+        //    if(!this.state.showAlert)this.setState({showAlert:true});
+        //}else
+        var showAlert,sdkSelect;
         if (!this.props.ruffSDKLocation) {
-            if(!this.state.showAlert)this.setState({showAlert:true});
-            if(!this.state.sdkSelect)this.setState({sdkSelect:true});
+            showAlert = sdkSelect = true;
         }else if(this.props.ruffSDKLocation){
-            if(this.state.showAlert)this.setState({showAlert:false});
-            if(this.state.sdkSelect)this.setState({sdkSelect:false});
+            showAlert = sdkSelect = false;
         }
+        if(!cfg.isPublic) showAlert = true;
+
+        if(this.state.showAlert!= showAlert)this.setState({showAlert:showAlert});
+        if(this.state.sdkSelect!= sdkSelect)this.setState({sdkSelect:sdkSelect});
     }
 
     render() {
@@ -38,9 +46,12 @@ class Alerts extends React.Component {
         var getAlertPanel = function () {
             if(self.state.sdkSelect){
                 return <SDKSelect/>
+            }else{
+                return <Selecter/>
             }
         }
         if(this.state.showAlert){
+            console.log('showAlert')
             return (
                 <div>
                     <div className="layoutAusolute stage" style={{background:"#000",opacity:0.5}}/>
