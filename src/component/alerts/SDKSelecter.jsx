@@ -3,9 +3,9 @@ import {connect} from 'react-redux';
 import {tr} from '../../lib/Utils';
 import LocationSelector from './../left/cp/LocationSelector.jsx';
 import {existRapSDK} from '../../lib/Files';
-import {setRuffSDKLocation} from '../../actions/AppActions.jsx';
+import {setRuffSDKLocation,closeAlert} from '../../actions/AppActions.jsx';
 var fs = require('fs');
-class SDKSelect extends React.Component {
+class SDKSelecter extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -15,14 +15,6 @@ class SDKSelect extends React.Component {
         }
     }
 
-    // componentDidMount() {
-    //     if (!this.props.ruffSDKLocation) {
-    //         //console.log('sdk 路径无效');
-    //         this.setState({sdkExist: false});//
-    //     }
-    //     //console.log('789')
-    //     //if(existRapSDK(this.props.ruffSDKLocation,this.props.osType)){
-    // }
 
     getSDKPath(value) {
         if (value == this.state.ruffSDKLocation) {
@@ -36,7 +28,8 @@ class SDKSelect extends React.Component {
             this.setState({info: tr(211)})
         } else {
             // this.setState({sdkExist: true})
-            setRuffSDKLocation(sdkPath)
+            setRuffSDKLocation(sdkPath);
+            closeAlert(this.props.index);
         }
     }
 
@@ -67,4 +60,7 @@ function select(state) {
         osType: state.config.osType
     }
 }
-export default connect(select)(SDKSelect);
+SDKSelecter.propTypes = {
+    index: React.PropTypes.number.isRequired
+}
+export default connect(select)(SDKSelecter);

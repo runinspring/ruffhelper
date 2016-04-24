@@ -3,7 +3,7 @@ var cfg = require('../config');//
 // import {sdkPath} from '../config';
 import {save} from '../lib/FileUtil';
 import {List} from 'immutable';
-import {INIT,CHANGE_CONFIG,ADD_OUTPUT,ADD_LOG,OPEN_PROJECT,REMOVE_PROJECT,RUFF_SDK_LOCATION} from '../actions/AppActions.jsx';
+import {INIT,CHANGE_CONFIG,ADD_OUTPUT,ADD_LOG,OPEN_PROJECT,REMOVE_PROJECT,RUFF_SDK_LOCATION,SHOW_ALERT,CLOSE_ALERT} from '../actions/AppActions.jsx';
 var appPath = '';
 let initConfig = {
     language: '',//语言默认中文 zh_CN
@@ -109,20 +109,39 @@ var logContent = function (state = "", action) {
     }
 }
 
-let initAlert = {
-    language: '',//语言默认中文 zh_CN
-    rapVersion: "",//rap 版本号
-    rapVersionDec: "",//版本号的描述信息  比如:未安装rap
-    osType: "",//操作系统 Windows Mac
-    appPath: '',//应用的路径
-    projectPath: '',//代码项目的路径
-    ruffSDKLocation: '',//sdk的位置
-    histrory: List([]),// 打开的历史记录，最多10个 {name:'',path:''}
-}
-var alert = function(state='',action){
-    return state
+/**弹出层的面板信息
+ * idx 面板的序号,每次增加,如果没有面板了才归零,用于key的计算,防止刷新错误
+ * panels 面板信息数组{index:序号,type:'sdkselector,callback:fun,data:{}}
+ * */
+var alerts = function(state={index:0,panels:[]},action){
+    var result = Object.assign({},state)
+    switch (action.type){
+        case SHOW_ALERT:
+            result.index +=1;
+            var panel = action.data;
+            panel.index = state.index;
+            result.panels.push(panel);
+            return result;
+        case CLOSE_ALERT:
+            var idx = action.data;
+            var idxRemove;
+            for(var i=0,len=result.panels.length;i<len;i++){
+                if(idx == result.panels[i].index){
+                    idxRemove = i;
+                    break;
+                }
+            }
+            result.panels.splice(idxRemove,1);
+            if(result.panels.length==0){
+                result.index = 0;
+            }
+            return result;
+        default:
+            return state;
+    }
+    // return state;
 }
 const appreducer = combineReducers({
-    config, outputContent, logContent
+    config, outputContent, logContent,alerts
 });
 export default appreducer;

@@ -2,11 +2,12 @@ import React from 'react';
 import {connect} from 'react-redux';
 import remote,{app, BrowserWindow} from 'remote';
 // import {tr} from '../lib/Utils';
-import {init,getVersion} from '../actions/AppActions.jsx';
+import {init,getVersion,showAlert} from '../actions/AppActions.jsx';
 import {read} from '../lib/FileUtil'
 import config,{isPublic,isApp} from '../config';
 import {existRapSDK} from '../lib/Files';
 import {escapePath,save} from '../lib/FileUtil';
+import {PanelSDKSelector} from './Alerts.jsx';
 import path from 'path';
 import fs from 'fs';
 //import 'antd/style/index.less';
@@ -116,8 +117,10 @@ class MainShell extends React.Component {
         var self = this;
         console.log('初始化数据2：', data)
         init(this.props.dispatch, this.props, data);
-        if (data.ruffSDKLocation) {
+        if (data.ruffSDKLocation) {//有路径就读取版本号
             getVersion();
+        }else{//没有路径就弹出选择面板
+            showAlert(PanelSDKSelector);
         }
         setTimeout(function () {
             self.setState({loadEnd: true});

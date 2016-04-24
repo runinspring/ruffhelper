@@ -5,6 +5,8 @@ export const ADD_LOG = 'add_log';//增加log的输出内容
 export const OPEN_PROJECT = 'open_project';//打开项目
 export const REMOVE_PROJECT = 'remove_project';//移除项目
 export const RUFF_SDK_LOCATION = 'ruff_sdk_location';//sdk的位置
+export const SHOW_ALERT = 'show_alert';//显示弹出面板
+export const CLOSE_ALERT = 'colse_alert';//移除弹出面板
 export const TESTING = "testing";//测试
 import {commands} from '../lib/Command';
 import {tr} from '../lib/Utils'
@@ -19,7 +21,7 @@ function init(_dispatch, _props, _data) {
     // console.log(1231,dispatch,ddd)
     dispatch({type: INIT, data:_data})
 }
-/**改变路径*/
+/**改变config数据*/
 exports.changConfig = function (data) {
     var obj = {type: CHANGE_CONFIG, data: data, save}
     dispatch(obj);
@@ -32,6 +34,15 @@ exports.openRuffProject = function (data) {
 exports.removeProject = function (data) {
     dispatch({type: REMOVE_PROJECT, data})
 }
+/**显示弹出面板*/
+exports.showAlert = function (type,callback=null,data=null) {
+    dispatch({type:SHOW_ALERT,data:{type:type,callback:callback,data:data}})
+}
+/**关闭弹出面板*/
+exports.closeAlert = function (index) {
+    dispatch({type:CLOSE_ALERT,data:index})
+}
+
 /**发送Log子进程的命令*/
 exports.sendLogCommand = function (projectPath) {
     addOutputCooked(tr(200, 'rap log'), true,ADD_LOG);//200 执行命令：xxxx
