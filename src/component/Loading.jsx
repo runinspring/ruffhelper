@@ -7,7 +7,7 @@ import {read} from '../lib/FileUtil'
 import config,{isPublic,isApp} from '../config';
 import {existRapSDK} from '../lib/Files';
 import {escapePath,save} from '../lib/FileUtil';
-import {PanelSDKSelector} from './Alerts.jsx';
+import {PanelSDKSelector,PanelInput} from './Alerts.jsx';
 import path from 'path';
 import fs from 'fs';
 //import 'antd/style/index.less';
@@ -122,6 +122,8 @@ class MainShell extends React.Component {
         }else{//没有路径就弹出选择面板
             showAlert(PanelSDKSelector);
         }
+        //showAlert(PanelInput)
+
         setTimeout(function () {
             self.setState({loadEnd: true});
         }, this.state.numFadeOutDelay)

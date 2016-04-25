@@ -14,8 +14,6 @@ class SDKSelecter extends React.Component {
             info: ''
         }
     }
-
-
     getSDKPath(value) {
         if (value == this.state.ruffSDKLocation) {
             return;
@@ -41,13 +39,13 @@ class SDKSelecter extends React.Component {
         // }
         //tr 55 请选择 Ruff SDK 的路径
         return (
-            <div className="alertItem sdkSelector">
-                    <div>
-                        <div >{tr(55)}</div>
-                        <LocationSelector inputValue={this.state.ruffSDKLocation} placeholder={tr(10)}
-                                          onChangeValue={(value)=>{self.getSDKPath(value)}}/>
-                        <div>{this.state.info}</div>
-                    </div>
+            <div className="alertPanel">
+                <div className="alertItem">
+                    <div >{tr(55)}</div>
+                    <LocationSelector inputValue={this.state.ruffSDKLocation} placeholder={tr(10)}
+                                      onChangeValue={(value)=>{self.getSDKPath(value)}}/>
+                    <div>{this.state.info}</div>
+                </div>
             </div>
         )
     }
