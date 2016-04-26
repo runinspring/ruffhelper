@@ -62,9 +62,10 @@ class CommandArea  extends React.Component {
         return(
             <div>
                 <button className="btnGreen" style={{position:"absolute",height:'18',padding:" 0 4px 0 4px",right:0,top:'-2px'}} onClick={()=>{
-                console.log(213123,self.props.projectPath);
+                //console.log(213123,self.props.projectPath);
                 //window.open(self.props.projectPath)
-                shell.openItem(self.props.projectPath)
+                shell.openItem(self.props.projectPath);
+                // shell.openExternal(self.props.projectPath,{activate,true})
                 //var win = new BrowserWindow({ width: 800, height: 600});
                 //win.loadURL(self.props.projectPath);
                 }}>{tr(11)}</button>

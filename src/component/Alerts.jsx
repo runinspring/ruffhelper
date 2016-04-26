@@ -29,13 +29,13 @@ class Alerts extends React.Component {
             }
         })
         //<div style={{position:'absolute',width:"100%"}}>2222</div>
+        //    <button className="layoutAusolute btnBlue" onClick={()=>{console.log(123123);showAlert(PanelInput)}}>sdafsd</button>
         if (this.props.alerts.panels.length < 1) {
             return <div/>
         } else {
             return (
-                <div>
+                <div className="layoutAusolute">
                     <div className="layoutAusolute stage" style={{background:"#000",opacity:0.5}}/>
-                    <button className="layoutAusolute btnBlue" onClick={()=>{console.log(123123);showAlert(PanelInput)}}>sdafsd</button>
                     <div className="stage" style={{textAlign:'center'}}>
                         {getAlerts}
                     </div>

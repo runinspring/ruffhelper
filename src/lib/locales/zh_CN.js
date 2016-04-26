@@ -14,6 +14,7 @@ locale_strings[9] = '项目作者';
 locale_strings[10] = '选择 Ruff SDK ';
 locale_strings[11] = '打开项目文件夹';
 
+
 locale_strings[50] = '-- 执行命令 --';
 locale_strings[51] = 'rap version:';
 locale_strings[52] = '-- rap log 日志 --';
@@ -21,6 +22,16 @@ locale_strings[53] = '<b style="color:red"> 请选择 Ruff SDK</b>';
 locale_strings[54] = '<b style="color:red"> 请先打开 Ruff 项目</b>';
 locale_strings[55] = '请选择 Ruff SDK 的路径';
 
+locale_strings[70] = '部署应用后自动启动';
+locale_strings[71] = '显示调试日志';
+locale_strings[72] = '图形化显示硬件布局信息';
+locale_strings[73] = '显示 rap 版本信息';
+locale_strings[74] = '显示已连接的设备信息';
+locale_strings[75] = '显示硬件布局信息';
+locale_strings[76] = '应用启动';
+locale_strings[77] = '停止应用';
+locale_strings[78] = '部署应用';
+locale_strings[79] = '罗列出开发板的 IP 地址';
 
 //200-400 命令行
 locale_strings[200] = "执行命令：{0}";

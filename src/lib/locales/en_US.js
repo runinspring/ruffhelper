@@ -21,6 +21,17 @@ locale_strings[53] = '<b style="color:red"> Choose the Ruff SDK</b>';
 locale_strings[54] = '<b style="color:red"> Open a ruff project first</b>';
 locale_strings[55] = 'Location the Ruff SDK folder';
 
+locale_strings[70] = 'Automatic startup after deployment';
+locale_strings[71] = 'The debug log';
+locale_strings[72] = 'Display hardware layout information as graphic';
+locale_strings[73] = 'The rap version';
+locale_strings[74] = 'The connected device information';
+locale_strings[75] = 'Display hardware layout information';
+locale_strings[76] = 'Start the application';
+locale_strings[77] = 'Stop the application';
+locale_strings[78] = 'Deploy application';
+locale_strings[79] = "List the board's IP address";
+
 //200-400 命令行
 locale_strings[200] = 'Command：{0}';
 locale_strings[201] = 'The project {0} has been created!';

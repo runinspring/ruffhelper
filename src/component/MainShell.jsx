@@ -10,12 +10,12 @@ class MainShell extends React.Component {
     }
     render(){
 
-          return(
+          /*return(
               <div>
                   <div>3123123123</div>
                   <Alerts/>
               </div>
-          )
+          )*/
         return(
             <div>
                 <div className="rightArea">

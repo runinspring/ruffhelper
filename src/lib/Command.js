@@ -113,6 +113,7 @@ function outPut(value) {
     }
     result = result.replace(/</g, " &lt;")//把 <  替换成&lt;
     result = result.replace(/\[\?25h/g, "")//替换[?25 为空
+    result = result.replace(/\[\?25l/g, "")//替换[?25l 为空
     result = result.replace(/\[0;31m/g, "")//替换[0;31m 为空// egret build 的红色
     result = result.replace(/\[0m/g, "")//替换[0m 为空// egret build 的黑色
 

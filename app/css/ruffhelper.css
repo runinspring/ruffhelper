@@ -72,17 +72,32 @@ body{
 /*b6e8e6*/
 /*.logo {background:url(logo.svg);width:400px;height:209px;}*/
 /*.alerts{text-align: center}!*整个警告页面*!*/
-.alertItem{background-color: #fff;display: inline-block;vertical-align: middle;text-align: left;}/*单一警告小面板*/
-.sdkSelector{width: 240px;height: 100px; line-height:18px;border-radius: 8px;padding: 26px 0 0 14px;}
+.alertPanel{position: absolute;width: 100%}/*单一警告小面板*/
+.alertItem{background-color: #fff;display: inline-block;vertical-align: middle;text-align: left;line-height:18px;border-radius: 8px;width: 240px;height: 100px; padding: 26px 0 0 14px;}/*单一警告小面板*/
 
 .leftArea{
     width: 153px;
     height: 520px;
     overflow-y: auto;
 }
-/*.leftArea::-webkit-scrollbar {*/
-    /*display: none;*/
-/*}*/
+.info {position: absolute;}
+.info-hide{width: 0px;height: 0px;visibility: hidden;}
+.info-show{border-radius: 4px;visibility: visible;padding: 2px 4px 2px 4px;background-color: #2db7f5;color: #ffffff;
+    position: fixed;font-size: 12px;z-index: 11;}
+.info-show .arrow{
+    position: absolute;left:-8px;top: 3px;width: 0;
+    height: 0;border-top: 8px solid transparent;border-right: 9px solid #2db7f5; border-bottom: 8px solid transparent;
+}
+
+/*.info-show .arrow{position:absolute;
+    top:5px;
+    left:-16px; !* 圆角的位置需要细心调试哦 *!
+    width:0;
+    height:0;
+    font-size:0;
+    border:solid 8px;
+    border-color:#ffffff #64ccfb #ffffff #ffffff;
+}*/
 
 
 .bg{
