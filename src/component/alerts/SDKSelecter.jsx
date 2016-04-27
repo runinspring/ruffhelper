@@ -40,7 +40,7 @@ class SDKSelecter extends React.Component {
         //tr 55 请选择 Ruff SDK 的路径
         return (
             <div className="alertPanel">
-                <div className="alertItem">
+                <div className="alertItem" style={{padding:'26px 0 0 14px'}}>
                     <div >{tr(55)}</div>
                     <LocationSelector inputValue={this.state.ruffSDKLocation} placeholder={tr(10)}
                                       onChangeValue={(value)=>{self.getSDKPath(value)}}/>

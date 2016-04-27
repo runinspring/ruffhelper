@@ -45,50 +45,67 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
         env: null
     });
     childProcess.stdout.on('data', function (data) {
-        // console.log("stdout:",data);
+        //console.log("stdout:",data);
         result = outPut(data);
         console.log("stdout:", result);
-        for (var key in inputObj) {
-            if (result.indexOf(key) > -1) {
-                if(key == "? enter password for Ruff board:"){
+        //console.log('inputObj:',inputObj)
+        // if(result.indexOf("? enter password for Ruff board:") == 0){
+        //     console.log('enter password for Ruff board:')
+        //     showAlert(PanelInput,function (value) {
+        //         result += value;
+        //         outPutMessage(result);
+        //         childProcess.stdin.write(value + '\n');
+        //         console.log('input end',value)
+        //     },tr(49));//49 请输入 Ruff 开发板的密码
+        // }else
+        if (inputObj && Object.getOwnPropertyNames(inputObj).length>0) {
+            for (var key in inputObj) {
+                if (result.indexOf(key) > -1) {
+                    if(key == "? enter password for Ruff board:"){
+                        outputObj[key] = '';
+                        showAlert(PanelInput,function (value) {
+                            key += value;
+                            outPutMessage(result);
+                            childProcess.stdin.write(value + '\n');
+                            console.log('input end',value)
+                        },tr(49));//49 请输入 Ruff 开发板的密码
+                        return;
+                    }
+                    var inputValue = inputObj[key];
+                    childProcess.stdin.write(inputObj[key] + '\n');
+                    result = key + ": "+inputValue;
+                    outputObj[key] = inputValue;
                     delete inputObj[key];
-                    outputObj[key] = '';
-                    showAlert(PanelInput,function (value) {
-                        key += value;
-                        outPutMessage(key);
-                        childProcess.stdin.write(value + '\n');
-                        console.log('input end',value)
-                    },tr(49));//49 请输入 Ruff 开发板的密码
+                    if(Object.getOwnPropertyNames(inputObj).length == 0) {
+                        inputObj = null;
+                        childProcess.stdin.end();
+                    }
+                    outPutMessage(result);
                     return;
                 }
-                var inputValue = inputObj[key];
-                childProcess.stdin.write(inputObj[key] + '\n');
-                result = key + ": "+inputValue;
-                outputObj[key] = inputValue;
-                delete inputObj[key];
-                if(Object.getOwnPropertyNames(inputObj).length == 0) {
-                    inputObj = null;
-                    childProcess.stdin.end();
+                //console.log("key:",key,result.indexOf(key));
+            }
+            
+            //console.log(outputObj,Object.getOwnPropertyNames(outputObj).length);
+        } else if(Object.getOwnPropertyNames(outputObj).length>0){
+            //console.log('outObj:',result,outputObj)
+            var find = false;
+            for (key in outputObj) {//输出的信息里不包含输入的内容
+                //console.log("key:",key,result.indexOf(key))
+                if (result.indexOf(key) > -1) {
+                    find = true;
+                    return;
                 }
+                //console.log("key:",key,result.indexOf(key));
+            }
+            if(!find){
+                //if (callBackOutput && showOutPut)callBackOutput(result);
                 outPutMessage(result);
-                return;
             }
-            //console.log("key:",key,result.indexOf(key));
-        }
-        var find = false;
-        for (key in outputObj) {//输出的信息里不包含输入的内容
-            // console.log("key:",key,result.indexOf(key))
-            if (result.indexOf(key) > -1) {
-                find = true;
-                return;
-            }
-            //console.log("key:",key,result.indexOf(key));
-        }
-        if(!find){
-            //if (callBackOutput && showOutPut)callBackOutput(result);
+        }else{
+            //if (callBackOutput)callBackOutput(result);
             outPutMessage(result);
         }
-
     });
     childProcess.stderr.on('data', function (data) {
         result = outPut(data);
@@ -107,21 +124,6 @@ function outPut(value) {
     if (result.indexOf('�') != -1) {// 编码不对试着用GBK编码
         result = iconv.decode(value, "GBK");
     }
-    var reg = "";
-    for(var i=21;i<25;i++){
-        reg = "\["+i+"C";
-        // console.log(reg);
-        result = result.replace(/reg/g, "");
-        reg = "\["+i+"D";
-        result = result.replace(/reg/g, "");
-    }
-    // result = result.replace(/\[22D/g, "")//创建项目的时候会有
-    // result = result.replace(/\[22C/g, "");
-    // result = result.replace(/\[23D/g, "");
-    // result = result.replace(/\[23C/g, "");
-    // result = result.replace(/\[24D/g, "");
-    // result = result.replace(/\[24C/g, "");
-    result = result.replace(/\[l000D \[K/g, "");
     result = result.replace(/\[33D/g, "")//替换[33D 为空 输入开发板密码的时候会有
     result = result.replace(/\[33C/g, "")//替换[33CC 为空 输入开发板密码的时候会有
     result = result.replace(/</g, " &lt;")//把 <  替换成&lt;

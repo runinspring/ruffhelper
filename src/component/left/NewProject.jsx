@@ -39,10 +39,10 @@ class NewProject extends React.Component {
                     }else{
 
                         var inputObj = {
-                            'project name':newAppName,
-                            'version':newAppVersion,
-                            'description':self.state.newAppDescription,
-                            'author':self.state.newAppAuthor
+                            '? project name':newAppName,
+                            '? version':newAppVersion,
+                            '? description':self.state.newAppDescription,
+                            '? author':self.state.newAppAuthor
                         }
                         sendCommand('rap init',function(){
                             console.log('end');

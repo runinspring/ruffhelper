@@ -23,7 +23,7 @@ class Alerts extends React.Component {
                 case PanelSDKSelector:
                     return <SDKSelecter key={'panel'+item.index} index={item.index}/>;
                 case PanelInput:
-                    return <InputPanel key={'panel'+item.index} index={item.index}/>;
+                    return <InputPanel key={'panel'+item.index} index={item.index} item={item}/>;
                 default :
                     return <div key='panel9999'/>
             }

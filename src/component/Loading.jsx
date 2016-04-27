@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import remote,{app, BrowserWindow} from 'remote';
-// import {tr} from '../lib/Utils';
+import {tr} from '../lib/Utils';
 import {init,getVersion,showAlert} from '../actions/AppActions.jsx';
 import {read} from '../lib/FileUtil'
 import config,{isPublic,isApp} from '../config';
@@ -122,6 +122,9 @@ class MainShell extends React.Component {
         }else{//没有路径就弹出选择面板
             showAlert(PanelSDKSelector);
         }
+        // showAlert(PanelInput,function (value) {
+        //     console.log('input end',value)
+        // },tr(49));//49 请输入 Ruff 开发板的密码
         //showAlert(PanelInput)
 
         setTimeout(function () {

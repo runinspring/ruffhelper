@@ -73,7 +73,7 @@ body{
 /*.logo {background:url(logo.svg);width:400px;height:209px;}*/
 /*.alerts{text-align: center}!*整个警告页面*!*/
 .alertPanel{position: absolute;width: 100%}/*单一警告小面板*/
-.alertItem{background-color: #fff;display: inline-block;vertical-align: middle;text-align: left;line-height:18px;border-radius: 8px;width: 240px;height: 100px; padding: 26px 0 0 14px;}/*单一警告小面板*/
+.alertItem{background-color: #fff;display: inline-block;vertical-align: middle;text-align: left;line-height:18px;border-radius: 8px;width: 240px;height: 100px; }/*单一警告小面板*/
 
 .leftArea{
     width: 153px;

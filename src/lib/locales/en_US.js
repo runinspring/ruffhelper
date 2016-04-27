@@ -13,7 +13,10 @@ locale_strings[8] = 'Project description';
 locale_strings[9] = 'Project author';
 locale_strings[10] = 'Ruff SDK location';
 locale_strings[11] = 'Open the project folder';
+locale_strings[12] = 'OK';
+locale_strings[13] = 'Cancel';
 
+locale_strings[49] = 'Enter password for Ruff board';
 locale_strings[50] = '-- Command --';
 locale_strings[51] = 'rap version:';
 locale_strings[52] = '-- rap log --';

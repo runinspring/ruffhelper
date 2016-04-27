@@ -13,8 +13,10 @@ locale_strings[8] = '项目描述';
 locale_strings[9] = '项目作者';
 locale_strings[10] = '选择 Ruff SDK ';
 locale_strings[11] = '打开项目文件夹';
+locale_strings[12] = '确定';
+locale_strings[13] = '取消';
 
-
+locale_strings[49] = '请输入 Ruff 开发板的密码';
 locale_strings[50] = '-- 执行命令 --';
 locale_strings[51] = 'rap version:';
 locale_strings[52] = '-- rap log 日志 --';
@@ -31,7 +33,7 @@ locale_strings[75] = '显示硬件布局信息';
 locale_strings[76] = '应用启动';
 locale_strings[77] = '停止应用';
 locale_strings[78] = '部署应用';
-locale_strings[79] = '罗列出开发板的 IP 地址';
+locale_strings[79] = '列出开发板的 IP 地址';
 
 //200-400 命令行
 locale_strings[200] = "执行命令：{0}";
