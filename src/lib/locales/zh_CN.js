@@ -15,7 +15,13 @@ locale_strings[10] = '选择 Ruff SDK ';
 locale_strings[11] = '打开项目文件夹';
 locale_strings[12] = '确定';
 locale_strings[13] = '取消';
+locale_strings[14] = '固件更新';
 
+locale_strings[44] = '请使用 rap scan 命令连接设备';
+locale_strings[45] = '给当前开发板设定一个名称';
+locale_strings[46] = '请确认 Ruff 开发板的密码';
+locale_strings[47] = '请设置 Ruff 开发板的密码';
+locale_strings[48] = '请选择一块 Ruff 开发板';
 locale_strings[49] = '请输入 Ruff 开发板的密码';
 locale_strings[50] = '-- 执行命令 --';
 locale_strings[51] = 'rap version:';

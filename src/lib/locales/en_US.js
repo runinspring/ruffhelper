@@ -15,7 +15,14 @@ locale_strings[10] = 'Ruff SDK location';
 locale_strings[11] = 'Open the project folder';
 locale_strings[12] = 'OK';
 locale_strings[13] = 'Cancel';
+locale_strings[14] = 'The firmware update';
 
+
+locale_strings[44] = "Please use 'rap scan' command connect device";
+locale_strings[45] = 'Enter a name for this device';
+locale_strings[46] = 'Confirm password for Ruff board';
+locale_strings[47] = 'Setting password for Ruff board';
+locale_strings[48] = 'Select a device to interact';
 locale_strings[49] = 'Enter password for Ruff board';
 locale_strings[50] = '-- Command --';
 locale_strings[51] = 'rap version:';

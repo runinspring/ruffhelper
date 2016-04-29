@@ -7,7 +7,7 @@ import {read} from '../lib/FileUtil'
 import config,{isPublic,isApp} from '../config';
 import {existRapSDK} from '../lib/Files';
 import {escapePath,save} from '../lib/FileUtil';
-import {PanelSDKSelector,PanelInput} from './Alerts.jsx';
+import {PanelSDKSelector,PanelInput,PanelSelecter} from './Alerts.jsx';
 import path from 'path';
 import fs from 'fs';
 //import 'antd/style/index.less';
@@ -122,6 +122,14 @@ class MainShell extends React.Component {
         }else{//没有路径就弹出选择面板
             showAlert(PanelSDKSelector);
         }
+        var items=[];
+        for(let i=0;i<6;i++){
+            var item = Math.floor(Math.random()*10)+":/Volumes/D/ZhiHuaSiStudio/2016/RuffHelper/test/Volumes/D/ZhiHuaSiStudio/2016/RuffHelper/test";
+            items.push(item);
+        }
+        // showAlert(PanelSelecter,function (params) {
+        //     console.log('selectEnd',params)
+        // },{title:'qing xuan ze',items:items})
         // showAlert(PanelInput,function (value) {
         //     console.log('input end',value)
         // },tr(49));//49 请输入 Ruff 开发板的密码

@@ -1,7 +1,7 @@
 var iconv = require('iconv-lite');//解决中文乱码
 var config = require('../config');
-import {showAlert} from '../actions/AppActions.jsx';
-import {PanelInput} from '../component/Alerts.jsx';
+import {showAlert,addOutPutBlue} from '../actions/AppActions.jsx';
+import {PanelInput,PanelSelecter} from '../component/Alerts.jsx';
 import {tr} from './Utils';
 iconv.skipDecodeWarning = true;//忽略报错
 var cp_exec = require('child_process').exec;
@@ -24,6 +24,16 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
     // command = '/Volumes/D/apps/ruff-sdk-mac-0.8.0/bin/'+ command;
     // command = '/Volumes/D/下载/ruff-sdk-mac-0.9.0/bin/' + command;
     // console.log('command:',command)
+    if(!inputObj) inputObj= {};
+    inputObj["? enter password for Ruff board:"]='';
+    inputObj["ERR Hostname required."]="";
+    if(command == 'rap scan'){
+        inputObj["? select a device to interact:"] = '';//scan 中的命令
+        inputObj["? setup password for Ruff board:"] ='';
+        inputObj["? confirm password for Ruff board:"]="";
+        inputObj["? enter a name for this device:"]="";
+    }
+
     command = config.saveData.ruffSDKLocation + '/bin/'+command;
     //console.log('command',command)
     function outPutMessage(value){
@@ -31,9 +41,7 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
             callBackOutput(value);
         }
     }
-    if(!inputObj) inputObj= {};
-    inputObj["? enter password for Ruff board:"]='';
-    inputObj["? select a device to interact:"] = '';
+
     var result = '';
     var outputObj={}
     //timeout: 100000,
@@ -52,18 +60,40 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
         for (var key in inputObj) {
             if (result.indexOf(key) > -1) {
                 delete inputObj[key];
-                if(key == "? enter password for Ruff board:"){
+                if(key == "? enter password for Ruff board:" || key == "? setup password for Ruff board:"
+                || key == "? confirm password for Ruff board:" || key=="? enter a name for this device:"){
+                    let title = tr(49);//49 请输入 Ruff 开发板的密码
+                    switch (key){
+                        case "? setup password for Ruff board:":
+                            title = tr(47);//47 请设置 Ruff 开发板的密码
+                            break;
+                        case "? confirm password for Ruff board:":
+                            title = tr(46);//47 请确认 Ruff 开发板的密码
+                            break;
+                        case "? enter a name for this device:":
+                            title = tr(45);//45 给当前开发板设定一个名称
+                            break;
+                        default:break;
+                    }
                     outputObj[key] = '';
                     showAlert(PanelInput,function (value) {
                         key += value;
                         outPutMessage(key);
                         childProcess.stdin.write(value + '\n');
-                        console.log('input end',value)
-                    },tr(49));//49 请输入 Ruff 开发板的密码
+                        // console.log('input end',value)
+                    },title);
                     return;
-                }else if(key == '? select a device to interact:'){
-                    outPutMessage(key);
-                    console.log('splite,',result.split('\n'))
+                }else if(key == '? select a device to interact:'){//选择开发板
+                    outputObj[key] = '';
+                    let arr = result.split('\n');
+                    // console.log('arr1:',arr)
+                    arr.shift();
+                    // console.log('arr2:',arr)
+                    showAlert(PanelSelecter,function(data){
+                        key += data.value;
+                        outPutMessage(key);
+                        childProcess.stdin.write(data.value + '\n');
+                    },{title:tr(48),items:arr});//48 请选择一块 Ruff 开发板
                     return;
                 }
                 var inputValue = inputObj[key];
@@ -75,6 +105,9 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
                     childProcess.stdin.end();
                 }
                 outPutMessage(result);
+                if(key=="ERR Hostname required."){
+                    addOutPutBlue(tr(44));//44 请使用 rap scan 命令连接设备
+                }
                 return;
             }
             //console.log("key:",key,result.indexOf(key));
@@ -88,7 +121,7 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
             }
             //console.log("key:",key,result.indexOf(key));
         }
-        // console.log('find:',find)
+        // console.log('find:',find,result)
         if(!find){
             // console.log('not find,',result)
             //if (callBackOutput && showOutPut)callBackOutput(result);
@@ -114,8 +147,10 @@ function outPut(value) {
     if (result.indexOf('�') != -1) {// 编码不对试着用GBK编码
         result = iconv.decode(value, "GBK");
     }
-    result = result.replace(/\[\d{2}C/g, "");//替换[33D 为空 输入开发板密码的时候会有
-    result = result.replace(/\[\d{2}D/g, "");//替换[33C 为空 输入开发板密码的时候会有
+    result = result.replace(/\[\d{1,2}A/g, "");
+    result = result.replace(/\[\d{1,2}B/g, "");
+    result = result.replace(/\[\d{1,2}C/g, "");//替换[33D 为空 输入开发板密码的时候会有
+    result = result.replace(/\[\d{1,2}D/g, "");//替换[33C 为空 输入开发板密码的时候会有
     // var reg = "";
     // for(var i=21;i<25;i++){
     //     reg = "\["+i+"C";

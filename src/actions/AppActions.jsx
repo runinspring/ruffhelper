@@ -76,6 +76,16 @@ function addOutputUnCooked(value,type = ADD_OUTPUT) {
     }
     addOutputCooked(output,false,type);
 }
+/**增加蓝色的输出内容*/
+function addOutPutBlue(data) {
+    if (!data) {
+        return;
+    }
+    var obj = {
+        type: ADD_OUTPUT, data: '<b style="color:blue">' + data + '</b><br>'
+    };
+    dispatch(obj);
+}
 /**增加处理过的内容*/
 function addOutputCooked(data, red = false,type= ADD_OUTPUT) {
     if (!data) {
@@ -109,6 +119,7 @@ function getVersion() {
 exports.setRuffSDKLocation = function (value) {
     dispatch({type:RUFF_SDK_LOCATION,data:{ruffSDKLocation:value}})
 }
+exports.addOutPutBlue = addOutPutBlue;
 exports.addOutputCooked = addOutputCooked;
 exports.addOutputUnCooked = addOutputUnCooked;
 exports.getVersion = getVersion;

@@ -17,10 +17,10 @@ class InputPanel extends React.Component {
         //tr 12确定 13取消
         return (
             <div className="alertPanel">
-                <div className="alertItem alertInput" style={{textAlign:'center',padding:'14px 10px 0 10px'}}>
-                    <div >{this.props.item.data}</div>
+                <div className="alertItem alertInput" style={{textAlign:'center',padding:'10px 10px 0 10px'}}>
+                    <div style={{marginBottom:5}}>{this.props.item.data}</div>
                     <Input id='inputPanel' placeholder={this.props.item.data} onChange={(e)=>{self.setState({inputValue:e.target.value})}}/>
-                    <div style={{textAlign:'center',margin:"5px 0 0 0"}}>
+                    <div style={{textAlign:'center',margin:"10px 0 0 0"}}>
                         <button className="btnBlue" style={{width:60,marginRight:20}}
                                 onClick={()=>{
                                 self.props.item.callback(self.state.inputValue);

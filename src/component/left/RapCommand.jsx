@@ -8,10 +8,13 @@ class RapCommand extends React.Component {
         this.arrButtons = [
             {name: 'rap deploy -s', id: 0},
             {name: '---'},
-            {name: 'rap log', id: 1},{name: 'rap scan', id: 9},{name: 'rap deploy', id: 8},{name: 'rap layout', id: 5},{name: 'rap layout --visual', id: 2},
-            {name: 'rap system info', id: 4}, {name: 'rap start', id: 6},
+            {name: 'rap log', id: 1},{name: 'rap scan', id: 9},{name: 'rap layout --visual', id: 2},
+            {name: '---'},
+            {name: 'rap deploy', id: 8},{name: 'rap layout', id: 5},
+            {name: 'rap start', id: 6},
             {name: 'rap stop', id: 7}, {name: 'rap version', id: 3}
         ];
+        // {name: 'rap system info', id: 4},
         //按钮的id对应的说明文字
         this.arrInfos = {0: 70, 1: 71, 2: 72, 3: 73, 4: 74, 5: 75, 6: 76, 7: 77,8:78,9:79}
         this.idxInterval = 0;
@@ -70,7 +73,7 @@ class RapCommand extends React.Component {
                                    onMouseOut={self.hideInfo.bind(self)} className="btnBlue" style={style}
                                    onClick={getVersion}>{item.name}</button>
                 case "---":
-                    return<div key={'cmd9999'} style={{textAlign:'center'}}>--------------------------</div>
+                    return<div key={'cmd9999'+index} style={{textAlign:'center'}}>--------------------------</div>
                 default:
                     return <button key={'cmd'+item.id} id={item.id} onMouseOver={self.showInfo.bind(self)}
                                    onMouseOut={self.hideInfo.bind(self)} className="btnBlue" style={style}

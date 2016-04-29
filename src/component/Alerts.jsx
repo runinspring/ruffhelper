@@ -9,6 +9,8 @@ const PanelSDKSelector = 'panelsdkselector';
 exports.PanelSDKSelector = PanelSDKSelector;
 const PanelInput = 'panelinput';
 exports.PanelInput = PanelInput;
+const PanelSelecter = 'panelselector';
+exports.PanelSelecter = PanelSelecter;
 class Alerts extends React.Component {
     constructor(props) {
         super(props);
@@ -24,6 +26,8 @@ class Alerts extends React.Component {
                     return <SDKSelecter key={'panel'+item.index} index={item.index}/>;
                 case PanelInput:
                     return <InputPanel key={'panel'+item.index} index={item.index} item={item}/>;
+                case PanelSelecter:
+                    return <Selecter key={'panel'+item.index} index={item.index} item={item}/>;
                 default :
                     return <div key='panel9999'/>
             }
