@@ -18,7 +18,7 @@ class SDKSelecter extends React.Component {
         if (value == this.state.ruffSDKLocation) {
             return;
         }
-        this.setState({ruffSDKLocation: value})
+        this.setState({ruffSDKLocation: value});
         // console.log(1231,value)
         var sdkPath = existRapSDK(value, this.props.osType);
         // console.log('path:',path)

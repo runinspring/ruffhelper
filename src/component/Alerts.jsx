@@ -3,14 +3,18 @@ import {connect} from 'react-redux';
 import SDKSelecter from './alerts/SDKSelecter.jsx';
 import InputPanel from './alerts/InputPanel.jsx';
 import Selecter from './alerts/Selecter.jsx';
-import {showAlert} from '../actions/AppActions.jsx';
-import cfg from '../config';
+import SystemUpgrade from './alerts/SystemUpgrade.jsx'
+
+// import {showAlert} from '../actions/AppActions.jsx';
+// import cfg from '../config';
 const PanelSDKSelector = 'panelsdkselector';
 exports.PanelSDKSelector = PanelSDKSelector;
 const PanelInput = 'panelinput';
 exports.PanelInput = PanelInput;
 const PanelSelecter = 'panelselector';
 exports.PanelSelecter = PanelSelecter;
+const PanelSystemUpgrade = 'panelsystemupgrade';
+exports.PanelSystemUpgrade = PanelSystemUpgrade;
 class Alerts extends React.Component {
     constructor(props) {
         super(props);
@@ -28,6 +32,8 @@ class Alerts extends React.Component {
                     return <InputPanel key={'panel'+item.index} index={item.index} item={item}/>;
                 case PanelSelecter:
                     return <Selecter key={'panel'+item.index} index={item.index} item={item}/>;
+                case PanelSystemUpgrade:
+                    return <SystemUpgrade key={'panel'+item.index} index={item.index} item={item}/>;
                 default :
                     return <div key='panel9999'/>
             }

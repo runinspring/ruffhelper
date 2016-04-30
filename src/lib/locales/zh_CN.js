@@ -15,7 +15,6 @@ locale_strings[10] = '选择 Ruff SDK ';
 locale_strings[11] = '打开项目文件夹';
 locale_strings[12] = '确定';
 locale_strings[13] = '取消';
-locale_strings[14] = '固件更新';
 
 locale_strings[44] = '请使用 rap scan 命令连接设备';
 locale_strings[45] = '给当前开发板设定一个名称';
@@ -29,6 +28,10 @@ locale_strings[52] = '-- rap log 日志 --';
 locale_strings[53] = '<b style="color:red"> 请选择 Ruff SDK</b>';
 locale_strings[54] = '<b style="color:red"> 请先打开 Ruff 项目</b>';
 locale_strings[55] = '请选择 Ruff SDK 的路径';
+locale_strings[56] = '请输入开发板的 IP 地址';
+locale_strings[57] = '相关信息可以通过 rap scan 命令获得';
+locale_strings[58] = '请选择固件的存放地址';
+locale_strings[59] = '固件路径错误';
 
 locale_strings[70] = '部署应用后自动启动';
 locale_strings[71] = '显示调试日志';
@@ -39,7 +42,8 @@ locale_strings[75] = '显示硬件布局信息';
 locale_strings[76] = '应用启动';
 locale_strings[77] = '停止应用';
 locale_strings[78] = '部署应用';
-locale_strings[79] = '列出开发板的 IP 地址';
+locale_strings[79] = '扫描并选择要使用的 Ruff 开发板';
+locale_strings[80] = '固件更新';
 
 //200-400 命令行
 locale_strings[200] = "执行命令：{0}";

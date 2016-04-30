@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {tr} from '../../lib/Utils'
-import {sendCommand,getVersion,addOutputCooked,sendLogCommand} from '../../actions/AppActions.jsx';
+import {sendCommand,getVersion,addOutputCooked,sendLogCommand,showAlert} from '../../actions/AppActions.jsx';
+import {PanelSystemUpgrade} from '../Alerts.jsx';
 class RapCommand extends React.Component {
     constructor(props) {
         super(props);
@@ -9,6 +10,7 @@ class RapCommand extends React.Component {
             {name: 'rap deploy -s', id: 0},
             {name: '---'},
             {name: 'rap log', id: 1},{name: 'rap scan', id: 9},{name: 'rap layout --visual', id: 2},
+            {name: 'rap system upgrade', id: 10},
             {name: '---'},
             {name: 'rap deploy', id: 8},{name: 'rap layout', id: 5},
             {name: 'rap start', id: 6},
@@ -16,10 +18,14 @@ class RapCommand extends React.Component {
         ];
         // {name: 'rap system info', id: 4},
         //按钮的id对应的说明文字
-        this.arrInfos = {0: 70, 1: 71, 2: 72, 3: 73, 4: 74, 5: 75, 6: 76, 7: 77,8:78,9:79}
+        this.arrInfos = {0: 70, 1: 71, 2: 72, 3: 73, 4: 74, 5: 75, 6: 76, 7: 77,8:78,9:79,10:80}
         this.idxInterval = 0;
     }
+    componentDidMount(){
+        showAlert(PanelSystemUpgrade,function (datas) {
 
+        });
+    }
     executeCommand(e) {
         var value = e.target.innerHTML;
         // console.log('projectPath',this.props.projectPath)
@@ -30,6 +36,11 @@ class RapCommand extends React.Component {
             switch (value) {
                 case "rap log"://启动log
                     sendLogCommand(projectPath)
+                    break;
+                case 'rap system upgrade':
+                    showAlert(PanelSystemUpgrade,function (datas) {
+
+                    });
                     break;
                 default:
                     sendCommand(value, null, projectPath)

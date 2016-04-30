@@ -37,11 +37,21 @@ app.on('ready', function () {
         role: 'window',
         label: 'RuffHelper',
         submenu: [
+            {label: 'Copy',accelerator: 'CmdOrCtrl+C',role: 'copy'},
+            {label: 'Cut',accelerator: 'CmdOrCtrl+X',role: 'cut'},
+            {label: 'Paste',accelerator: 'CmdOrCtrl+V',role: 'paste'},
+            {label: 'Select All',accelerator: 'CmdOrCtrl+A',role: 'selectall'},
+            {label: 'Undo',accelerator: 'CmdOrCtrl+Z',role: 'undo'},
+            {label: 'Redo',accelerator: 'Shift+CmdOrCtrl+Z',role: 'redo'},
+            {type: 'separator'},
             {label: 'author: coolgods@sina.com'},
             {type: 'separator'},
         ]
     }))
-    Menu.setApplicationMenu(menu);
+    if (process.platform == 'darwin') {//mac 平台替换菜单
+        Menu.setApplicationMenu(menu);
+    }
+
     mainWindow.on('page-title-updated', function (event) {
         //阻止替换标题
         event.preventDefault();
@@ -64,7 +74,7 @@ app.on('ready', function () {
     //}
     // Open the DevTools.
     //mainWindow.openDevTools();//调试面板
-    mainWindow.setMenu(null);//清除菜单
+    //mainWindow.setMenu(null);//清除菜单
     //mainWindow.setMenuBarVisibility(false);//隐藏顶部的选项条
     mainWindow.setContentSize(730, 530);//重新设置窗口大小
 

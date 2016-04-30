@@ -15,8 +15,6 @@ locale_strings[10] = 'Ruff SDK location';
 locale_strings[11] = 'Open the project folder';
 locale_strings[12] = 'OK';
 locale_strings[13] = 'Cancel';
-locale_strings[14] = 'The firmware update';
-
 
 locale_strings[44] = "Please use 'rap scan' command connect device";
 locale_strings[45] = 'Enter a name for this device';
@@ -30,6 +28,10 @@ locale_strings[52] = '-- rap log --';
 locale_strings[53] = '<b style="color:red"> Choose the Ruff SDK</b>';
 locale_strings[54] = '<b style="color:red"> Open a ruff project first</b>';
 locale_strings[55] = 'Location the Ruff SDK folder';
+locale_strings[56] = 'Enter the IP address of the development board';
+locale_strings[57] = "Information can be achieved through 'rap scan' command.";
+locale_strings[58] = 'Firmware location';
+locale_strings[59] = 'Firmware location error';
 
 locale_strings[70] = 'Automatic startup after deployment';
 locale_strings[71] = 'The debug log';
@@ -40,7 +42,8 @@ locale_strings[75] = 'Display hardware layout information';
 locale_strings[76] = 'Start the application';
 locale_strings[77] = 'Stop the application';
 locale_strings[78] = 'Deploy application';
-locale_strings[79] = "List the board's IP address";
+locale_strings[79] = "Scan and choose to use the Ruff board";
+locale_strings[80] = 'The firmware update';
 
 //200-400 命令行
 locale_strings[200] = 'Command：{0}';
