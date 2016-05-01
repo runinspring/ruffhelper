@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {tr} from '../../lib/Utils'
-import {sendCommand,getVersion,addOutputCooked,sendLogCommand,showAlert} from '../../actions/AppActions.jsx';
-import {PanelSystemUpgrade} from '../Alerts.jsx';
+import {sendCommand,getVersion,addOutputCooked,addOutputUnCooked,sendLogCommand,showAlert} from '../../actions/AppActions.jsx';
+import {PanelSystemUpgrade,PanelWiFi} from '../Alerts.jsx';
 class RapCommand extends React.Component {
     constructor(props) {
         super(props);
@@ -10,7 +10,7 @@ class RapCommand extends React.Component {
             {name: 'rap deploy -s', id: 0},
             {name: '---'},
             {name: 'rap log', id: 1},{name: 'rap scan', id: 9},{name: 'rap layout --visual', id: 2},
-            {name: 'rap system upgrade', id: 10},
+            {name: 'rap system upgrade', id: 10},{name: 'rap wifi', id: 11},
             {name: '---'},
             {name: 'rap deploy', id: 8},{name: 'rap layout', id: 5},
             {name: 'rap start', id: 6},
@@ -18,13 +18,16 @@ class RapCommand extends React.Component {
         ];
         // {name: 'rap system info', id: 4},
         //按钮的id对应的说明文字
-        this.arrInfos = {0: 70, 1: 71, 2: 72, 3: 73, 4: 74, 5: 75, 6: 76, 7: 77,8:78,9:79,10:80}
+        this.arrInfos = {0: 70, 1: 71, 2: 72, 3: 73, 4: 74, 5: 75, 6: 76, 7: 77,8:78,9:79,10:80,11:81}
         this.idxInterval = 0;
     }
     componentDidMount(){
-        showAlert(PanelSystemUpgrade,function (datas) {
-
-        });
+        // setInterval(function () {
+        //     addOutputUnCooked('.')
+        // },500)
+        // showAlert(PanelWiFi,function (datas) {
+        //     console.log('rap wifi:',datas)
+        // });
     }
     executeCommand(e) {
         var value = e.target.innerHTML;
@@ -39,11 +42,31 @@ class RapCommand extends React.Component {
                     break;
                 case 'rap system upgrade':
                     showAlert(PanelSystemUpgrade,function (datas) {
-
+                        console.log("执行 rap system upgrade",datas)
+                        var inputObj = {
+                            '? continue?':"",
+                            "rap system upgrade":true//用于命令行的判断
+                        }
+                        let cmd = `rap system upgrade --hostname ${datas.ip} ${datas.firmware}`;
+                        sendCommand(cmd,function(){
+                            console.log('end');
+                        },null,inputObj);
+                    });
+                    break;
+                case 'rap wifi':
+                    showAlert(PanelWiFi,function (datas) {
+                        let inputObj = {
+                            "? SSID": datas.ssid,
+                            "? password":datas.password,
+                            'rap wifi':true,
+                        }
+                        sendCommand(value,function(){
+                            console.log('end');
+                        },null,inputObj);
                     });
                     break;
                 default:
-                    sendCommand(value, null, projectPath)
+                    sendCommand(value, null, projectPath);
                     break;
             }
         }

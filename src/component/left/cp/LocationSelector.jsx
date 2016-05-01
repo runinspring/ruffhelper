@@ -16,7 +16,7 @@ export default class LocationSelector extends Component{
 
     //defaultPath:PropTypes.string.isRequired,
     onOpenFolder() {
-        dialog.showOpenDialog({properties: ['openDirectory']}, this.onOpenFolderEnd.bind(this));
+        dialog.showOpenDialog({properties: ['openDirectory','openFile']}, this.onOpenFolderEnd.bind(this));
     }
     onOpenFolderEnd(paths){
         console.log('打开文件夹的路径:', paths);

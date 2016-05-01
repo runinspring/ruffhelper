@@ -71,9 +71,14 @@ function addOutputUnCooked(value,type = ADD_OUTPUT) {
         if (!arr[i]) {
             output += (' <br>');
         } else {
-            output += ('<pre>' + arr[i] + '</pre>');
+            if(value != "."){
+                output += ('<pre>' + arr[i] + '</pre>');
+            }else{
+                output = value;// . 不换行
+            }
         }
     }
+    // console.log('output:', output)
     addOutputCooked(output,false,type);
 }
 /**增加蓝色的输出内容*/

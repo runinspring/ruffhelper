@@ -33,6 +33,7 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
         inputObj["? confirm password for Ruff board:"]="";
         inputObj["? enter a name for this device:"]="";
     }
+    console.log('inputObj',inputObj)
 
     command = config.saveData.ruffSDKLocation + '/bin/'+command;
     //console.log('command',command)
@@ -59,7 +60,6 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
         console.log("stdout2:", result);
         for (var key in inputObj) {
             if (result.indexOf(key) > -1) {
-                delete inputObj[key];
                 if(key == "? enter password for Ruff board:" || key == "? setup password for Ruff board:"
                 || key == "? confirm password for Ruff board:" || key=="? enter a name for this device:"){
                     let title = tr(49);//49 请输入 Ruff 开发板的密码
@@ -82,21 +82,31 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
                         childProcess.stdin.write(value + '\n');
                         // console.log('input end',value)
                     },title);
+                    delete inputObj[key];
                     return;
-                }else if(key == '? select a device to interact:'){//选择开发板
+                }else if(key == '? select a device to interact:') {//选择开发板
                     outputObj[key] = '';
                     let arr = result.split('\n');
                     // console.log('arr1:',arr)
                     arr.shift();
                     // console.log('arr2:',arr)
-                    showAlert(PanelSelecter,function(data){
+                    showAlert(PanelSelecter, function (data) {
                         key += data.value;
                         outPutMessage(key);
                         childProcess.stdin.write(data.value + '\n');
-                    },{title:tr(48),items:arr});//48 请选择一块 Ruff 开发板
+                    }, {title: tr(48), items: arr});//48 请选择一块 Ruff 开发板
+                    delete inputObj[key];
+                    return;
+                }else if(key == "? continue?" && inputObj["rap system upgrade"]){//固件更新
+                    outputObj[key] = '';
+                    childProcess.stdin.write('\n');
+                    outPutMessage('? continue?Yes\nUploading new firmware, this might take a while.');
+                    delete inputObj[key];
                     return;
                 }
+
                 var inputValue = inputObj[key];
+                // console.log('input',key,inputObj[key])
                 childProcess.stdin.write(inputObj[key] + '\n');
                 result = key + ": "+inputValue;
                 outputObj[key] = inputValue;
@@ -108,6 +118,11 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
                 if(key=="ERR Hostname required."){
                     addOutPutBlue(tr(44));//44 请使用 rap scan 命令连接设备
                 }
+                if(inputObj['rap wifi'] && key=="? password"){
+                    outPutMessage('Broadcasting WiFi settings to your Ruff device, this might take a while.');
+                    outPutMessage('It is possible that the device became connected during broadcasting but not with this very session. Try `rap scan` even if broadcasting timed out.');
+                }
+                delete inputObj[key];
                 return;
             }
             //console.log("key:",key,result.indexOf(key));
@@ -137,6 +152,7 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
     });
     childProcess.on('exit', function (msg) {
         console.log('exit')
+        addOutPutBlue(tr(213));//命令执行结束
         if (callBack) callBack();
     })
 }
@@ -165,7 +181,9 @@ function outPut(value) {
     // result = result.replace(/\[23C/g, "");
     // result = result.replace(/\[24D/g, "");
     // result = result.replace(/\[24C/g, "");
+    result = result.replace(/\[l000D\[K/g, "");
     result = result.replace(/\[l000D \[K/g, "");
+    result = result.replace(/\[1000D\[K/g, "");
     result = result.replace(/</g, " &lt;")//把 <  替换成&lt;
     result = result.replace(/\[\?25h/g, "")//替换[?25 为空
     result = result.replace(/\[\?25l/g, "")//替换[?25l 为空

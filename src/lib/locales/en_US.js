@@ -16,6 +16,7 @@ locale_strings[11] = 'Open the project folder';
 locale_strings[12] = 'OK';
 locale_strings[13] = 'Cancel';
 
+locale_strings[43] = "Please make sure the power cable is firmly connected.";
 locale_strings[44] = "Please use 'rap scan' command connect device";
 locale_strings[45] = 'Enter a name for this device';
 locale_strings[46] = 'Confirm password for Ruff board';
@@ -44,6 +45,7 @@ locale_strings[77] = 'Stop the application';
 locale_strings[78] = 'Deploy application';
 locale_strings[79] = "Scan and choose to use the Ruff board";
 locale_strings[80] = 'The firmware update';
+locale_strings[81] = 'Set up the WiFi';
 
 //200-400 命令行
 locale_strings[200] = 'Command：{0}';
@@ -59,4 +61,4 @@ locale_strings[209] = 'Create the folder：[{0}]';
 locale_strings[210] = 'Open a Ruff project first';
 locale_strings[211] = 'Not a valid Ruff SDK location';
 locale_strings[212] = 'Get Ruff SDK location';
-
+locale_strings[213] = 'End of the command';
