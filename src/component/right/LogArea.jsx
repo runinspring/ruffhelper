@@ -27,7 +27,7 @@ class LogArea  extends React.Component {
             <div>
                 <div><b>{tr(52)}</b></div>
                 <div id="rapLogArea" className="outputArea selectable textArea">
-                    <div dangerouslySetInnerHTML={{__html: this.props.logContent}}></div>
+                    <div style={{wordWarp:'break-word'}} dangerouslySetInnerHTML={{__html: this.props.logContent}}></div>
                 </div>
             </div>
         )
