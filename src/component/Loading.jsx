@@ -141,6 +141,7 @@ class MainShell extends React.Component {
 
         setTimeout(function () {
             window.location.href = '#/main';
+            // window.location.href = '#/test';
         }, this.state.numEndDelay);
     }
 

@@ -1,3 +1,12 @@
+####v0.4.0
+----未发布----
+
+1. 子进程调用方式改为 spawn ，让 rap log 更稳定
+2. 增加 rap device add 添加设备的命令
+3. 增加 rap device remove 移除设备的命令
+4. 增加 rap device update 更新设备的命令
+99. 大量细节优化，详情请看doc/工作日志.txt
+
 ####v0.3.0
 2016.5.2 发布
 

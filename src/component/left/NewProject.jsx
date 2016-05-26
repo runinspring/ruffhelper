@@ -25,6 +25,11 @@ class NewProject extends React.Component {
         var newAppPath = this.state.newAppPath;
         var newAppVersion = this.state.newAppVersion;
         var newAppName = this.state.newAppName;
+        if (!/^[0-9a-z]+$/.test(newAppName)) {
+            addOutputCooked(tr(214),true);//项目名称只能是小写的英文字母
+            return;
+        }
+        
         if(!validateVersion.validate(newAppVersion)){//校验版本号
             addOutputCooked(tr(207,newAppVersion),true);//版本号错误
             this.setState({newAppVersion:'0.1.0'})

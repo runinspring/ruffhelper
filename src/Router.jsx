@@ -2,6 +2,7 @@ import React from 'react';
 import { Router, Route,IndexRoute,browserHistory,hashHistory} from 'react-router';
 import MainShell from './component/MainShell.jsx';
 import Loading from './component/Loading.jsx';
+import TestUI from './component/TestUI.jsx';
 //import createHashHistory from 'history/lib/createHashHistory';
 //import createBrowserHistory from 'history/lib/createBrowserHistory';
 //var history = createBrowserHistory();
@@ -19,6 +20,7 @@ export class AppRouter extends React.Component {
                     <Route path="/">
                         <IndexRoute component={Loading}/>
                         <Route path="main" component={MainShell}/>
+                        <Route path="test" component={TestUI}/>
                     </Route>
                 </Router>
             </div>

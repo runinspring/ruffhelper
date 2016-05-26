@@ -12,7 +12,7 @@ class OpenProject extends React.Component {
         super(props)
     }
 
-    onOpenFolder():void {
+    onOpenFolder() {
         dialog.showOpenDialog({properties: ['openDirectory']}, this.onOpenFolderEnd.bind(this));
     }
 
@@ -26,7 +26,7 @@ class OpenProject extends React.Component {
         }
     }
 
-    onOpenFolderEnd(paths):void {
+    onOpenFolderEnd(paths) {
         console.log('打开文件夹的路径:', paths);
         if (paths) {
             var projectPath = escapePath(paths[0]);
@@ -63,17 +63,12 @@ class OpenProject extends React.Component {
     }
 
     render() {
-        //console.log(121321,<pageCmd></pageCmd>)
-        //console.log(123,this.props.config)
-        //tr-11--打开项目文件夹
-        // console.log('histrory:',this.props.histrory,this.props.histrory.get(0))
-        // <button  style={{width:20,textAlign:'center',position:'relative',top:-20,left:30}} onClick={this.onOpenFolderByHistrory.bind(this,item.path)} className="btnBlue" ></button>
         var self = this;
         var getHistrory = this.props.histrory.map((item, index)=> {
-            return (<div key={"histrory"+index}>
-                <button className="btnGray" style={{margin:"0 0 0 -16px",paddingLeft:18}}
+            return (<div key={"histrory" + index} >
+                <button className="btnGray mousePointer" style={{margin:"0 0 0 -16px",paddingLeft:18,position:'relative'}}
                         onClick={(e)=>{self.onOpenFolderByHistrory(item.path)}}>
-                    <p style={{width:30,height:30,position:'absolute',left:136,border:"1px"}}
+                    <p style={{width:30,height:30,left:144,border:"1px",position:'absolute'}}
                        onClick={(e)=>{e.preventDefault();e.stopPropagation();removeProject({path:item.path});}}>X</p>
                     {cutCharByLength(item.name, 16)}
                 </button>
@@ -81,7 +76,7 @@ class OpenProject extends React.Component {
         })
         return (
             <div style={{margin:'-12px -12px -12px -12px'}}>
-                <button style={{width:'100%'}} className="btnGreen"
+                <button style={{width:'100%'}} className="btnGreen mousePointer"
                         onClick={this.onOpenFolder.bind(this)}>{tr(1)}</button>
                 <div style={{marginTop:4}}>
                     {getHistrory}

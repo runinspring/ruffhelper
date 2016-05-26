@@ -33,6 +33,9 @@ locale_strings[56] = '请输入开发板的 IP 地址';
 locale_strings[57] = '相关信息可以通过 rap scan 命令获得';
 locale_strings[58] = '请选择固件的存放地址';
 locale_strings[59] = '固件路径错误';
+locale_strings[60] = '请输入要添加的外设的ID';
+locale_strings[61] = '请输入要移除的外设的ID';
+locale_strings[62] = '请输入要更新的外设的ID';
 
 locale_strings[70] = '部署应用后自动启动';
 locale_strings[71] = '显示调试日志';
@@ -46,6 +49,9 @@ locale_strings[78] = '部署应用';
 locale_strings[79] = '扫描并选择要使用的 Ruff 开发板';
 locale_strings[80] = '固件更新';
 locale_strings[81] = '设置 WiFi';
+locale_strings[82] = '添加设备';
+locale_strings[83] = '移除设备';
+locale_strings[83] = '更新设备';
 
 //200-400 命令行
 locale_strings[200] = "执行命令：{0}";
@@ -62,3 +68,4 @@ locale_strings[210] = '请先打开 Ruff 项目';
 locale_strings[211] = '不是有效的 Ruff SDK 路径';
 locale_strings[212] = '获得 Ruff SDK 路径';
 locale_strings[213] = '命令执行结束';
+locale_strings[214] = '项目名称只能是小写的英文字母';

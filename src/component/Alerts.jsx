@@ -25,7 +25,7 @@ class Alerts extends React.Component {
 
     render() {
         var self = this;
-        console.log('alerts:', this.props.alerts.panels);
+        // console.log('alerts:', this.props.alerts.panels);
         // console.log('SDKSelecter.SDKSelector',PanelSDKSelector)
         var getAlerts = this.props.alerts.panels.map(function (item, index) {
             switch (item.type) {

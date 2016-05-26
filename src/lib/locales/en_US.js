@@ -33,6 +33,9 @@ locale_strings[56] = 'Enter the IP address of the development board';
 locale_strings[57] = "Information can be achieved through 'rap scan' command.";
 locale_strings[58] = 'Firmware location';
 locale_strings[59] = 'Firmware location error';
+locale_strings[60] = 'Type in the ID of the device to add';
+locale_strings[61] = 'Type in the ID of the device to remove';
+locale_strings[62] = 'Type in the ID of the device to update';
 
 locale_strings[70] = 'Automatic startup after deployment';
 locale_strings[71] = 'The debug log';
@@ -46,6 +49,9 @@ locale_strings[78] = 'Deploy application';
 locale_strings[79] = "Scan and choose to use the Ruff board";
 locale_strings[80] = 'The firmware update';
 locale_strings[81] = 'Set up the WiFi';
+locale_strings[82] = 'Add a device';
+locale_strings[83] = 'Remove a device';
+locale_strings[83] = 'Update a device';
 
 //200-400 命令行
 locale_strings[200] = 'Command：{0}';
@@ -62,3 +68,4 @@ locale_strings[210] = 'Open a Ruff project first';
 locale_strings[211] = 'Not a valid Ruff SDK location';
 locale_strings[212] = 'Get Ruff SDK location';
 locale_strings[213] = 'End of the command';
+locale_strings[214] = 'The project name must be a lowercase letters';

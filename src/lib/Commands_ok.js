@@ -4,7 +4,7 @@ import {showAlert,addOutPutBlue} from '../actions/AppActions.jsx';
 import {PanelInput,PanelSelecter} from '../component/Alerts.jsx';
 import {tr} from './Utils';
 iconv.skipDecodeWarning = true;//忽略报错
-var cp_exec = require('child_process').exec;
+var spawn = require('child_process').spawn;
 /**
  * command 进程执行的命令
  * callBackOutput 输出信息的回调
@@ -12,18 +12,6 @@ var cp_exec = require('child_process').exec;
  * inputObj 输入的参数
  * */
 exports.commands = function commands(command, callBackOutput, callBack, parentDir, inputObj,showOutPut) {
-    // console.log('command:',command);
-    // console.log('parentDir:',parentDir);
-    //command = 'rap info'
-    //command = "dsdf";
-    //command = 'rap init'
-    //command = 'egret build'
-    //command = 'egret'
-    //var parentDir = "D:\\work";
-    //console.log(123213,parentDir)
-    // command = '/Volumes/D/apps/ruff-sdk-mac-0.8.0/bin/'+ command;
-    // command = '/Volumes/D/下载/ruff-sdk-mac-0.9.0/bin/' + command;
-    // console.log('command:',command)
     if(!inputObj) inputObj= {};
     inputObj["? enter password for Ruff board:"]='';
     inputObj["ERR Hostname required."]="";
@@ -33,27 +21,24 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
         inputObj["? confirm password for Ruff board:"]="";
         inputObj["? enter a name for this device:"]="";
     }
-    console.log('inputObj',inputObj)
-
-    command = config.saveData.ruffSDKLocation + '/bin/'+command;
-    //console.log('command',command)
+    // console.log('inputObj', inputObj)
+    
+    
+    // console.log('spawn command',command)
     function outPutMessage(value){
         if(callBackOutput){
             callBackOutput(value);
         }
     }
-
     var result = '';
-    var outputObj={}
-    //timeout: 100000,
-    var childProcess = cp_exec(command, {
-        encoding: 'binary',
-        timeout: 100000,
-        maxBuffer: 2000 * 1024,
-        killSignal: 'SIGTERM',
-        cwd: parentDir,
-        env: null
-    });
+    var outputObj = {}
+    //使用指定的 rap 版本
+    var cmdPath = config.saveData.ruffSDKLocation + '/bin/rap';
+    //把命令解析成数组 比如['deploy','-s']
+    var trueCmd = command.split(' ');   
+    trueCmd.shift();//把最前面的 rap 命令删除
+    var childProcess = spawn(cmdPath, trueCmd, { cwd: parentDir });
+    
     childProcess.stdout.on('data', function (data) {
         // console.log("stdout1:",data);
         result = outPut(data);
@@ -108,7 +93,12 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
                 var inputValue = inputObj[key];
                 // console.log('input',key,inputObj[key])
                 childProcess.stdin.write(inputObj[key] + '\n');
-                result = key + ": "+inputValue;
+                if (inputValue) {
+                    result = key + ": "+inputValue;    
+                } else {
+                    result = key;
+                }
+                
                 outputObj[key] = inputValue;
                 if(Object.getOwnPropertyNames(inputObj).length == 0) {
                     inputObj = null;

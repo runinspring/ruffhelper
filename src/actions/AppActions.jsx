@@ -8,7 +8,7 @@ export const RUFF_SDK_LOCATION = 'ruff_sdk_location';//sdk的位置
 export const SHOW_ALERT = 'show_alert';//显示弹出面板
 export const CLOSE_ALERT = 'colse_alert';//移除弹出面板
 export const TESTING = "testing";//测试
-import {commands} from '../lib/Command';
+import {commands} from '../lib/Commands';
 import {tr} from '../lib/Utils'
 var dispatch = null;
 var props = null;
