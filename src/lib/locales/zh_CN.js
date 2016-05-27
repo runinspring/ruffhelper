@@ -51,7 +51,7 @@ locale_strings[80] = '固件更新';
 locale_strings[81] = '设置 WiFi';
 locale_strings[82] = '添加设备';
 locale_strings[83] = '移除设备';
-locale_strings[83] = '更新设备';
+locale_strings[84] = '更新设备';
 
 //200-400 命令行
 locale_strings[200] = "执行命令：{0}";

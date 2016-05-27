@@ -51,7 +51,7 @@ locale_strings[80] = 'The firmware update';
 locale_strings[81] = 'Set up the WiFi';
 locale_strings[82] = 'Add a device';
 locale_strings[83] = 'Remove a device';
-locale_strings[83] = 'Update a device';
+locale_strings[84] = 'Update a device';
 
 //200-400 命令行
 locale_strings[200] = 'Command：{0}';
