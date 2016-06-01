@@ -45,7 +45,7 @@ exports.closeAlert = function (index) {
 
 /**发送Log子进程的命令*/
 exports.sendLogCommand = function (projectPath) {
-    addOutputCooked(tr(200, 'rap log'), true,ADD_LOG);//200 执行命令：xxxx
+    addOutputCooked(tr(200, 'rap log'), true, ADD_LOG);//200 执行命令：xxxx
     commands('rap log',(value)=>{addOutputUnCooked(value,ADD_LOG)},null,projectPath)
 }
 /**发送子进程的命令*/
@@ -72,7 +72,7 @@ function addOutputUnCooked(value,type = ADD_OUTPUT) {
             output += (' <br>');
         } else {
             if(value != "."){
-                output += ('<pre>' + arr[i] + '</pre>');
+                output += ('<pre >' + arr[i] + '</pre>');
             }else{
                 output = value;// . 不换行
             }

@@ -5,6 +5,8 @@ import {PanelInput,PanelSelecter} from '../component/Alerts.jsx';
 import {tr} from './Utils';
 iconv.skipDecodeWarning = true;//忽略报错
 var spawn = require('child_process').spawn;
+var kill = require('tree-kill');
+var raplogPid;
 // var cp_exec = require('child_process').exec;
 /**
  * command 进程执行的命令
@@ -23,7 +25,7 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
         inputObj["? enter a name for this device:"]="";
     }
     // console.log('inputObj', inputObj)
-    
+    // outPutMessage('? continue?Yes  Uploading new firmware, this might take a while.? continue?Yes  Uploading new firmware, this might take a while.');
     
     // console.log('spawn command',command)
     function outPutMessage(value){
@@ -39,16 +41,13 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
     var trueCmd = command.split(' ');   
     trueCmd.shift();//把最前面的 rap 命令删除
     var childProcess = spawn(cmdPath, trueCmd, { cwd: parentDir });
-
-    // command = config.saveData.ruffSDKLocation + '/bin/' + command;
-    // var childProcess = cp_exec(command, {
-    //     encoding: 'binary',
-    //     timeout: 100000,
-    //     maxBuffer: 2000 * 1024,
-    //     killSignal: 'SIGTERM',
-    //     cwd: parentDir,
-    //     env: null
-    // });
+    if (command == 'rap log') {//只保留一个 rap log
+        // console.log('rap log 命令');
+        if (raplogPid) {
+            kill(raplogPid);
+        }
+        raplogPid = childProcess.pid;
+    }
     
     childProcess.stdout.on('data', function (data) {
         // console.log("stdout1:",data);
@@ -61,7 +60,7 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
         }
         // console.log(7878,result.indexOf('?'))
         // if(result.indexOf('?')==)
-        console.log("stdout2:", result);
+        // console.log("stdout2:", result);
         
         // console.log("stdout2:", result, ';pureResult---',pureResult);
         
@@ -196,11 +195,16 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
         //if (callBackOutput)callBackOutput(result);
         outPutMessage(result);
     });
-    childProcess.on('exit', function (msg) {
-        console.log('exit')
+    childProcess.on('exit', function (code, signal) {
+        console.log('exit',code, signal)
+        if (signal) {
+            // process.kill(childProcess.pid, signal);
+            childProcess = null;
+        }
         addOutPutBlue(tr(213));//命令执行结束
         if (callBack) callBack();
     })
+    
 }
 var ls1 = "";
 /**清除非法字符的纯净结果 无空格*/

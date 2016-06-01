@@ -72,7 +72,7 @@ class CommandArea  extends React.Component {
                 <div dangerouslySetInnerHTML={{__html: title}}></div>
 
                 <div id="rapCommandArea" className="outputArea selectable textArea">
-                    <div style={{wordWarp:'break-word'}} dangerouslySetInnerHTML={{__html: this.props.output}}></div>
+                    <div style={{wordWrap:'break-word'}} dangerouslySetInnerHTML={{__html: this.props.output}}></div>
                 </div>
                 <div>
                 </div>

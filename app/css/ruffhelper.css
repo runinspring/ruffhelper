@@ -4,6 +4,7 @@ body{
     overflow-y: hidden;
     font-size: 12px;
 }
+
 .unselectable {
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
@@ -127,7 +128,7 @@ body{
     height: 242px;
     /*border:1px solid #000;*/
     font-size:12px;
-    overflow-y: auto;
+    /*overflow-y: auto;*/
 
     border-radius: 3px;
     border: 1px solid #d9d9d9;
@@ -139,5 +140,8 @@ body{
 }
 .outputArea pre{
     margin: 3px;
-    overflow-y: scroll;
+    word-wrap: break-word;
+    white-space: pre-wrap!important;
+    /*display: block;*/
+    /*word-break:break-all;*/
 }

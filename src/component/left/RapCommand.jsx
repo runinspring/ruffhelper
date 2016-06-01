@@ -114,6 +114,7 @@ class RapCommand extends React.Component {
         //console.log('top:', e.target.getBoundingClientRect().top)
         tip.style.top = top + 'px';
         var id = e.target.id;
+        // console.log('showInfo',id,this.arrInfos[id],tr(this.arrInfos[id]))
         document.getElementById('tipContent').innerHTML = tr(this.arrInfos[id]);
     }
 
