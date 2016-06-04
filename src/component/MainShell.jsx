@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import LeftArea from './LeftArea.jsx';
-import CommandArea from './right/CommandArea.jsx';
-import LogArea from './right/LogArea.jsx';
+
 import Alerts from './Alerts.jsx';
+import RightArea from './RightArea.jsx';
 class MainShell extends React.Component {
     constructor(props){
         super(props)
@@ -18,10 +18,7 @@ class MainShell extends React.Component {
           )*/
         return(
             <div>
-                <div className="rightArea">
-                    <CommandArea/>
-                    <LogArea/>
-                </div>
+                <RightArea/>
                 <LeftArea/>
                 <Alerts/>
             </div>

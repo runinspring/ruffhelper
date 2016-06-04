@@ -27,7 +27,7 @@ locale_strings[50] = '-- 执行命令 --';
 locale_strings[51] = 'rap version:';
 locale_strings[52] = '-- rap log 日志 --';
 locale_strings[53] = '<b style="color:red"> 请选择 Ruff SDK</b>';
-locale_strings[54] = '<b style="color:red"> 请先打开 Ruff 项目</b>';
+locale_strings[54] = '<b style="color:red"> 请先选择 Ruff 项目</b>';
 locale_strings[55] = '请选择 Ruff SDK 的路径';
 locale_strings[56] = '请输入开发板的 IP 地址';
 locale_strings[57] = '相关信息可以通过 rap scan 命令获得';

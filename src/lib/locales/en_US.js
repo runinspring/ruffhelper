@@ -27,7 +27,7 @@ locale_strings[50] = '-- Command --';
 locale_strings[51] = 'rap version:';
 locale_strings[52] = '-- rap log --';
 locale_strings[53] = '<b style="color:red"> Choose the Ruff SDK</b>';
-locale_strings[54] = '<b style="color:red"> Open a ruff project first</b>';
+locale_strings[54] = '<b style="color:red"> Choose a ruff project first</b>';
 locale_strings[55] = 'Location the Ruff SDK folder';
 locale_strings[56] = 'Enter the IP address of the development board';
 locale_strings[57] = "Information can be achieved through 'rap scan' command.";
