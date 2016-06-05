@@ -2,13 +2,17 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { Tabs, Icon,Button } from 'antd';
 const TabPane = Tabs.TabPane;
-import CommandArea from './right/CommandArea.jsx';
-import LogArea from './right/LogArea.jsx';
+import CommandsArea from './rights/CommandsArea.jsx';
+import LogsArea from './rights/LogsArea.jsx';
+// import CommandArea from './right/CommandArea.jsx';
+// import LogArea from './right/LogArea.jsx';
 class RightArea extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            tabKey:1
+            tabKey: 1,
+            extra1: '',
+            extra2: ''
         }
     }
     changeTab(e) {
@@ -16,7 +20,7 @@ class RightArea extends React.Component {
         this.setState({ tabKey: e });
     }
     getOperations() {
-        
+        // console.log(CommandsArea)
         // return <Button>1212</Button>;
         // console.log(1212,this.state.tabKey)
         if (this.state.tabKey == 1) {
@@ -25,14 +29,20 @@ class RightArea extends React.Component {
                 <Button><Icon type="folder-open"/></Button>
             </div>);
         } else if (this.state.tabKey == 2) {
-            return (<div>
-                <Button><Icon type="caret-circle-right"/></Button>
+            console.log('type2');
+            return (
+                <div>
+                <Button><Icon type="caret-circle-o-right"/></Button>
+                <Button><Icon type="cross-circle-o"/></Button>
                 <Button><Icon type="delete"/></Button>
                 <Button><Icon type="save"/></Button>
-                </div>);
-            // console.log('type2');
+            </div>
+            )
         }
-        
+    }
+    getExtraContent(key, data) {
+        this.setState({key:data})
+        // console.log('getExtraContent', key,data);
     }
     render() {
         
@@ -40,10 +50,10 @@ class RightArea extends React.Component {
             <div className="rightArea">
                 <Tabs tabBarExtraContent={this.getOperations()} defaultActiveKey={this.state.tabKey} onChange={this.changeTab.bind(this)}>
                     <TabPane tab={<span><Icon type="credit-card" />Rap 命令</span>} key="1">
-                        <CommandArea/>
+                        <CommandsArea extraContent={this.getExtraContent.bind(this)}/>
                     </TabPane>
                     <TabPane tab={<span><Icon type="message" />Rap Log</span>} key="2">
-                        <LogArea/>
+                        <LogsArea/>
                     </TabPane>
                 </Tabs>
             </div>
