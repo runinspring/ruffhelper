@@ -16,7 +16,7 @@ config = {
     },
     externals:{
         "shell": "require('shell')",
-        "remote": "require('remote')",
+        "remote": "require('electron').remote",
         "electron": "require('electron')",
         "child_process": "require('child_process')",
         "fs": "require('fs')"

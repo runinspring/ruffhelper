@@ -1,6 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
+// const remote = require('electron').remote;
+// const remote,{app, BrowserWindow} = require('electron').remote;
 import remote,{app, BrowserWindow} from 'remote';
+
 import {tr} from '../lib/Utils';
 import {init,getVersion,showAlert} from '../actions/AppActions.jsx';
 import {read} from '../lib/FileUtil'

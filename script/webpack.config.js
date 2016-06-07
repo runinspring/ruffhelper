@@ -17,7 +17,7 @@ config = {
     devtool: 'source-map',
     externals: {
         "electron": "require('electron')",
-        "remote": "require('remote')",
+        "remote": "require('electron').remote",
         "fs": "require('fs')"
     },
     output: {
