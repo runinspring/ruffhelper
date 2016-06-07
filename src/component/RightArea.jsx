@@ -11,7 +11,7 @@ class RightArea extends React.Component {
         super(props)
         this.state = {
             tabKey: 1,
-            extra1: '',
+            "extra1": '',
             extra2: ''
         }
     }
@@ -20,28 +20,34 @@ class RightArea extends React.Component {
         this.setState({ tabKey: e });
     }
     getOperations() {
-        // console.log(CommandsArea)
+        // console.log('getOperations')
         // return <Button>1212</Button>;
         // console.log(1212,this.state.tabKey)
+        // console.log(get)
         if (this.state.tabKey == 1) {
-            console.log('type1');
-            return (<div>
-                <Button><Icon type="folder-open"/></Button>
-            </div>);
+            console.log('type1',this.state);
+            return this.state.extra1;
+            
+            // return (<div>
+            //     <Button><Icon type="folder-open"/></Button>
+            // </div>);
         } else if (this.state.tabKey == 2) {
             console.log('type2');
-            return (
-                <div>
-                <Button><Icon type="caret-circle-o-right"/></Button>
-                <Button><Icon type="cross-circle-o"/></Button>
-                <Button><Icon type="delete"/></Button>
-                <Button><Icon type="save"/></Button>
-            </div>
-            )
+            return this.state.extra2;
+            
+            // return (
+            //     <div>
+            //     <Button><Icon type="caret-circle-o-right"/></Button>
+            //     <Button><Icon type="cross-circle-o"/></Button>
+            //     <Button><Icon type="delete"/></Button>
+            //     <Button><Icon type="save"/></Button>
+            // </div>
+            // )
         }
     }
     getExtraContent(key, data) {
-        this.setState({key:data})
+        this.setState({[key]: data })
+        // console.log(888,this.state)
         // console.log('getExtraContent', key,data);
     }
     render() {
@@ -53,7 +59,7 @@ class RightArea extends React.Component {
                         <CommandsArea extraContent={this.getExtraContent.bind(this)}/>
                     </TabPane>
                     <TabPane tab={<span><Icon type="message" />Rap Log</span>} key="2">
-                        <LogsArea/>
+                        <LogsArea extraContent={this.getExtraContent.bind(this)}/>
                     </TabPane>
                 </Tabs>
             </div>
