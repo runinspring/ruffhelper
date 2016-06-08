@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {tr,cutCharToCenter} from '../../lib/Utils'
+import ExtraButton from './ExtraButton.jsx';
 //var BrowserWindow = require('browser-window');
 import {shell} from 'electron';
 import { Icon,Button } from 'antd';
@@ -23,9 +24,10 @@ class CommandsArea  extends React.Component {
         
     }
     componentWillMount() {
-        this.props.extraContent('extra1', (<div>
-            <Button onClick={() => { console.log(this) } }><Icon type="folder-open"/></Button>
-                </div>))
+        this.props.extraContent('extra1',<ExtraButton iconName="folder-open"/>)
+        // this.props.extraContent('extra1', (<div>
+        //     <Button onClick={() => { shell.openItem(this.props.projectPath); } }><Icon type="folder-open"/></Button>
+        //         </div>))
     }
     // componentWillUnmount(next){
     // }

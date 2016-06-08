@@ -25,14 +25,14 @@ class RightArea extends React.Component {
         // console.log(1212,this.state.tabKey)
         // console.log(get)
         if (this.state.tabKey == 1) {
-            console.log('type1',this.state);
+            // console.log('type1',this.state);
             return this.state.extra1;
             
             // return (<div>
             //     <Button><Icon type="folder-open"/></Button>
             // </div>);
         } else if (this.state.tabKey == 2) {
-            console.log('type2');
+            // console.log('type2');
             return this.state.extra2;
             
             // return (
