@@ -87,7 +87,7 @@ body{
     height: 520px;
     overflow-y: auto;
 }
-.info {position: absolute;}
+.info {position: absolute!important;display:block;}
 .info-hide{width: 0px;height: 0px;visibility: hidden;}
 .info-show{border-radius: 4px;visibility: visible;padding: 2px 4px 2px 4px;background-color: #2db7f5;color: #ffffff;
     position: fixed;font-size: 12px;z-index: 11;}

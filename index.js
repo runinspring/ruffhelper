@@ -42,11 +42,20 @@ app.on('ready', function() {
     role:'window',
     label: 'RuffHelper',
     submenu: [
-      {label:'author: coolgods@sina.com'},
-      {type: 'separator'},
+        {label: 'Copy',accelerator: 'CmdOrCtrl+C',role: 'copy'},
+        {label: 'Cut',accelerator: 'CmdOrCtrl+X',role: 'cut'},
+        {label: 'Paste',accelerator: 'CmdOrCtrl+V',role: 'paste'},
+        {label: 'Select All',accelerator: 'CmdOrCtrl+A',role: 'selectall'},
+        {label: 'Undo',accelerator: 'CmdOrCtrl+Z',role: 'undo'},
+        {label: 'Redo',accelerator: 'Shift+CmdOrCtrl+Z',role: 'redo'},
+        {type: 'separator'},
+        {label: 'author: coolgods@sina.com'},
+        {type: 'separator'},
     ]
   }))
-  Menu.setApplicationMenu(menu);
+  if (process.platform == 'darwin') {//mac 平台替换菜单
+    Menu.setApplicationMenu(menu);//debug 要注销掉,否则无法复制
+  }
   mainWindow.on('page-title-updated', function (event) {
     //阻止替换标题
     event.preventDefault();

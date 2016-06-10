@@ -24,7 +24,8 @@ class CommandsArea  extends React.Component {
         
     }
     componentWillMount() {
-        this.props.extraContent('extra1',<ExtraButton iconName="folder-open"/>)
+        //tr--11 打开项目文件夹
+        this.props.extraContent('extra1', <ExtraButton  onClick={() => {shell.openItem(this.props.projectPath); } } tr={11} iconName="folder-open"/>)
         // this.props.extraContent('extra1', (<div>
         //     <Button onClick={() => { shell.openItem(this.props.projectPath); } }><Icon type="folder-open"/></Button>
         //         </div>))
