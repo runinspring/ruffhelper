@@ -2,6 +2,11 @@ import React,{Component, PropTypes} from 'react';
 import {Icon,Button } from 'antd';
 import {tr} from '../../lib/Utils'
 export default class ExtraButton extends Component {
+    static propTypes = {
+        iconName:PropTypes.string.isRequired,
+        onClick: PropTypes.func.isRequired,
+        tr: PropTypes.number.isRequired
+    }
     constructor(props) {
         super(props)
         this.idxInterval = 0;
@@ -50,8 +55,8 @@ export default class ExtraButton extends Component {
         )
     }
 }
-ExtraButton.propTypes = {
-    iconName:PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
-    tr: PropTypes.number.isRequired
-}
+// ExtraButton.propTypes = {
+//     iconName:PropTypes.string.isRequired,
+//     onClick: PropTypes.func.isRequired,
+//     tr: PropTypes.number.isRequired
+// }
