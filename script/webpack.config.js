@@ -31,11 +31,11 @@ config = {
                 loader: 'ts-loader'
             },
             {
-                test: /\.jsx?$/, loader: "babel-loader",
+                test: /\.jsx?$/, loader: "babel",
                 include: /src/,
                 exclude: /node_modules/,
                 query: {
-                    presets: ['es2015','react']
+                    presets: ['es2015','stage-0','react']
                 }
             },
             {test: /\.json$/, loader: "json"},
