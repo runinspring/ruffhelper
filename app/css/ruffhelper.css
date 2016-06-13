@@ -95,17 +95,13 @@ body{
     position: absolute;left:-8px;top: 3px;width: 0;
     height: 0;border-top: 8px solid transparent;border-right: 9px solid #2db7f5; border-bottom: 8px solid transparent;
 }
-
-/*.info-show .arrow{position:absolute;
-    top:5px;
-    left:-16px; !* 圆角的位置需要细心调试哦 *!
-    width:0;
-    height:0;
-    font-size:0;
-    border:solid 8px;
-    border-color:#ffffff #64ccfb #ffffff #ffffff;
-}*/
-
+.info-show .arrowUp{
+    position: absolute;
+    width: 0;height: 0;
+    border-bottom: 10px solid #2db7f5;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+}
 
 .bg{
     position: absolute;

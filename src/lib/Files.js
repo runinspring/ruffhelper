@@ -34,7 +34,7 @@ exports.existRapSDK = function (value, osType) {
 exports.getIpAddress = function () {
     var ifaces = os.networkInterfaces();
     var ipAddress;
-    console.log(777)
+    // console.log(777)
     Object.keys(ifaces).forEach(function (ifname) {
         ifaces[ifname].forEach(function (iface) {
             if ('IPv4' !== iface.family || iface.internal !== false) {
