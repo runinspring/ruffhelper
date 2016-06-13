@@ -12,7 +12,7 @@ config = {
         path.resolve(urlProject, 'src/Main.jsx')
     ],
     resolve: {
-        extensions: ['', '.js', '.ts', '.tsx', 'json']
+        extensions: ['', '.js', '.ts', '.tsx', '.json']
     },
     devtool: 'source-map',
     externals: {
@@ -38,7 +38,7 @@ config = {
                     presets: ['es2015','stage-0','react']
                 }
             },
-            {test: /\.json$/, loader: "json"},
+            {test: /\.json$/, loader: "json-loader"},
             {test: /\.css$/, loader: "style!css"},
             {test: /\.scss$/, loader: "style!css!sass"},
             {

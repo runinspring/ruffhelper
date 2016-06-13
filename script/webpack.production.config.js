@@ -19,7 +19,9 @@ config = {
         "remote": "require('electron').remote",
         "electron": "require('electron')",
         "child_process": "require('child_process')",
-        "fs": "require('fs')"
+        "fs": "require('fs')",
+        "os": "require('os')",
+        "net": "require('net')"
     },
     output: {
         path: path.resolve(urlProject, 'app/public'),

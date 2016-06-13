@@ -1,6 +1,8 @@
 var fs = require('fs');
 var path = require('path');
 var fileUtil = require('./FileUtil');// './Utils';
+var os = require('os');
+var net = require('net');
 /** rap SDK 是否存在 不存在返回 null 存在返回路径*/
 exports.existRapSDK = function (value, osType) {
     var sdkPath = fileUtil.escapePath(value);
@@ -30,9 +32,9 @@ exports.existRapSDK = function (value, osType) {
 }
 /**获取本机 ip 地址 */
 exports.getIpAddress = function () {
-    var os = require('os');
     var ifaces = os.networkInterfaces();
     var ipAddress;
+    console.log(777)
     Object.keys(ifaces).forEach(function (ifname) {
         ifaces[ifname].forEach(function (iface) {
             if ('IPv4' !== iface.family || iface.internal !== false) {
@@ -51,12 +53,12 @@ exports.getAvailablePort = function (callback) {
         var server = net.createServer();
         server.on('listening', function () {
             port = server.address().port
-            console.log("Server running at port:", port);
+            // console.log("Server running at port:", port);
             server.close();
 
         })
         server.on('close', function () {
-            console.log('callback')
+            // console.log('callback')
             callback(port)
         })
         server.on('error', function (err) {

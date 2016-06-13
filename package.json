@@ -38,15 +38,17 @@
     "iconv-lite": "^0.4.13",
     "immutable": "^3.7.6",
     "json-loader": "^0.5.4",
+    "qrcode.react": "^0.6.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.1",
     "redux": "^3.3.1",
+    "socket.io-client": "^1.4.6",
     "style-loader": "^0.13.0",
     "tree-kill": "^1.1.0",
     "validate-version": "^1.0.2",
-    "webpack": "^1.12.14",
+    "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },
   "devDependencies": {}

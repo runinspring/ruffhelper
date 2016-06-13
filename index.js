@@ -66,8 +66,7 @@ app.on('ready', function() {
   //console.log(1231,mainWindow.id)
   // and load the index.html of the app.
   //从指定位置加载
-  // mainWindow.loadURL('file://' + __dirname + '/index_public.html');
-  //mainWindow.loadURL('file://' + __dirname + '/app/index_public.html');
+  // mainWindow.loadURL('file://' + __dirname + '/app/index_public.html');
   //var appIcon = new Tray('/assets/images/icon.png');
   //从服务器位置加载
   mainWindow.loadURL("http://localhost:8080");
