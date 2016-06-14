@@ -13,13 +13,20 @@ import QRCode from 'qrcode.react';
 class TestUI extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            qr:""
+        }
+        this.textIdx = 0;
         // commands('rap version');
     }
     componentDidMount() {
         var ip = getIpAddress();
-        console.log("ip:", ip);
-        getAvailablePort(function (port) {
-            console.log(`Server  ${ip}:${port}`)
+        // console.log("ip:", ip);
+        getAvailablePort((port) => {
+            port = 8081;
+            var url = `http://${ip}:${port}`
+            this.setState({qr:url})
+            // console.log(`Server  ${ip}:${port}`)
             var child_process = require("child_process");
             // var serverPath = 
             // console.log('pathName:', __dirname);
@@ -31,14 +38,12 @@ class TestUI extends React.Component {
             childProcess.stdout.on('err', function (err) { 
                 console.log('err:',err.toString())
             })
-            
-            
-// cwd: parentDir,            
-            // console.log('port:', port);
-            // createServer(ip, port);
-            // var logServer = require('../server/RapLogServer');
-            // import {createServer} from '../server/RapLogServer';
+            this.socket = io.connect(url, { reconnection: true, reconnectionDelay: 1000 });
+            this.socket.on('connect', function () {
+                console.log('----connection2----');
+            });
         });
+        
         
         
         // sendCommand('rap device add button',function(){
@@ -46,13 +51,17 @@ class TestUI extends React.Component {
         //     },this.props.projectPath);
     }
     createServer() {
-        console.log(78,this)
+        // console.log(78, this)
+        this.textIdx +=1;
+        
+        this.socket.emit("message",`mesaagesaga</br>1</br>2</br>3</br>4</br>.:${this.textIdx}`)
     }
+    // <QRCode value={this.state.qr} />
     render() {
         return (
             <div>
                 <button onClick={() => this.createServer() }>test</button>
-                <QRCode value="http://baidu.com" />
+                
             </div>
         )
     }
