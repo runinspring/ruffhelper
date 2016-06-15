@@ -32,7 +32,7 @@ export default class ExtraButton extends Component {
         // console.log('top:', e.target.getBoundingClientRect().top)
         tip.style.top = rect.bottom + 10 + 'px';
         // tip.style.top = '-8px';
-        tip.style.left = rect.left-46+'px';
+        tip.style.left = rect.left-tip.getBoundingClientRect().width+44+'px';
         // tip.style.left = rect.left-tip.offsetWidth+rect.width+'px';
         // console.log('left:',rect.left,tip.offsetWidth)
         // console.log(12312,tip.offsetWidth,tip)
