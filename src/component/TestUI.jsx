@@ -60,8 +60,9 @@ class TestUI extends React.Component {
     render() {
         return (
             <div>
+                9901
                 <button onClick={() => this.createServer() }>test</button>
-                
+                <QRCode value={this.state.qr} />
             </div>
         )
     }

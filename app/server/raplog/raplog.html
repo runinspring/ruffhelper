@@ -1,32 +1,55 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Rap Log</title>
     <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="full-screen" content="true" />
+    <meta name="full-screen" content="yes" />
+    <meta name="x5-fullscreen" content="yes">
     <meta name="screen-orientation" content="portrait" />
     <style>
         html,
         body {
+            
             -ms-touch-action: none;
+            -webkit-overflow-scrolling: touch;
             background: #000000;
+            height: 100%;
             font-size: 12px;
+            /*font-family: HeitiSC;*/
+            /*font-style: italic;*/
+            /*font-weight: 500;*/
             color: #00c200;
             padding: 0;
             border: 0;
             margin: 4px 4px 4px 4px;
-            height: 100%;
+            overflow: hidden;
         }
     </style>
 </head>
-<body>
-    <div id="content">
-        98765
+
+<body >
+    <div id="container" style="height:98%;overflow: scroll;">            
+            <div id="content" />
     </div>
     <script src="socket.io-1.4.5.js"></script>
     <script src="raplog.js"></script>
+    <script type="text/javascript">
+    // console.log('starasdf')
+        document.onreadystatechange = subSomething; 
+        function subSomething() {
+            if(document.readyState == "complete"){
+                setTimeout(function(){
+                    // showOutput();
+                },500)
+                
+                //console.log('loaded')
+                //  document.addEventListener('touchmove', function(e) { e.preventDefault(); });
+            }
+        }
+    </script>
 </body>
 
 </html>

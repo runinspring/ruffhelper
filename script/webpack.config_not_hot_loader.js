@@ -9,7 +9,6 @@ var node_modules = path.resolve(urlProject, 'node_modules');
 config = {
     target: 'electron',
     entry: [
-         "webpack-dev-server/client?http://0.0.0.0:8080",
         'webpack/hot/dev-server',
         path.resolve(urlProject, 'src/Main.jsx')
     ],
@@ -34,10 +33,12 @@ config = {
                 loader: 'ts-loader'
             },
             {
-                test: /\.jsx?$/,
-                loaders: ['react-hot', 'babel?presets[]=es2015,presets[]=stage-0,presets[]=react'],
+                test: /\.jsx?$/, loader: 'babel',
                 include: /src/,
                 exclude: /node_modules/,
+                query: {
+                    presets: ['es2015','stage-0','react']
+                }
             },
             {test: /\.json$/, loader: "json-loader"},
             {test: /\.css$/, loader: "style!css"},
@@ -55,11 +56,3 @@ config = {
 };
 
 module.exports = config;
-// {
-//                 test: /\.jsx?$/, loader: 'babel',
-//                 include: /src/,
-//                 exclude: /node_modules/,
-//                 query: {
-//                     presets: ['es2015','stage-0','react']
-//                 }
-//             },

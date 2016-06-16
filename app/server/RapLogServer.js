@@ -2,7 +2,7 @@ var arguments = process.argv.splice(2);
 console.log("arguments", arguments)
 var host = arguments[0];
 var port = parseInt(arguments[1]);
-port = 8081;
+// port = 8081;
 console.log(`host:${host},port:${port}`)
 
 var app = require('http').createServer(serverHandler);
