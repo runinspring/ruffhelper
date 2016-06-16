@@ -15,11 +15,11 @@ class LogsArea  extends React.Component {
         this.props.extraContent('extra1', <ExtraButton  onClick={() => {shell.openItem(this.props.projectPath); } } tr={11} iconName="folder-open"/>)
         this.props.extraContent('extra2', (
             <div>
+                <ExtraButton  onClick={() => {} } tr={14} iconName="caret-circle-o-right"/>
                 <ExtraButton  onClick={() => {} } tr={11} iconName="qrcode"/>
-                <ExtraButton  onClick={() => {} } tr={11} iconName="caret-circle-o-right"/>
-                <ExtraButton  onClick={() => {} } tr={11} iconName="cross-circle-o"/>
-                <ExtraButton  onClick={() => {} } tr={11} iconName="delete"/>
-                <ExtraButton  onClick={() => {} } tr={11} iconName="save"/>
+                <ExtraButton  onClick={() => {} } tr={15} iconName="cross-circle-o"/>
+                <ExtraButton  onClick={() => {} } tr={16} iconName="delete"/>
+                <ExtraButton  onClick={() => {} } tr={17} iconName="save"/>
 
             </div>))
     }

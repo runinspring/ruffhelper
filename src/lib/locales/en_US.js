@@ -15,6 +15,10 @@ locale_strings[10] = 'Ruff SDK location';
 locale_strings[11] = 'Open the project folder';
 locale_strings[12] = 'OK';
 locale_strings[13] = 'Cancel';
+locale_strings[14] = 'Start rap log';
+locale_strings[15] = 'Stop rap log';
+locale_strings[16] = 'Clean rap log';
+locale_strings[17] = 'Save rap log';
 
 locale_strings[43] = "Please make sure the power cable is firmly connected.";
 locale_strings[44] = "Please use 'rap scan' command connect device";

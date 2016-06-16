@@ -15,6 +15,11 @@ locale_strings[10] = '选择 Ruff SDK ';
 locale_strings[11] = '打开项目文件夹';
 locale_strings[12] = '确定';
 locale_strings[13] = '取消';
+locale_strings[14] = '启动 rap log 日志';
+locale_strings[15] = '停止 rap log 日志';
+locale_strings[16] = '清除 rap log 日志';
+locale_strings[17] = '清除 rap log 日志';
+
 
 locale_strings[43] = '请确保电源线已经牢固的连接了';
 locale_strings[44] = '请使用 rap scan 命令连接设备';
