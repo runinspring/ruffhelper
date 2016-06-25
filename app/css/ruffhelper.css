@@ -121,10 +121,10 @@ body{
     height:520px;
 }
 .outputArea {
-    height: 242px;
+    height: 450px;
     /*border:1px solid #000;*/
     font-size:12px;
-    /*overflow-y: auto;*/
+    overflow-y: auto;
 
     border-radius: 3px;
     border: 1px solid #d9d9d9;

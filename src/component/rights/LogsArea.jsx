@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {tr} from '../../lib/Utils'
 import { Icon,Button } from 'antd';
 import ExtraButton from './ExtraButton.jsx';
+import {sendLogCommand,addOutputCooked} from '../../actions/AppActions.jsx'
 class LogsArea  extends React.Component {
     constructor(props){
         super(props)
@@ -12,10 +13,18 @@ class LogsArea  extends React.Component {
         this.setPositionAtBottom();
     }
     componentWillMount() {
-        this.props.extraContent('extra1', <ExtraButton  onClick={() => {shell.openItem(this.props.projectPath); } } tr={11} iconName="folder-open"/>)
+        // this.props.extraContent('extra1', <ExtraButton  onClick={() => {shell.openItem(this.props.projectPath); } } tr={11} iconName="folder-open"/>)
         this.props.extraContent('extra2', (
             <div>
-                <ExtraButton  onClick={() => {} } tr={14} iconName="caret-circle-o-right"/>
+                <ExtraButton  onClick={() => {
+                    var projectPath = this.props.projectPath;
+                    if (!projectPath) {
+                        addOutputCooked(tr(210), true);//请先打开 ruff 项目
+                    } else {
+                        sendLogCommand(projectPath)}
+                    }
+
+                } tr={14} iconName="caret-circle-o-right"/>
                 <ExtraButton  onClick={() => {} } tr={11} iconName="qrcode"/>
                 <ExtraButton  onClick={() => {} } tr={15} iconName="cross-circle-o"/>
                 <ExtraButton  onClick={() => {} } tr={16} iconName="delete"/>
@@ -50,7 +59,8 @@ class LogsArea  extends React.Component {
 }
 function select(state) {
     return{
-        logContent:state.logContent
+        logContent:state.logContent,
+        projectPath: state.config.projectPath
     }
 }
 export default connect(select)(LogsArea);

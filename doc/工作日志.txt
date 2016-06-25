@@ -1,3 +1,6 @@
+2016年06月25日 星期六
+修复bug: rap log 引起的rap command显示区域的重复定位
+
 2016年6月15日 星期三
 添加 react-hot-loader 热替换功能
 

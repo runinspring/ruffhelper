@@ -15,10 +15,10 @@ locale_strings[10] = '选择 Ruff SDK ';
 locale_strings[11] = '打开项目文件夹';
 locale_strings[12] = '确定';
 locale_strings[13] = '取消';
-locale_strings[14] = '启动 rap log 日志';
-locale_strings[15] = '停止 rap log 日志';
-locale_strings[16] = '清除 rap log 日志';
-locale_strings[17] = '清除 rap log 日志';
+locale_strings[14] = '启动显示调试日志';
+locale_strings[15] = '停止显示调试日志';
+locale_strings[16] = '清除调试日志';
+locale_strings[17] = '保存日志';
 
 
 locale_strings[43] = '请确保电源线已经牢固的连接了';
@@ -43,7 +43,7 @@ locale_strings[61] = '请输入要移除的外设的ID';
 locale_strings[62] = '请输入要更新的外设的ID';
 
 locale_strings[70] = '部署应用后自动启动';
-locale_strings[71] = '显示调试日志';
+// locale_strings[71] = 'The debug log';
 locale_strings[72] = '图形化显示硬件布局信息';
 locale_strings[73] = '显示 rap 版本信息';
 locale_strings[74] = '显示已连接的设备信息';

@@ -34,7 +34,7 @@ class RightArea extends React.Component {
         
         return (
             <div className="rightArea">
-                <Tabs tabBarExtraContent={this.getOperations()} defaultActiveKey={this.state.tabKey} onChange={this.changeTab.bind(this)}>
+                <Tabs tabBarExtraContent={this.getOperations()} defaultActiveKey={this.state.tabKey} onChange={this.changeTab.bind(this)} type="card">
                     <TabPane tab={<span><Icon type="credit-card" />Rap 命令</span>} key="1">
                         <CommandsArea extraContent={this.getExtraContent.bind(this)}/>
                     </TabPane>

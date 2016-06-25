@@ -14,12 +14,14 @@ class CommandsArea  extends React.Component {
             projectPath:"CommandArea",//项目路径
             version:"CommandArea",//版本号
             strPath:'',//路径的文字
-            strVersion:''//版本的文字
+            strVersion:'',//版本的文字
+            output:'输出的文字'
         }
         
     }
     
     componentDidMount(){
+        console.log('componentDidMount')
         this.setVersionValues();
         
     }
@@ -32,12 +34,13 @@ class CommandsArea  extends React.Component {
     }
     // componentWillUnmount(next){
     // }
-    componentDidUpdate() {
-        // console.log('props',props)
+    componentDidUpdate(value) {
+        // console.log('props',value)
         this.setVersionValues();
     }
     setVersionValues(){
-        this.setPositionAtBottom();
+        // console.log('setVersionValues')
+
         if(this.props.projectPath != this.state.projectPath){
             var strPath = this.props.projectPath?this.props.projectPath:tr(54);//54 请选择项目
             //var str = "E:/ZhiHuaSiStudio/2016/RuffHelper/node_modules/babel-preset-es2015/node_modules/test1";
@@ -49,10 +52,14 @@ class CommandsArea  extends React.Component {
             var strVersion = this.props.version?this.props.version:tr(53);//53 请安装 rap
             this.setState({version:this.props.version,strVersion:strVersion});
         }
+        if(this.props.output != this.state.output){
+            this.setState({output:this.props.output});
+            this.setPositionAtBottom();
+        }
     }
     /**定位到最下面一行*/
     setPositionAtBottom(){
-        // console.log('setPositionAtBottom')
+        console.log('setPositionAtBottom')
         var ex = document.getElementById("rapCommandArea");//定位到最下面一行
         ex.scrollTop = ex.scrollHeight;
         // console.log('ex,',ex.scrollTop,ex.scrollHeight)

@@ -42,7 +42,7 @@ locale_strings[61] = 'Type in the ID of the device to remove';
 locale_strings[62] = 'Type in the ID of the device to update';
 
 locale_strings[70] = 'Automatic startup after deployment';
-locale_strings[71] = 'The debug log';
+// locale_strings[71] = 'The debug log';
 locale_strings[72] = 'Display hardware layout information as graphic';
 locale_strings[73] = 'The rap version';
 locale_strings[74] = 'The connected device information';
