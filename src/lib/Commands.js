@@ -7,6 +7,11 @@ iconv.skipDecodeWarning = true;//忽略报错
 var spawn = require('child_process').spawn;
 var kill = require('tree-kill');
 var raplogPid;
+exports.killRaplog = function killRaplog() {
+    if(raplogPid){
+        kill(raplogPid);
+    }
+}
 // var cp_exec = require('child_process').exec;
 /**
  * command 进程执行的命令
@@ -201,7 +206,9 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
             // process.kill(childProcess.pid, signal);
             childProcess = null;
         }
-        addOutPutBlue(tr(213));//命令执行结束
+        if(command!='rap log'){
+            addOutPutBlue(tr(213));//命令执行结束
+        }
         if (callBack) callBack();
     })
     

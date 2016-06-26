@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import {tr} from '../../lib/Utils'
 import { Icon,Button } from 'antd';
 import ExtraButton from './ExtraButton.jsx';
-import {sendLogCommand,addOutputCooked} from '../../actions/AppActions.jsx'
+import {killRaplog} from '../../lib/Commands'
+import {sendLogCommand,addOutputCooked,ADD_LOG,commonCommand,CLEAN_RAP_LOG} from '../../actions/AppActions.jsx'
 class LogsArea  extends React.Component {
     constructor(props){
         super(props)
@@ -16,7 +17,7 @@ class LogsArea  extends React.Component {
         // this.props.extraContent('extra1', <ExtraButton  onClick={() => {shell.openItem(this.props.projectPath); } } tr={11} iconName="folder-open"/>)
         this.props.extraContent('extra2', (
             <div>
-                <ExtraButton  onClick={() => {
+                <ExtraButton  onClick={() => {//启动raplog
                     var projectPath = this.props.projectPath;
                     if (!projectPath) {
                         addOutputCooked(tr(210), true);//请先打开 ruff 项目
@@ -26,8 +27,15 @@ class LogsArea  extends React.Component {
 
                 } tr={14} iconName="caret-circle-o-right"/>
                 <ExtraButton  onClick={() => {} } tr={11} iconName="qrcode"/>
-                <ExtraButton  onClick={() => {} } tr={15} iconName="cross-circle-o"/>
-                <ExtraButton  onClick={() => {} } tr={16} iconName="delete"/>
+                <ExtraButton  onClick={() => {//停止显示log
+                    killRaplog();
+                    addOutputCooked(tr(200,tr(15)), true,ADD_LOG);//200 执行命令：xxxx
+                } } tr={15} iconName="cross-circle-o"/>
+                <ExtraButton  onClick={() => {//清除log
+                    killRaplog();
+                    commonCommand(CLEAN_RAP_LOG);
+                    addOutputCooked(tr(200,tr(16)), true,ADD_LOG);//200 执行命令：xxxx
+                } } tr={16} iconName="delete"/>
                 <ExtraButton  onClick={() => {} } tr={17} iconName="save"/>
 
             </div>))

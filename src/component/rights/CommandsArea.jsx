@@ -21,7 +21,7 @@ class CommandsArea  extends React.Component {
     }
     
     componentDidMount(){
-        console.log('componentDidMount')
+        // console.log('componentDidMount')
         this.setVersionValues();
         
     }

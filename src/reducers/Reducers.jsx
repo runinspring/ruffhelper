@@ -3,7 +3,8 @@ var cfg = require('../config');//
 // import {sdkPath} from '../config';
 import {save} from '../lib/FileUtil';
 import {List} from 'immutable';
-import {INIT,CHANGE_CONFIG,ADD_OUTPUT,ADD_LOG,OPEN_PROJECT,REMOVE_PROJECT,RUFF_SDK_LOCATION,SHOW_ALERT,CLOSE_ALERT} from '../actions/AppActions.jsx';
+import {INIT,CHANGE_CONFIG,ADD_OUTPUT,ADD_LOG,OPEN_PROJECT,REMOVE_PROJECT,RUFF_SDK_LOCATION,SHOW_ALERT,CLOSE_ALERT,
+CLEAN_RAP_LOG} from '../actions/AppActions.jsx';
 var appPath = '';
 let initConfig = {
     language: '',//语言默认中文 zh_CN
@@ -104,6 +105,8 @@ var logContent = function (state = "", action) {
             //console.log('addOutput：',action)
             state += action.data;
             return state;
+        case CLEAN_RAP_LOG:
+            return "";
         default:
             return state;
     }

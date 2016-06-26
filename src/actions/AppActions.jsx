@@ -7,7 +7,9 @@ export const REMOVE_PROJECT = 'remove_project';//移除项目
 export const RUFF_SDK_LOCATION = 'ruff_sdk_location';//sdk的位置
 export const SHOW_ALERT = 'show_alert';//显示弹出面板
 export const CLOSE_ALERT = 'colse_alert';//移除弹出面板
+export const CLEAN_RAP_LOG = "clean_rap_log";//清除raplog
 export const TESTING = "testing";//测试
+
 import {commands} from '../lib/Commands';
 import {tr} from '../lib/Utils'
 var dispatch = null;
@@ -20,6 +22,11 @@ function init(_dispatch, _props, _data) {
     props = _props;
     // console.log(1231,dispatch,ddd)
     dispatch({type: INIT, data:_data})
+}
+/**通用的命令*/
+exports.commonCommand = function (command,data) {
+    var obj = {type: command, data: data}
+    dispatch(obj);
 }
 /**改变config数据*/
 exports.changConfig = function (data) {
