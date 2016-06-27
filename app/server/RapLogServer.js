@@ -36,12 +36,17 @@ function serverHandler(req, res) {
             var fullpathname = './app/server/raplog' + pathname;
             // console.log('fullpathname:', fullpathname)
             fs.exists(fullpathname, function (exists) {
+                var contentType ={}
                 if (exists) {
                     switch (path.extname(pathname)) {
                         case '.js':
-                            res.writeHead(200, { "Content-Type": "text/javascript" });
+                            contentType = "text/javascript";
+                            break;
+                        case '.css':
+                            contentType = "text/css";
                             break;
                     }
+                    res.writeHead(200, { "Content-Type": contentType });
                     fs.readFile(fullpathname, function (err, data) {
                         res.end(data);
                     });
@@ -84,18 +89,8 @@ io.on('connection', function (socket) {
 })
 // var testIdx = 0;
 // setInterval(function () {
-//     if (socketObj) {
-//         testIdx++;
-//         if (testIdx %10 ==0) {
-//             io.emit('test1', "okokoko");
-//         }
-//         for (var i in socketObj) {
-//             if (Math.random() < 0.5) {
-//                 socketObj[i].emit('test1',testIdx);
-//             }
-//         }
-//     }
+//     testIdx++;
+//     io.emit('test1', "okokoko你好"+testIdx);
 // },1000)
-// var child_process = require("child_process");
-// child_process.exec(`start http://${host}:${port}`);
+
 console.log(`start  http://${host}:${port}`)
