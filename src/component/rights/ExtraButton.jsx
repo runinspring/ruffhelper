@@ -70,8 +70,3 @@ export default class ExtraButton extends Component {
         )
     }
 }
-// ExtraButton.propTypes = {
-//     iconName:PropTypes.string.isRequired,
-//     onClick: PropTypes.func.isRequired,
-//     tr: PropTypes.number.isRequired
-// }
