@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {tr} from '../../lib/Utils'
 import { Icon,Button } from 'antd';
 import ExtraButton from './ExtraButton.jsx';
-import QrCode from './QrCode.jsx';
+import ExtraQrCode from './ExtraQrCode.jsx';
 import {killRaplog} from '../../lib/Commands'
 import {sendLogCommand,addOutputCooked,ADD_LOG,commonCommand,CLEAN_RAP_LOG} from '../../actions/AppActions.jsx'
 class LogsArea  extends React.Component {
@@ -27,7 +27,7 @@ class LogsArea  extends React.Component {
                         sendLogCommand(projectPath)}
                     }
                 } tr={14} iconName="caret-circle-o-right"/>
-                <QrCode/>
+                <ExtraQrCode/>
                 <ExtraButton  onClick={() => {//停止显示log
                     killRaplog();
                     addOutputCooked(tr(200,tr(15)), true,ADD_LOG);//200 执行命令：xxxx

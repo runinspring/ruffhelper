@@ -6,6 +6,8 @@ import {tr} from '../lib/Utils'
 import {getIpAddress,getAvailablePort} from '../lib/Files';
 import CommandArea from './right/CommandArea.jsx';
 import LogArea from './right/LogArea.jsx';
+import ExtraQrCode from './rights/ExtraQrCode.jsx';
+import ExtraButton from './rights/ExtraButton.jsx';
 // import {createServer} from '../server/RapLogServer';
 import {sendCommand,getVersion,addOutputCooked,addOutputUnCooked,sendLogCommand,showAlert} from '../actions/AppActions.jsx';
 import Alerts, {PanelSystemUpgrade, PanelWiFi, PanelInput} from './Alerts.jsx';
@@ -57,12 +59,17 @@ class TestUI extends React.Component {
         this.socket.emit("message",`mesaagesaga</br>1</br>2</br>3</br>4</br>.:${this.textIdx}`)
     }
     // <QRCode value={this.state.qr} />
+    // <QRCode value={this.state.qr} />
     render() {
         return (
             <div>
                 9901
-                <button onClick={() => this.createServer() }>test</button>
-                <QRCode value={this.state.qr} />
+                Qrcode
+                <button onClick={() => { } }>test</button>
+                <ExtraButton  onClick={() => {
+                    
+                } } tr={14} iconName="caret-circle-o-right"/>
+                <ExtraQrCode url={this.state.qr}/>
             </div>
         )
     }

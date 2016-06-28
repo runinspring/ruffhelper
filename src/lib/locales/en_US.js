@@ -19,6 +19,7 @@ locale_strings[14] = 'Start rap log';
 locale_strings[15] = 'Stop rap log';
 locale_strings[16] = 'Clean rap log';
 locale_strings[17] = 'Save rap log';
+locale_strings[18] = 'Check the rap log on you cellphone after scan the qrcode';
 
 locale_strings[43] = "Please make sure the power cable is firmly connected.";
 locale_strings[44] = "Please use 'rap scan' command connect device";
