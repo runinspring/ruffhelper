@@ -5,13 +5,37 @@ import { Icon,Button } from 'antd';
 import ExtraButton from './ExtraButton.jsx';
 import ExtraQrCode from './ExtraQrCode.jsx';
 import {killRaplog} from '../../lib/Commands'
+import {getIpAddress,getAvailablePort} from '../../lib/Files';
 import {sendLogCommand,addOutputCooked,ADD_LOG,commonCommand,CLEAN_RAP_LOG} from '../../actions/AppActions.jsx'
 class LogsArea  extends React.Component {
     constructor(props){
         super(props)
+        this.state = {
+            qr:""
+        }
     }
     componentDidMount()
     {
+        var ip = getIpAddress();
+        getAvailablePort((port) => {
+            port = 8081;
+            var url = `http://${ip}:${port}`
+            this.setState({qr:url})
+            // console.log(`Server  ${ip}:${port}`)
+            var child_process = require("child_process");
+            var childProcess = child_process.spawn("node", [`./app/server/RapLogServer.js`, ip, port]);
+
+            childProcess.stdout.on('data', function (data) {
+                console.log('data:',data.toString())
+            })
+            childProcess.stdout.on('err', function (err) {
+                console.log('err:',err.toString())
+            })
+            this.socket = io.connect(url, { reconnection: true, reconnectionDelay: 1000 });
+            this.socket.on('connect', function () {
+                console.log('----connection2----');
+            });
+        });
         this.setPositionAtBottom();
     }
     componentWillMount() {
@@ -27,7 +51,7 @@ class LogsArea  extends React.Component {
                         sendLogCommand(projectPath)}
                     }
                 } tr={14} iconName="caret-circle-o-right"/>
-                <ExtraQrCode/>
+                <ExtraQrCode url={this.state.qr}/>
                 <ExtraButton  onClick={() => {//停止显示log
                     killRaplog();
                     addOutputCooked(tr(200,tr(15)), true,ADD_LOG);//200 执行命令：xxxx

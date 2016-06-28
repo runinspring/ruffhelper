@@ -125,11 +125,11 @@ class MainShell extends React.Component {
         }else{//没有路径就弹出选择面板
             showAlert(PanelSDKSelector);
         }
-        var items=[];
-        for(let i=0;i<6;i++){
-            var item = Math.floor(Math.random()*10)+":/Volumes/D/ZhiHuaSiStudio/2016/RuffHelper/test/Volumes/D/ZhiHuaSiStudio/2016/RuffHelper/test";
-            items.push(item);
-        }
+        // var items=[];
+        // for(let i=0;i<6;i++){
+        //     var item = Math.floor(Math.random()*10)+":/Volumes/D/ZhiHuaSiStudio/2016/RuffHelper/test/Volumes/D/ZhiHuaSiStudio/2016/RuffHelper/test";
+        //     items.push(item);
+        // }
         // showAlert(PanelSelecter,function (params) {
         //     console.log('selectEnd',params)
         // },{title:'qing xuan ze',items:items})
@@ -143,8 +143,8 @@ class MainShell extends React.Component {
         }, this.state.numFadeOutDelay)
 
         setTimeout(function () {
-            // window.location.href = '#/main';
-            window.location.href = '#/test';
+            window.location.href = '#/main';
+            // window.location.href = '#/test';
         }, this.state.numEndDelay);
     }
 

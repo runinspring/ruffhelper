@@ -18,7 +18,7 @@ class ExtraQrCode extends Component {
         //在组件的更新已经同步到 DOM 中之后立刻被调用
     }
     showInfo(e){
-        console.log('showInfo');
+        // console.log('showInfo');
         var tip = document.getElementById('tipQrcode');
         tip.className = 'info-show';
         var rect = e.target.getBoundingClientRect();
@@ -27,17 +27,17 @@ class ExtraQrCode extends Component {
         
     }
     hideInfo(){
-        console.log('hideInfo');
+        // console.log('hideInfo');
         var tip = document.getElementById('tipQrcode');
         if (tip) {
-            // tip.className = 'info-hide';
+            tip.className = 'info-hide';
         }
     }
     render() {
         // tr 18 扫码后在手机上查看日志信息
         return (
             <div style={{display:'inline-block',marginRight:'2px'}}>
-                <div id={"tipQrcode"} className="info-hide" style={{padding:'4px 4px 4px 4px'}}>
+                <div id={"tipQrcode"} className="info-hide">
                     <div className="arrowUp" style={{ right: '16px', top: '-8px' }}/>
                     <QRCode value={this.props.url} bgColor="#2db7f5"/>
                     <div id={"tipContentQrcode"} style={{ wordWrap: "break-word", margin: "0px",textAlign:"center",width:"128px",lineHeight:"110%"}}>{tr(18)}</div>

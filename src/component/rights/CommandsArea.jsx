@@ -59,7 +59,7 @@ class CommandsArea  extends React.Component {
     }
     /**定位到最下面一行*/
     setPositionAtBottom(){
-        console.log('setPositionAtBottom')
+        // console.log('setPositionAtBottom')
         var ex = document.getElementById("rapCommandArea");//定位到最下面一行
         ex.scrollTop = ex.scrollHeight;
         // console.log('ex,',ex.scrollTop,ex.scrollHeight)
