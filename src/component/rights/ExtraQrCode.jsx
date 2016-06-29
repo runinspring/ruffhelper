@@ -11,39 +11,44 @@ class ExtraQrCode extends Component {
     constructor(props) {
         super(props)
     }
-    componentDidMount(){
+    componentDidMount() {
         //初始化渲染执行之后立刻调用
     }
-    componentDidUpdate(prevProps){
+    componentDidUpdate(prevProps) {
         //在组件的更新已经同步到 DOM 中之后立刻被调用
     }
-    showInfo(e){
+    showInfo(e) {
         // console.log('showInfo');
         var tip = document.getElementById('tipQrcode');
         tip.className = 'info-show';
         var rect = e.target.getBoundingClientRect();
         tip.style.top = rect.bottom + 10 + 'px';
         tip.style.left = rect.left - tip.getBoundingClientRect().width + 44 + 'px';
-        
+
     }
-    hideInfo(){
+    hideInfo() {
         // console.log('hideInfo');
         var tip = document.getElementById('tipQrcode');
         if (tip) {
             tip.className = 'info-hide';
         }
     }
+    //  bgColor="#2db7f5"
     render() {
         // tr 18 扫码后在手机上查看日志信息
         return (
-            <div style={{display:'inline-block',marginRight:'2px'}}>
+            <div style={{ display: 'inline-block', marginRight: '2px' }}>
                 <div id={"tipQrcode"} className="info-hide">
                     <div className="arrowUp" style={{ right: '16px', top: '-8px' }}/>
-                    <QRCode value={this.props.url} bgColor="#2db7f5"/>
-                    <div id={"tipContentQrcode"} style={{ wordWrap: "break-word", margin: "0px",textAlign:"center",width:"128px",lineHeight:"110%"}}>{tr(18)}</div>
+                    <div style={{paddingTop:'2px'}}>
+                        <div style={{ padding: '4px 4px 0px 4px', background: '#ffffff' }}>
+                            <QRCode value={this.props.url} fgColor="#2db7f5"/>
+                        </div>
+                    </div>
+                    <div id={"tipContentQrcode"} style={{ wordWrap: "break-word", marginTop: "4px", textAlign: "center", width: "128px", lineHeight: "110%" }}>{tr(18) }</div>
                 </div>
-                <Button onMouseOver={this.showInfo.bind(this)} onMouseOut={this.hideInfo.bind(this)}>
-                    <Icon style={{pointerEvents:"none"}} type='qrcode'/>
+                <Button onMouseOver={this.showInfo.bind(this) } onMouseOut={this.hideInfo.bind(this) }>
+                    <Icon style={{ pointerEvents: "none" }} type='qrcode'/>
                 </Button>
             </div>
         )
