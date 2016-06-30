@@ -36,7 +36,12 @@ socket.on('login', function (o) {
     // setPosition();
 });
 socket.on('message', function (o) {
-    output += `</br>${o}`;
+    if(o.indexOf('<br>')>-1){
+        output += o;
+    }else{
+        output += `</br>${o}`;
+    }
+
     showOutput();
     // contentDiv.innerHTML += `</br>${o}`;
     // setPosition();
