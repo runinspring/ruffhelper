@@ -8,7 +8,7 @@ import {tr} from '../lib/Utils';
 import {init,getVersion,showAlert} from '../actions/AppActions.jsx';
 import {read} from '../lib/FileUtil'
 import config,{isPublic,isApp} from '../config';
-import {existRapSDK} from '../lib/Files';
+import {existRapSDK,getIpAddress,getAvailablePort} from '../lib/Files';
 import {escapePath,save} from '../lib/FileUtil';
 import {PanelSDKSelector,PanelInput,PanelSelecter} from './Alerts.jsx';
 import path from 'path';
@@ -113,7 +113,19 @@ class MainShell extends React.Component {
                 //console.log('error:',e)
             }
         }
-        this.initEnd(data);
+
+        getAvailablePort((port) => {
+            // port = 8081;
+            data.port = port;
+            var ip = getIpAddress();
+            data.ip = getIpAddress();
+            this.initEnd(data);
+            // port = 8081;
+            // var url = `http://${ip}:${port}`;
+            // console.log('loading.url',url)
+        });
+
+
     }
 
     initEnd(data) {

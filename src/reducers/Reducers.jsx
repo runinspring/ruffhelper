@@ -15,6 +15,8 @@ let initConfig = {
     projectPath: '',//代码项目的路径
     ruffSDKLocation: '',//sdk的位置
     histrory: List([]),// 打开的历史记录，最多10个 {name:'',path:''}
+    ip:'',//本机ip
+    port:''//rap log 服务器用的端口
 }
 var config = function (state = initConfig, action) {
     var result = Object.assign({}, state);
@@ -30,6 +32,7 @@ var config = function (state = initConfig, action) {
                 result.projectPath = action.data.histrory[0].path;
             }
             appPath = result.appPath;
+            
             // console.log('saveData',saveData)
             // console.log(12312,result.histrory.get(0))
             return result;
@@ -103,6 +106,9 @@ var logContent = function (state = "", action) {
     switch (action.type) {
         case ADD_LOG:
             //console.log('addOutput：',action)
+            if(cfg.socket){
+                cfg.socket.emit('message',action.data)
+            }
             state += action.data;
             return state;
         case CLEAN_RAP_LOG:

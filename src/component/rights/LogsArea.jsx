@@ -5,40 +5,62 @@ import { Icon,Button } from 'antd';
 import ExtraButton from './ExtraButton.jsx';
 import ExtraQrCode from './ExtraQrCode.jsx';
 import {killRaplog} from '../../lib/Commands'
-import {getIpAddress,getAvailablePort} from '../../lib/Files';
+// import {getIpAddress,getAvailablePort} from '../../lib/Files';
 import {sendLogCommand,addOutputCooked,ADD_LOG,commonCommand,CLEAN_RAP_LOG} from '../../actions/AppActions.jsx'
+var cfg = require('../../config');
 class LogsArea  extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            qr:""
+            qr: `http://${this.props.ip}:${this.props.port}`
         }
+        console.log('qr url :',this.state.qr)
+
     }
     componentDidMount()
     {
-        var ip = getIpAddress();
-        getAvailablePort((port) => {
-            port = 8081;
-            var url = `http://${ip}:${port}`
-            this.setState({qr:url})
-            // console.log(`Server  ${ip}:${port}`)
-            var child_process = require("child_process");
-            var childProcess = child_process.spawn("node", [`./app/server/RapLogServer.js`, ip, port]);
+        // console.log(8989,this.props.ip,this.props.port)
+        var child_process = require("child_process");
+        var childProcess = child_process.spawn("node", [`./app/server/RapLogServer.js`, this.props.ip, this.props.port]);
 
-            childProcess.stdout.on('data', function (data) {
-                console.log('data:',data.toString())
-            })
-            childProcess.stdout.on('err', function (err) {
-                console.log('err:',err.toString())
-            })
-            this.socket = io.connect(url, { reconnection: true, reconnectionDelay: 1000 });
-            this.socket.on('connect', function () {
-                console.log('----connection2----');
-            });
+        childProcess.stdout.on('data', function (data) {
+            console.log('data:',data.toString())
+        })
+        childProcess.stdout.on('err', function (err) {
+            console.log('err:',err.toString())
+        })
+        this.socket = io.connect(this.state.qr, { reconnection: true, reconnectionDelay: 1000 });
+        cfg.socket = this.socket;
+        this.socket.on('connect', function () {
+            console.log('----connection2----');
         });
+
+
+        // var ip = getIpAddress();
+        // getAvailablePort((port) => {
+        //     port = 8081;
+        //     var url = `http://${ip}:${port}`;
+        //     this.setState({qr:url})
+        //     console.log(`Server  ${ip}:${port}`)
+        //     var child_process = require("child_process");
+        //     var childProcess = child_process.spawn("node", [`./app/server/RapLogServer.js`, ip, port]);
+        //
+        //     childProcess.stdout.on('data', function (data) {
+        //         console.log('data:',data.toString())
+        //     })
+        //     childProcess.stdout.on('err', function (err) {
+        //         console.log('err:',err.toString())
+        //     })
+        //     this.socket = io.connect(url, { reconnection: true, reconnectionDelay: 1000 });
+        //     cfg.socket = this.socket;
+        //     this.socket.on('connect', function () {
+        //         console.log('----connection2----');
+        //     });
+        // });
         this.setPositionAtBottom();
     }
     componentWillMount() {
+        console.log('this.state.qr',this.state.qr);
         // this.props.extraContent('extra1', <ExtraButton  onClick={() => {shell.openItem(this.props.projectPath); } } tr={11} iconName="folder-open"/>)
         <ExtraButton  onClick={() => {} } tr={11} iconName="qrcode"/>
         this.props.extraContent('extra2', (
@@ -92,6 +114,8 @@ class LogsArea  extends React.Component {
 }
 function select(state) {
     return{
+        ip:state.config.ip,
+        port:state.config.port,
         logContent:state.logContent,
         projectPath: state.config.projectPath
     }

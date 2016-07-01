@@ -79,7 +79,12 @@ function addOutputUnCooked(value,type = ADD_OUTPUT) {
             output += (' <br>');
         } else {
             if(value != "."){
-                output += ('<pre >' + arr[i] + '</pre>');
+                if(type != ADD_LOG){
+                    output += ('<pre >' + arr[i] + '</pre>');
+                }else{//日志不需要原始格式
+                    output += ('<br>'+arr[i]);
+                }
+
             }else{
                 output = value;// . 不换行
             }
