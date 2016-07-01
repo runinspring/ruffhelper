@@ -20,6 +20,9 @@ locale_strings[15] = 'Stop rap log';
 locale_strings[16] = 'Clean rap log';
 locale_strings[17] = 'Save rap log';
 locale_strings[18] = 'Check the rap log on you cellphone after scan the qrcode';
+locale_strings[19] = 'Save the rap log';
+locale_strings[20] = 'Select a location to save';
+locale_strings[21] = 'The save log file name';
 
 locale_strings[43] = "Please make sure the power cable is firmly connected.";
 locale_strings[44] = "Please use 'rap scan' command connect device";
@@ -74,3 +77,4 @@ locale_strings[211] = 'Not a valid Ruff SDK location';
 locale_strings[212] = 'Get Ruff SDK location';
 locale_strings[213] = 'End of the command';
 locale_strings[214] = 'The project name must be a lowercase letters';
+locale_strings[215] = 'The file name not exist';

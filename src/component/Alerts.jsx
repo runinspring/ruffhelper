@@ -5,6 +5,7 @@ import InputPanel from './alerts/InputPanel.jsx';
 import Selecter from './alerts/Selecter.jsx';
 import WifiPanel from './alerts/WifiPanel.jsx';
 import SystemUpgrade from './alerts/SystemUpgrade.jsx'
+import SaveLog from './alerts/SaveLog.jsx';
 
 // import {showAlert} from '../actions/AppActions.jsx';
 // import cfg from '../config';
@@ -18,6 +19,9 @@ const PanelSystemUpgrade = 'panelsystemupgrade';
 exports.PanelSystemUpgrade = PanelSystemUpgrade;
 const PanelWiFi = 'panelwifi';
 exports.PanelWiFi = PanelWiFi;
+const PanelSaveLog = 'panelSaveLog';//保存log日志
+exports.PanelSaveLog = PanelSaveLog;
+
 class Alerts extends React.Component {
     constructor(props) {
         super(props);
@@ -38,7 +42,9 @@ class Alerts extends React.Component {
                 case PanelSystemUpgrade:
                     return <SystemUpgrade key={'panel'+item.index} index={item.index} item={item}/>;
                 case PanelWiFi:
-                    return <WifiPanel key={'panel'+item.index} index={item.index} item={item}/>;
+                    return <WifiPanel key={'panel' + item.index} index={item.index} item={item}/>;
+                case PanelSaveLog:
+                    return <SaveLog key={'panel' + item.index} index={item.index} item={item}/>
                 default :
                     return <div key='panel9999'/>
             }

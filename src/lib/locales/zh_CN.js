@@ -20,6 +20,9 @@ locale_strings[15] = '停止显示调试日志';
 locale_strings[16] = '清除调试日志';
 locale_strings[17] = '保存日志';
 locale_strings[18] = '扫码后在手机上查看日志信息';
+locale_strings[19] = '保存日志到本地';
+locale_strings[20] = '选择要保存的位置';
+locale_strings[21] = '保存日志的文件名';
 
 locale_strings[43] = '请确保电源线已经牢固的连接了';
 locale_strings[44] = '请使用 rap scan 命令连接设备';
@@ -74,3 +77,4 @@ locale_strings[211] = '不是有效的 Ruff SDK 路径';
 locale_strings[212] = '获得 Ruff SDK 路径';
 locale_strings[213] = '命令执行结束';
 locale_strings[214] = '项目名称只能是小写的英文字母';
+locale_strings[215] = '文件名不存在';

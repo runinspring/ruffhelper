@@ -9,8 +9,8 @@ import LogArea from './right/LogArea.jsx';
 import ExtraQrCode from './rights/ExtraQrCode.jsx';
 import ExtraButton from './rights/ExtraButton.jsx';
 // import {createServer} from '../server/RapLogServer';
-import {sendCommand,getVersion,addOutputCooked,addOutputUnCooked,sendLogCommand,showAlert} from '../actions/AppActions.jsx';
-import Alerts, {PanelSystemUpgrade, PanelWiFi, PanelInput} from './Alerts.jsx';
+import {ADD_LOG,commonCommand,sendCommand,getVersion,addOutputCooked,addOutputUnCooked,sendLogCommand,showAlert} from '../actions/AppActions.jsx';
+import Alerts, {PanelSystemUpgrade, PanelWiFi, PanelInput,PanelSaveLog} from './Alerts.jsx';
 import QRCode from 'qrcode.react';
 class TestUI extends React.Component {
     constructor(props) {
@@ -60,16 +60,30 @@ class TestUI extends React.Component {
     }
     // <QRCode value={this.state.qr} />
     // <QRCode value={this.state.qr} />
+    testLog() {
+        console.log('testLog')
+        addOutputCooked(tr(200,tr(15)), true,ADD_LOG);//200 执行命令：xxxx
+    }
+    saveLog() {
+        console.log('saveLog')
+        showAlert(PanelSaveLog,function (value) {
+            console.log('showAlertEnd:', value);
+        })
+        // addOutputCooked(tr(210), true);//请先打开 ruff 项目
+    }
     render() {
         return (
             <div>
                 9901
                 Qrcode
-                <button onClick={() => { } }>test</button>
+                <button onClick={() => { this.testLog(); } }>test</button>
+                <button onClick={() => { this.saveLog(); } }>save</button>
                 <ExtraButton  onClick={() => {
                     
                 } } tr={14} iconName="caret-circle-o-right"/>
                 <ExtraQrCode url={this.state.qr}/>
+                <LogArea/>
+                <Alerts/>
             </div>
         )
     }
