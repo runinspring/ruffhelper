@@ -84,7 +84,6 @@ function addOutputUnCooked(value,type = ADD_OUTPUT) {
                 }else{//日志不需要原始格式
                     output += ('<br>'+arr[i]);
                 }
-
             }else{
                 output = value;// . 不换行
             }

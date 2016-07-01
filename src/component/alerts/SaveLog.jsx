@@ -25,7 +25,7 @@ export default class SaveLog extends React.Component {
 
     }
     onSave() {
-        console.log('onSave', this.state.logLocation, this.state.fileName)
+        // console.log('onSave', this.state.logLocation, this.state.fileName)
         if (!this.state.logLocation) {
             this.setState({ info: tr(205, " ") });//路径不存在：
             return;
@@ -37,19 +37,20 @@ export default class SaveLog extends React.Component {
         var logPath = escapePath(this.state.logLocation);
         if (fs.existsSync(logPath)) {
             logPath = escapePath(`${logPath}/${this.state.fileName}.txt`);
-
             if (fs.existsSync(logPath)) {
-                this.setState({ info: tr(206, this.state.fileName + 'txt') });//该项目已存在：    
+                // console.log('该项目已存在：',this.state.fileName + '.txt')
+                this.setState({ info: tr(206, this.state.fileName + '.txt') });//该项目已存在：    
             } else {
-                conosle.log('okoko')    
+                this.setState({ info: " " });//全部通过，返回路径，关闭面板
+                this.props.item.callback(logPath);
+                closeAlert(this.props.index);
             }
         } else {
-            console.log(tr(205, this.state.logLocation))
+            // console.log(tr(205, this.state.logLocation))
             this.setState({ info: tr(205, this.state.logLocation) });//路径不存在
         }
         // closeAlert(this.props.index)}
     }
-
 
     render() {
         var self = this;
@@ -69,13 +70,19 @@ export default class SaveLog extends React.Component {
                         <LocationSelector inputValue={this.state.logLocation} placeholder={tr(20) }
                             onChangeValue={(value) => { self.getSDKPath(value) } }/>
                         <div style={{ marginTop: "2px" }}>{tr(21) }</div>
-                        <Input style={{ marginButton: "10px" }} size="small" placeholder={tr(21) } onChange={(e) => { self.setState({ fileName: e.target.value }) } }/>
+                        <div>
+                            <Input style={{ marginButton: "10px", width: 182 }} size="small" placeholder={tr(21) } onChange={(e) => { self.setState({ fileName: e.target.value }) } }/>
+                            .txt
+                        </div>
+                        
                     </div>
 
                     <div>{this.state.info}</div>
                     <div style={{ textAlign: 'center', margin: "10px 0 0 0" }}>
-                        <button className="btnBlue" style={{ width: 60 }}
+                        <button className="btnBlue" style={{ width: 60,marginRight:20 }}
                             onClick={() => { this.onSave() } }>{tr(12) }</button>
+                        <button className="btnBlue" style={{ width: 60 }}
+                            onClick={() => { closeAlert(self.props.index) } }>{tr(13) }</button>
                     </div>
 
                 </div>
@@ -92,5 +99,6 @@ function select(state) {
     }
 }
 SaveLog.propTypes = {
-    index: React.PropTypes.number.isRequired
+    index: React.PropTypes.number.isRequired,
+    item: React.PropTypes.object.isRequired,
 }

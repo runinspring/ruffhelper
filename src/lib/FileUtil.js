@@ -13,29 +13,44 @@ exports.read = function(path){
     }
     return text;
 }
-exports.save =function(filePath,data){
+exports.save =function(filePath,data,callBack){
+    var str = JSON.stringify(data, null, '\t');
+    saveString(filePath,str,callBack);
+}
+function saveString(filePath,string,callBack){
     filePath = escapePath(filePath);
-    var dirPath = path.dirname(filePath)
-    var str = JSON.stringify(data,null,'\t');
-    // console.log('save.data:',str)
-    //console.log('dirPath:',dirPath)
+    var dirPath = path.dirname(filePath);
     if(!fs.existsSync(dirPath)){
         console.log('path not exist:',path)
         fs.mkdir(dirPath,function (e) {
-            if(!e){
-                console.log('succ dir')
-                fs.writeFileSync(filePath, str, charset);
+            if (!e) {
+                writeFile(filePath, string, callBack);
+                // fs.writeFile(filePath, string, charset);
+                // console.log('writeFile1 success')
             }else{
                 console.log('error:',e)
             }
         });
-    }else{
-        fs.writeFileSync(filePath, str, charset);
+    } else {
+         writeFile(filePath, string, callBack);
+        // fs.writeFile(filePath, string, charset);
+        // console.log('writeFile2 success')
     }
-    // console.log('save.path:',filePath)
-    //
-    //
 }
+exports.saveString = saveString;
+function writeFile(filePath,string,callBack) {
+    fs.writeFile(filePath, string, charset,function (err) {
+        if (err) {
+            console.log('writeFile Error:', err);
+        } else {
+            if (callBack) {
+                // console.log('writeFile succ')
+                callBack();
+            }
+        }
+    });
+}
+
 exports.saveCallBack=function(filePath,data,callBack){
     filePath = escapePath(filePath);
     var str = JSON.stringify(data,null,'\t');

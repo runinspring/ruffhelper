@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {commands} from '../lib/Commands';
 import {tr} from '../lib/Utils'
 import {getIpAddress,getAvailablePort} from '../lib/Files';
+import {saveString,save} from '../lib/FileUtil';
 import CommandArea from './right/CommandArea.jsx';
 import LogArea from './right/LogArea.jsx';
 import ExtraQrCode from './rights/ExtraQrCode.jsx';
@@ -61,13 +62,35 @@ class TestUI extends React.Component {
     // <QRCode value={this.state.qr} />
     // <QRCode value={this.state.qr} />
     testLog() {
-        console.log('testLog')
+        // console.log('testLog')
         addOutputCooked(tr(200,tr(15)), true,ADD_LOG);//200 执行命令：xxxx
     }
     saveLog() {
-        console.log('saveLog')
-        showAlert(PanelSaveLog,function (value) {
-            console.log('showAlertEnd:', value);
+        // console.log('saveLog')
+        // var p = 'E:\\ZhiHuaSiStudio\\2016\\RuffHelper\\test\\t98\\t2.txt';
+        // saveString(p, 'dsafsdf',function () {
+        //     console.log("saveLogEnd");
+        //     addOutputCooked(tr(22), true,ADD_LOG);//22 保存日志成功
+        // });
+        // // saveString("E:\ZhiHuaSiStudio\2016\RuffHelper\test\t99\t2.txt", "okok");
+        
+        // return;
+
+        var self = this;
+        showAlert(PanelSaveLog, function (path) {
+            var txt = self.props.logContent;
+            // console.log('<br>')
+            txt = txt.replace(/<br>/g,"\r\n")
+            txt= txt.replace(/<[^>]+>/g,"");//可以匹配<script></style></body>等，并置空。而不是替换<和>两个符号
+            txt = txt.replace(/&amp;/g,"&");//把 &amp; 替换成&;
+            txt = txt.replace(/&lt;/g,"<");//把 &lt; 替换成<
+            txt = txt.replace(/&gt;/g,">");//把 &gt; 替换成>
+            txt = txt.replace(/&nbsp;/g," ");//把 &nbsp; 替换成空格
+            // fs.writeFileSync(filePath, str, charset);
+            saveString(path, txt);
+            addOutputCooked(tr(22), true, ADD_LOG);//22 保存日志成功
+            addOutputCooked(path, true,ADD_LOG);//22 保存日志成功
+            // console.log('showAlertEnd:', value);
         })
         // addOutputCooked(tr(210), true);//请先打开 ruff 项目
     }
@@ -103,7 +126,8 @@ class TestUI extends React.Component {
 
 function select(state) {
     return{
-        projectPath: state.config.projectPath
+        projectPath: state.config.projectPath,
+        logContent:state.logContent
     }
 }
 export default connect(select)(TestUI);
