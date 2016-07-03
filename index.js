@@ -5,7 +5,7 @@ const electron = require('electron');
 const Menu = electron.Menu;
 const MenuItem = electron.MenuItem;
 const {app} = electron;  // Module to control application life.
-const {BrowserWindow} = electron // Module to create native browser window.
+const {BrowserWindow} = electron; // Module to create native browser window.
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.

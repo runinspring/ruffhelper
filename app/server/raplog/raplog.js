@@ -6,6 +6,7 @@ var output = '98765</br>98765987659876598765987659876598765987659876598765987659
     '98765</br>98765</br>98765</br>98765</br>98765</br>' +
     '98765</br>98765</br>98765</br>98765</br>98765</br>' +
     '98765</br>98765</br>98765</br>98765</br>98765</br>';
+output ='';
 socket.on('connect', function () {
     socket.emit('login', { userid: userid });
     output += '</br>Connect to the RuffHelper</br>Successful';

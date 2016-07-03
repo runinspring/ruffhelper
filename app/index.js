@@ -1,8 +1,8 @@
 const electron = require('electron');
 const Menu = electron.Menu;
 const MenuItem = electron.MenuItem;
-var app = require('app');  // Module to control application life.
-var BrowserWindow = require('browser-window');  // Module to create native browser window.
+const {app} = electron; // Module to control application life.
+const {BrowserWindow} = electron; // Module to create native browser window.
 var mainWindow = null;
 var appIcon = null;
 // Quit when all windows are closed.

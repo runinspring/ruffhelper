@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {app} from 'remote';
 import {tr} from '../../lib/Utils'
 import {saveString} from '../../lib/FileUtil';
 import { Icon,Button } from 'antd';
@@ -23,8 +24,13 @@ class LogsArea  extends React.Component {
     {
         // console.log(8989,this.props.ip,this.props.port)
         var child_process = require("child_process");
-        var childProcess = child_process.spawn("node", [`./app/server/RapLogServer.js`, this.props.ip, this.props.port]);
-
+        console.log('dir',__dirname)
+        var url = `/server/RapLogServer.js`;
+        if (app.getVersion() == "0.0.0") {//测试版位置
+            url = './app/server/RapLogServer.js';
+        }
+        var childProcess = child_process.spawn("node", [url, this.props.ip, this.props.port]);
+        console.log("url,",url);
         childProcess.stdout.on('data', function (data) {
             console.log('data:',data.toString())
         })

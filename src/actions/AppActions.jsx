@@ -108,7 +108,7 @@ function addOutputCooked(data, red = false,type= ADD_OUTPUT) {
         return;
     }
     if (red) {//使用红色警告字体
-        data = '<b style="color:red">' + data + '</b><br>'
+        data = '<br><b style="color:red">' + data + '</b><br>'
     }
     var obj = {
         type: type, data: data
