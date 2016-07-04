@@ -12,7 +12,6 @@ var net = require("net");
 var fs = require("fs");
 var path = require('path');
 app.listen(port);
-
 function serverHandler(req, res) {
     var urlObj = url.parse(req.url);
     var pathname = urlObj.pathname;
@@ -23,7 +22,7 @@ function serverHandler(req, res) {
     switch (pathname) {
         case "/":
         case "/index.html":
-            var htmlName = './app/server/raplog/raplog.html';
+            var htmlName = __dirname+'/raplog/raplog.html';
             fs.readFile(htmlName, function (err, data) {
                 if (!err) {
                     res.end(data);
@@ -33,7 +32,7 @@ function serverHandler(req, res) {
             });
             break;
         default:
-            var fullpathname = './app/server/raplog' + pathname;
+            var fullpathname = __dirname+'/raplog' + pathname;
             // console.log('fullpathname:', fullpathname)
             fs.exists(fullpathname, function (exists) {
                 var contentType ={}

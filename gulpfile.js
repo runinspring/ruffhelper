@@ -17,6 +17,9 @@ gulp.task("win", ['getVersion',"getPackageCmd"], function () {
     }
 });
 gulp.task("mac", ['getVersion',"getPackageCmd"], function () {
+    if (process.platform == "win32") {
+        return null;
+    }
     var cmd = 'npm run packagemac';
     commands(cmd,function () {
         var dmg = require('./build/install/darwin/dmg');

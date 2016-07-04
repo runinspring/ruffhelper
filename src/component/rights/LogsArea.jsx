@@ -2,11 +2,12 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {app} from 'remote';
 import {tr} from '../../lib/Utils'
-import {saveString} from '../../lib/FileUtil';
+import {saveString,escapePath} from '../../lib/FileUtil';
 import { Icon,Button } from 'antd';
 import ExtraButton from './ExtraButton.jsx';
 import ExtraQrCode from './ExtraQrCode.jsx';
 import {killRaplog} from '../../lib/Commands'
+var path = require('path');
 // import {getIpAddress,getAvailablePort} from '../../lib/Files';
 import {sendLogCommand,addOutputCooked,ADD_LOG,commonCommand,CLEAN_RAP_LOG,showAlert} from '../../actions/AppActions.jsx'
 import {PanelSaveLog} from '../Alerts.jsx';
@@ -23,12 +24,21 @@ class LogsArea  extends React.Component {
     componentDidMount()
     {
         // console.log(8989,this.props.ip,this.props.port)
+        // console.log(78789,process.cwd())
+        console.log(4545,window.process,process)
         var child_process = require("child_process");
-        console.log('dir',__dirname)
-        var url = `/server/RapLogServer.js`;
+        var jsPath = '/server/RapLogServer.js';
         if (app.getVersion() == "0.0.0") {//测试版位置
-            url = './app/server/RapLogServer.js';
+            jsPath = '/app' + jsPath;
+            // url = process.cwd()+'/app/server/RapLogServer.js';
         }
+        // console.log('appPath',this.props.appPath)
+        // var url = `/server/RapLogServer.js`;
+        // if (app.getVersion() == "0.0.0") {//测试版位置
+        //     url = path.join(process.cwd(),'/app/server/RapLogServer.js')
+        //     // url = process.cwd()+'/app/server/RapLogServer.js';
+        // }
+        var url = escapePath(path.join(this.props.appPath, jsPath));
         var childProcess = child_process.spawn("node", [url, this.props.ip, this.props.port]);
         console.log("url,",url);
         childProcess.stdout.on('data', function (data) {
@@ -114,7 +124,8 @@ function select(state) {
     return{
         ip:state.config.ip,
         port:state.config.port,
-        logContent:state.logContent,
+        logContent: state.logContent,
+        appPath: state.config.appPath,
         projectPath: state.config.projectPath
     }
 }

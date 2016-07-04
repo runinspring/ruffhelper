@@ -26,3 +26,5 @@ asar 打包的 app 文件夹内必须有个package.json文件，表明启动文�
 
 
 注意 app 文件夹内一定不能有中文名的文件
+tree-kill 包内 killPid 方法
+process 要改为 window.process
