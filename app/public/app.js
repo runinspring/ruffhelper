@@ -100110,7 +100110,7 @@ webpackJsonp([0],[
 /* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {'';
+	'';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -100155,6 +100155,7 @@ webpackJsonp([0],[
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var path = __webpack_require__(184);
+	var fs = __webpack_require__(183);
 	// import {getIpAddress,getAvailablePort} from '../../lib/Files';
 
 	var cfg = __webpack_require__(257);
@@ -100180,23 +100181,39 @@ webpackJsonp([0],[
 	        value: function componentDidMount() {
 	            // console.log(8989,this.props.ip,this.props.port)
 	            // console.log(78789,process.cwd())
-	            console.log(4545, window.process, process);
+	            // console.log(4545,window.process,process)
+	            // var url1 = path.join(this.props.appPath, "server/RapLogServer.js");
+	            // console.log('url1:', url1);
+	            // var filebuffer = fs.readFileSync(url1,'utf-8');
+	            // console.log('filebuffer:', filebuffer)
+	            // console.log('filebuffer:',filebuffer.toString())
+	            // console.log()fs.existsSync(this.props.appPath);
+	            // var dirPath = escapePath(path.dirname(escapePath(this.props.appPath)));
 	            var child_process = __webpack_require__(258);
 	            var jsPath = '/server/RapLogServer.js';
 	            if (_remote.app.getVersion() == "0.0.0") {
 	                //测试版位置
 	                jsPath = '/app' + jsPath;
+	                // dirPath = this.props.appPath;
+
 	                // url = process.cwd()+'/app/server/RapLogServer.js';
 	            }
+	            // process.compile
+	            // console.log('dirPath:', dirPath);
+	            // console.log('jsPath:', jsPath);
 	            // console.log('appPath',this.props.appPath)
 	            // var url = `/server/RapLogServer.js`;
 	            // if (app.getVersion() == "0.0.0") {//测试版位置
 	            //     url = path.join(process.cwd(),'/app/server/RapLogServer.js')
 	            //     // url = process.cwd()+'/app/server/RapLogServer.js';
 	            // }
+	            // console.log(path,)
 	            var url = (0, _FileUtil.escapePath)(path.join(this.props.appPath, jsPath));
 	            var childProcess = child_process.spawn("node", [url, this.props.ip, this.props.port]);
-	            console.log("url,", url);
+
+	            // console.log('filebuffer:', filebuffer)
+	            // console.log(111,escapePath(path.dirname(escapePath(this.props.appPath))))
+	            // console.log("url,",url);
 	            childProcess.stdout.on('data', function (data) {
 	                console.log('data:', data.toString());
 	            });
@@ -100322,7 +100339,6 @@ webpackJsonp([0],[
 	LogsArea.propTypes = {
 	    extraContent: _react2.default.PropTypes.func.isRequired
 	}; // 注意这里有分号
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
 /* 332 */

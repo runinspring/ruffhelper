@@ -25,22 +25,39 @@ class LogsArea  extends React.Component {
     {
         // console.log(8989,this.props.ip,this.props.port)
         // console.log(78789,process.cwd())
-        console.log(4545,window.process,process)
+        // console.log(4545,window.process,process)
+        // var url1 = path.join(this.props.appPath, "server/RapLogServer.js");
+        // console.log('url1:', url1);
+        // var filebuffer = fs.readFileSync(url1,'utf-8');
+        // console.log('filebuffer:', filebuffer)
+        // console.log('filebuffer:',filebuffer.toString())
+        // console.log()fs.existsSync(this.props.appPath);
+        // var dirPath = escapePath(path.dirname(escapePath(this.props.appPath)));
         var child_process = require("child_process");
         var jsPath = '/server/RapLogServer.js';
         if (app.getVersion() == "0.0.0") {//测试版位置
-            jsPath = '/app' + jsPath;
+            jsPath = '/app'+jsPath;
+            // dirPath = this.props.appPath;
+            
             // url = process.cwd()+'/app/server/RapLogServer.js';
         }
+        // process.compile
+        // console.log('dirPath:', dirPath);
+        // console.log('jsPath:', jsPath);
         // console.log('appPath',this.props.appPath)
         // var url = `/server/RapLogServer.js`;
         // if (app.getVersion() == "0.0.0") {//测试版位置
         //     url = path.join(process.cwd(),'/app/server/RapLogServer.js')
         //     // url = process.cwd()+'/app/server/RapLogServer.js';
         // }
+        // console.log(path,)
         var url = escapePath(path.join(this.props.appPath, jsPath));
-        var childProcess = child_process.spawn("node", [url, this.props.ip, this.props.port]);
-        console.log("url,",url);
+       var childProcess = child_process.spawn("node", [url, this.props.ip, this.props.port]);
+        
+
+        // console.log('filebuffer:', filebuffer)
+        // console.log(111,escapePath(path.dirname(escapePath(this.props.appPath))))
+        // console.log("url,",url);
         childProcess.stdout.on('data', function (data) {
             console.log('data:',data.toString())
         })

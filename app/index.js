@@ -73,7 +73,7 @@ app.on('ready', function () {
     //  console.log(wid,hei);
     //}
     // Open the DevTools.
-    mainWindow.openDevTools();//调试面板
+    // mainWindow.openDevTools();//调试面板
     //mainWindow.setMenu(null);//清除菜单
     //mainWindow.setMenuBarVisibility(false);//隐藏顶部的选项条
     mainWindow.setContentSize(730, 530);//重新设置窗口大小
