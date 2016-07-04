@@ -32,15 +32,15 @@ class LogsArea  extends React.Component {
         // console.log('filebuffer:', filebuffer)
         // console.log('filebuffer:',filebuffer.toString())
         // console.log()fs.existsSync(this.props.appPath);
-        // var dirPath = escapePath(path.dirname(escapePath(this.props.appPath)));
+        var dirPath = escapePath(path.dirname(escapePath(this.props.appPath)));
         var child_process = require("child_process");
-        var jsPath = '/server/RapLogServer.js';
+        var jsPath = '/app.asar.unpacked';
         if (app.getVersion() == "0.0.0") {//测试版位置
-            jsPath = '/app'+jsPath;
-            // dirPath = this.props.appPath;
-            
+            jsPath = '/app';
+            dirPath = this.props.appPath;
             // url = process.cwd()+'/app/server/RapLogServer.js';
         }
+        jsPath += "/server/RapLogServer.js";
         // process.compile
         // console.log('dirPath:', dirPath);
         // console.log('jsPath:', jsPath);
@@ -51,7 +51,7 @@ class LogsArea  extends React.Component {
         //     // url = process.cwd()+'/app/server/RapLogServer.js';
         // }
         // console.log(path,)
-        var url = escapePath(path.join(this.props.appPath, jsPath));
+        var url = escapePath(path.join(dirPath, jsPath));
        var childProcess = child_process.spawn("node", [url, this.props.ip, this.props.port]);
         
 

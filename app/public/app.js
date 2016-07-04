@@ -100155,7 +100155,6 @@ webpackJsonp([0],[
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var path = __webpack_require__(184);
-	var fs = __webpack_require__(183);
 	// import {getIpAddress,getAvailablePort} from '../../lib/Files';
 
 	var cfg = __webpack_require__(257);
@@ -100188,16 +100187,16 @@ webpackJsonp([0],[
 	            // console.log('filebuffer:', filebuffer)
 	            // console.log('filebuffer:',filebuffer.toString())
 	            // console.log()fs.existsSync(this.props.appPath);
-	            // var dirPath = escapePath(path.dirname(escapePath(this.props.appPath)));
+	            var dirPath = (0, _FileUtil.escapePath)(path.dirname((0, _FileUtil.escapePath)(this.props.appPath)));
 	            var child_process = __webpack_require__(258);
-	            var jsPath = '/server/RapLogServer.js';
+	            var jsPath = '/app.asar.unpacked';
 	            if (_remote.app.getVersion() == "0.0.0") {
 	                //测试版位置
-	                jsPath = '/app' + jsPath;
-	                // dirPath = this.props.appPath;
-
+	                jsPath = '/app';
+	                dirPath = this.props.appPath;
 	                // url = process.cwd()+'/app/server/RapLogServer.js';
 	            }
+	            jsPath += "/server/RapLogServer.js";
 	            // process.compile
 	            // console.log('dirPath:', dirPath);
 	            // console.log('jsPath:', jsPath);
@@ -100208,7 +100207,7 @@ webpackJsonp([0],[
 	            //     // url = process.cwd()+'/app/server/RapLogServer.js';
 	            // }
 	            // console.log(path,)
-	            var url = (0, _FileUtil.escapePath)(path.join(this.props.appPath, jsPath));
+	            var url = (0, _FileUtil.escapePath)(path.join(dirPath, jsPath));
 	            var childProcess = child_process.spawn("node", [url, this.props.ip, this.props.port]);
 
 	            // console.log('filebuffer:', filebuffer)
