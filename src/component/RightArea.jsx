@@ -10,7 +10,7 @@ class RightArea extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            tabKey: 1,
+            tabKey: "1",
             "extra1": '',
             extra2: ''
         }
@@ -21,9 +21,9 @@ class RightArea extends React.Component {
     }
     /**获取扩展的按钮*/
     getOperations() {
-        if (this.state.tabKey == 1) {
+        if (this.state.tabKey == "1") {
             return this.state.extra1;
-        } else if (this.state.tabKey == 2) {
+        } else if (this.state.tabKey == "2") {
             return this.state.extra2;
         }
     }
@@ -31,7 +31,8 @@ class RightArea extends React.Component {
         this.setState({[key]: data })
     }
     render() {
-        
+        // console.log('rightArea')
+        // console.log('this.state.tabKey',this.state.tabKey)
         return (
             <div className="rightArea">
                 <Tabs tabBarExtraContent={this.getOperations()} defaultActiveKey={this.state.tabKey} onChange={this.changeTab.bind(this)} type="card">
@@ -45,14 +46,6 @@ class RightArea extends React.Component {
             </div>
         )
     }
-    // render() {
-    //     return (
-    //         <div className="rightArea">
-    //             <CommandArea/>
-    //             <LogArea/>
-    //         </div>
-    //     )
-    // }
 }
 function select(state) {
     return{

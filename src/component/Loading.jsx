@@ -151,10 +151,12 @@ class MainShell extends React.Component {
         //showAlert(PanelInput)
 
         setTimeout(function () {
+            // console.log('loadingEnd')
             self.setState({loadEnd: true});
         }, this.state.numFadeOutDelay)
 
         setTimeout(function () {
+            // console.log('gotoMain')
             window.location.href = '#/main';
             // window.location.href = '#/test';
         }, this.state.numEndDelay);

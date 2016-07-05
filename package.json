@@ -22,7 +22,7 @@
   "author": "ZhangYu coolgods@sina.com",
   "license": "ISC",
   "dependencies": {
-    "antd": "^1.1.0",
+    "antd": "^1.6.3",
     "appdmg": "^0.3.7",
     "babel-core": "^6.9.1",
     "babel-loader": "^6.2.4",

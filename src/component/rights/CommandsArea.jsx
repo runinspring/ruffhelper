@@ -10,6 +10,7 @@ import { Icon,Button } from 'antd';
 class CommandsArea  extends React.Component {
     constructor(props){
         super(props)
+        // console.log('CommandsArea')
         this.state={
             projectPath:"CommandArea",//项目路径
             version:"CommandArea",//版本号
@@ -64,7 +65,8 @@ class CommandsArea  extends React.Component {
         ex.scrollTop = ex.scrollHeight;
         // console.log('ex,',ex.scrollTop,ex.scrollHeight)
     }
-    render(){
+    render() {
+        // console.log('cmooands.render')
         var self = this;
         //console.log('render:',this.props.version)
         //51 rap version
