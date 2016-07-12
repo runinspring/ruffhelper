@@ -67,17 +67,6 @@ class MainShell extends React.Component {
             config.configPath = cfgPath + "/Library/Application Support/RuffHelper/config/ruffhelper.cfg";
         }
 
-        //console.log("process.platform2:",platform)
-        //var ua = navigator.userAgent;
-        //if (ua.indexOf('Windows') > -1) {
-        //    data.osType = 'Windows';
-        //    // config.configPath = 'C:\\Users\\Administrator\\AppData\\Roaming\\ruffhelper\\config.cfg';
-        //    config.configPath = path.dirname(data.appPath) + '\\config\\ruffhelper.cfg';
-        //} else {
-        //    data.osType = 'Mac';
-        //    config.configPath = path.dirname(data.appPath) + '/config/ruffhelper.cfg';
-        //}
-        //console.log('version:', app.getVersion())
         if (app.getVersion() == "0.0.0") {//测试版的配置文件放在项目路径下
             config.configPath = './config/ruffhelper.cfg';
         }
@@ -137,18 +126,6 @@ class MainShell extends React.Component {
         }else{//没有路径就弹出选择面板
             showAlert(PanelSDKSelector);
         }
-        // var items=[];
-        // for(let i=0;i<6;i++){
-        //     var item = Math.floor(Math.random()*10)+":/Volumes/D/ZhiHuaSiStudio/2016/RuffHelper/test/Volumes/D/ZhiHuaSiStudio/2016/RuffHelper/test";
-        //     items.push(item);
-        // }
-        // showAlert(PanelSelecter,function (params) {
-        //     console.log('selectEnd',params)
-        // },{title:'qing xuan ze',items:items})
-        // showAlert(PanelInput,function (value) {
-        //     console.log('input end',value)
-        // },tr(49));//49 请输入 Ruff 开发板的密码
-        //showAlert(PanelInput)
 
         setTimeout(function () {
             // console.log('loadingEnd')
@@ -157,8 +134,8 @@ class MainShell extends React.Component {
 
         setTimeout(function () {
             // console.log('gotoMain')
-            window.location.href = '#/main';
-            // window.location.href = '#/test';
+            // window.location.href = '#/main';
+            window.location.href = '#/test';
         }, this.state.numEndDelay);
     }
 
