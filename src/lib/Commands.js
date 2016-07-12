@@ -71,7 +71,7 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
         
         for (var key in inputObj) {
             if (result.indexOf(key) > -1) {
-                console.log('find key:',result,key)
+                // console.log('find key:',result,key)
                 if(key == "? enter password for Ruff board:" || key == "? setup password for Ruff board:"
                 || key == "? confirm password for Ruff board:" || key=="? enter a name for this device:"){
                     let title = tr(49);//49 请输入 Ruff 开发板的密码

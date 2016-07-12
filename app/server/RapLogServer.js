@@ -1,9 +1,19 @@
+// process.on('message', function(m) {  
+//     console.log(m);  
+//     //打印{ input: 9 }  
+//     process.send({result: m});  
+// });  
+
+
 var arguments = process.argv.splice(2);
 console.log("arguments", arguments)
+process.send(`arguments:${arguments}`)
 var host = arguments[0];
 var port = parseInt(arguments[1]);
 // port = 8081;
 console.log(`host:${host},port:${port}`)
+
+
 
 var app = require('http').createServer(serverHandler);
 var io = require('socket.io').listen(app);
@@ -81,9 +91,13 @@ io.on('connection', function (socket) {
         //     console.log('id:', i);
         //  }
     })
-    socket.on('message', function (obj) {
+    // socket.on('message', function (obj) {
+    //     //收到electron 发来的消息，转发给其他的网页
+    //     io.emit('message', obj);
+    // })
+    process.on('message', function (obj) {
         //收到electron 发来的消息，转发给其他的网页
-        io.emit('message', obj);
+        io.emit('message',obj)
     })
 })
 // var testIdx = 0;
