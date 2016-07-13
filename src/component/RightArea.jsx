@@ -10,7 +10,7 @@ class RightArea extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            tabKey: "2",
+            tabKey: "1",
             "extra1": '',
             extra2: ''
         }

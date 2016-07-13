@@ -2,13 +2,14 @@
 一个 Ruff 开发辅助工具，把常用的 rap 命令可视化操作。
 使用 React + Electron 框架。
 
-![preview](./doc/version/v0.4.0.png)
-###[发布日志 v0.4.0](doc/ReleaseNotes.MD)
+![preview](./doc/version/v0.5.0.png)
+###[发布日志 v0.5.0](doc/ReleaseNotes.MD)
 
 ###原理
 工作原理很简单，就是使用 node 子进程调用 rap 的命令,然后把返回的消息显示出来。
 
 master 分支为开发调试版本，不保证能正常编译
+
 release 里面是稳定的发布版本
 
 
@@ -20,10 +21,6 @@ npm install 安装各种包,需要翻墙，可以使用 [cnpm](https://npm.taoba
 3. happy coding
 
 ###[发布流程](doc/publish.MD)
-
-
-###todo list
-1. 自动更新，不需要每次重新下载整个应用的包
 
 
 ###发布版本地址

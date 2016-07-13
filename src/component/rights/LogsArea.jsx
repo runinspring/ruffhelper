@@ -52,7 +52,7 @@ class LogsArea extends React.Component {
         // console.log(path,)
         var url = escapePath(path.join(dirPath, jsPath));
         // var childProcess = child_process.spawn("node", [url, this.props.ip, this.props.port]);
-        console.log('url:', url, this.props.ip, this.props.port)
+        // console.log('url:', url, this.props.ip, this.props.port)
         var p = child_process.fork(url, [this.props.ip, this.props.port]);
         //    childProcess.on('message', function (m){
         //         console.log('message:',m)

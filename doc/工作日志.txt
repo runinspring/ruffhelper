@@ -4,6 +4,10 @@
 优化rap log界面的显示逻辑，部分内容不再command区域显示
 
 ---------------------------------
+2016年7月12日 星期二
+child_process.spawn 方法在mac的release版本里不能用，
+需要改成 child_process.fork(url, [this.props.ip, this.props.port]);
+
 2016年7月5日 星期二
 修复正式版进入后不能自动定位到tabbar的问题
 升级antd的版本
