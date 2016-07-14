@@ -2,6 +2,8 @@
 一个 Ruff 开发辅助工具，把常用的 rap 命令可视化操作。
 使用 React + Electron 框架，webpack 编译。
 
+[Ruff -- 用 js 开发智能硬件](https://ruff.io/)
+
 ![preview](./doc/version/v0.5.0.png)
 ###[发布日志 v0.5.0](doc/ReleaseNotes.MD)
 
