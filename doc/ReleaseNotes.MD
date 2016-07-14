@@ -1,9 +1,10 @@
 ####v0.5.0
 2016.7.13 发布
-1.界面调整，把 rap log 部分和 rap command 分开了
-2.rap log 区域增加清除日志的功能
-3.rap log 区域增加保存日志的功能
-4.rap log 区域增加二维码功能，可以在手机上查看日志
+
+1. 界面调整，把 rap log 部分和 rap command 分开了
+2. rap log 区域增加清除日志的功能
+3. rap log 区域增加保存日志的功能
+4. rap log 区域增加二维码功能，可以在手机上查看日志
 ![preview](./version/v0.5.0.png)
 
 ####v0.4.0
