@@ -106,11 +106,11 @@ var logContent = function (state = "", action) {
     switch (action.type) {
         case ADD_LOG:
             //console.log('addOutput：',action)
-            if (cfg.socket) {
+            if (cfg.fork) {
                 // console.log(121, cfg.socket)
                 // console.log(122,cfg.socket.send)
                 // cfg.socket.emit('message',action.data)
-                cfg.socket.send(action.data)
+                cfg.fork.send(action.data)
             }
             state += action.data;
             return state;

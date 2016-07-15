@@ -67,7 +67,7 @@ class LogsArea extends React.Component {
             console.log('err:', m)
         })
         p.send('send from parent');
-        cfg.socket = p;
+        cfg.fork = p;
         //    childProcess.send({input:'i send message'})
         // console.log('childProcess',childProcess)
 

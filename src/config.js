@@ -3,7 +3,7 @@ exports.saveData = {//要保存的数据
     ruffSDKLocation:''
 };
 exports.configPath = '';//配置文件的位置
-exports.socket=null;//socket链接,给本地服务器发送rap log用的
+exports.fork = null;//本地服务器的子进程，发送rap log用
 // exports.isPublic = false;//测试
 exports.isPublic = true;//正版本
 
