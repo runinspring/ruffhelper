@@ -97,7 +97,7 @@ class LogsArea extends React.Component {
                 <ExtraButton  onClick={() => {//启动raplog
                     var projectPath = this.props.projectPath;
                     if (!projectPath) {
-                        addOutputCooked(tr(210), true);//请先打开 ruff 项目
+                        addOutputCooked(tr(210), true, ADD_LOG);//请先打开 ruff 项目
                     } else {
                         sendLogCommand(projectPath)
                     }
