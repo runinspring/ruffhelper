@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {tr} from '../../lib/Utils'
+import {Switch} from 'antd'
 class LogArea  extends React.Component {
     constructor(props){
         super(props)
@@ -25,7 +26,7 @@ class LogArea  extends React.Component {
         //52-- rap log 日志 --
         return(
             <div>
-                <div><b>{tr(52)}</b></div>
+                <div><b>{tr(52)}</b> <Switch size="small" /></div>
                 <div id="rapLogArea" className="outputArea selectable textArea">
                     <div style={{wordWarp:'break-word'}} dangerouslySetInnerHTML={{__html: this.props.logContent}}></div>
                 </div>

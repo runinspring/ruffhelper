@@ -3,20 +3,22 @@ import {connect} from 'react-redux';
 import {app} from 'remote';
 import {tr} from '../../lib/Utils'
 import {saveString, escapePath} from '../../lib/FileUtil';
+import {Switch} from 'antd';
 import { Icon, Button } from 'antd';
 import ExtraButton from './ExtraButton.jsx';
 import ExtraQrCode from './ExtraQrCode.jsx';
 import {killRaplog} from '../../lib/Commands'
 var path = require('path');
 // import {getIpAddress,getAvailablePort} from '../../lib/Files';
-import {sendLogCommand, addOutputCooked, ADD_LOG, commonCommand, CLEAN_RAP_LOG, showAlert} from '../../actions/AppActions.jsx'
+import {sendLogCommand, addOutputCooked, ADD_LOG, commonCommand, CLEAN_RAP_LOG, showAlert,AUTO_LOG} from '../../actions/AppActions.jsx'
 import {PanelSaveLog} from '../Alerts.jsx';
 var cfg = require('../../config');
 class LogsArea extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            qr: `http://${this.props.ip}:${this.props.port}`
+            qr: `http://${this.props.ip}:${this.props.port}`,
+            autoLog:this.props.autoLog
         }
         console.log('qr url :', this.state.qr)
 
@@ -89,7 +91,7 @@ class LogsArea extends React.Component {
         this.setPositionAtBottom();
     }
     componentWillMount() {
-        console.log('this.state.qr', this.state.qr);
+        // console.log('this.state.qr', this.state.qr);
         // this.props.extraContent('extra1', <ExtraButton  onClick={() => {shell.openItem(this.props.projectPath); } } tr={11} iconName="folder-open"/>)
         <ExtraButton  onClick={() => { } } tr={11} iconName="qrcode"/>
         this.props.extraContent('extra2', (
@@ -122,6 +124,7 @@ class LogsArea extends React.Component {
     }
     /**定位到最下面一行*/
     setPositionAtBottom() {
+        if (!this.state.autoLog) return;
         var ex = document.getElementById("rapLogArea");//定位到最下面一行
         ex.scrollTop = ex.scrollHeight;
     }
@@ -143,12 +146,22 @@ class LogsArea extends React.Component {
             // console.log('showAlertEnd:', value);
         })
     }
+    //自动滚屏的开关
+    changeSwitch(type) {
+        // console.log('auto:', type, this.state,this.props.autoLog)
+        this.setState({ autoLog: type });
+        commonCommand(AUTO_LOG, type);
+    }
     render() {
-        //52-- rap log 日志 --
+        //52-- rap log 日志 -- 23自动滚屏
         return (
             <div>
-                <div><b>{tr(52) }</b></div>
-                <div id="rapLogArea" className="outputArea selectable textArea">
+                <div><b>{tr(52) }</b>
+                    <div style={{position:'absolute',display:'inline',right:'0px'}}>
+                        {tr(23) }&nbsp; <Switch size='small' onChange={this.changeSwitch.bind(this)} defaultChecked={this.state.autoLog} style={{top:-2}}/>
+                    </div>
+                </div>
+                <div id='rapLogArea' className='outputArea selectable textArea'>
                     <div style={{ wordWarp: 'break-word' }} dangerouslySetInnerHTML={{ __html: this.props.logContent }}></div>
                 </div>
             </div>
@@ -161,7 +174,8 @@ function select(state) {
         port: state.config.port,
         logContent: state.logContent,
         appPath: state.config.appPath,
-        projectPath: state.config.projectPath
+        projectPath: state.config.projectPath,
+        autoLog:state.config.autoRapLog
     }
 }
 export default connect(select)(LogsArea);

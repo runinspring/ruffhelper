@@ -3,8 +3,8 @@ var cfg = require('../config');//
 // import {sdkPath} from '../config';
 import {save} from '../lib/FileUtil';
 import {List} from 'immutable';
-import {INIT,CHANGE_CONFIG,ADD_OUTPUT,ADD_LOG,OPEN_PROJECT,REMOVE_PROJECT,RUFF_SDK_LOCATION,SHOW_ALERT,CLOSE_ALERT,
-CLEAN_RAP_LOG} from '../actions/AppActions.jsx';
+import {INIT, CHANGE_CONFIG, ADD_OUTPUT, ADD_LOG, OPEN_PROJECT, REMOVE_PROJECT, RUFF_SDK_LOCATION, SHOW_ALERT, CLOSE_ALERT,
+    CLEAN_RAP_LOG,AUTO_CMD,AUTO_LOG} from '../actions/AppActions.jsx';
 var appPath = '';
 let initConfig = {
     language: '',//语言默认中文 zh_CN
@@ -15,8 +15,10 @@ let initConfig = {
     projectPath: '',//代码项目的路径
     ruffSDKLocation: '',//sdk的位置
     histrory: List([]),// 打开的历史记录，最多10个 {name:'',path:''}
-    ip:'',//本机ip
-    port:''//rap log 服务器用的端口
+    autoCmdLog: false,//命令行区域自动滚屏
+    autoRapLog: true,//rap log 区域自动滚屏
+    ip: '',//本机ip
+    port: ''//rap log 服务器用的端口
 }
 var config = function (state = initConfig, action) {
     var result = Object.assign({}, state);
@@ -32,7 +34,7 @@ var config = function (state = initConfig, action) {
                 result.projectPath = action.data.histrory[0].path;
             }
             appPath = result.appPath;
-            
+
             // console.log('saveData',saveData)
             // console.log(12312,result.histrory.get(0))
             return result;
@@ -78,6 +80,12 @@ var config = function (state = initConfig, action) {
             result.ruffSDKLocation = action.data.ruffSDKLocation;
             cfg.saveData.ruffSDKLocation = action.data.ruffSDKLocation;
             saveConfig();
+            return result;
+        case AUTO_CMD://命令行区域自动滚屏
+            result.autoCmdLog = action.data;
+            return result;
+        case AUTO_LOG://rap log 区域自动滚屏
+            result.autoRapLog = action.data;
             return result;
     }
     return result;
@@ -125,11 +133,11 @@ var logContent = function (state = "", action) {
  * idx 面板的序号,每次增加,如果没有面板了才归零,用于key的计算,防止刷新错误
  * panels 面板信息数组{index:序号,type:'sdkselector,callback:fun,data:{}}
  * */
-var alerts = function(state={index:0,panels:[]},action){
-    var result = Object.assign({},state)
-    switch (action.type){
+var alerts = function (state = { index: 0, panels: [] }, action) {
+    var result = Object.assign({}, state)
+    switch (action.type) {
         case SHOW_ALERT:
-            result.index +=1;
+            result.index += 1;
             var panel = action.data;
             panel.index = state.index;
             result.panels.push(panel);
@@ -137,14 +145,14 @@ var alerts = function(state={index:0,panels:[]},action){
         case CLOSE_ALERT:
             var idx = action.data;
             var idxRemove;
-            for(var i=0,len=result.panels.length;i<len;i++){
-                if(idx == result.panels[i].index){
+            for (var i = 0, len = result.panels.length; i < len; i++) {
+                if (idx == result.panels[i].index) {
                     idxRemove = i;
                     break;
                 }
             }
-            result.panels.splice(idxRemove,1);
-            if(result.panels.length==0){
+            result.panels.splice(idxRemove, 1);
+            if (result.panels.length == 0) {
                 result.index = 0;
             }
             return result;
@@ -154,6 +162,6 @@ var alerts = function(state={index:0,panels:[]},action){
     // return state;
 }
 const appreducer = combineReducers({
-    config, outputContent, logContent,alerts
+    config, outputContent, logContent, alerts
 });
 export default appreducer;

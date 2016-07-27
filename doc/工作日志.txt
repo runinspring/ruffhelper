@@ -1,9 +1,13 @@
 //todo
 手机上清除log,开/关自动滚动(pc,手机)
 手机log页面，命令行样式
-优化rap log界面的显示逻辑，部分内容不再command区域显示
-
+mac上release版需要用户多次确认网络请求
+autoCmdLog、autoRapLog要保存到配置文件里
+测试log区域是否能自动滚屏
 ---------------------------------
+2016年7月27日 星期三
+增加切换自动滚屏的开关
+
 2016年7月12日 星期二
 child_process.spawn 方法在mac的release版本里不能用，
 需要改成 child_process.fork(url, [this.props.ip, this.props.port]);

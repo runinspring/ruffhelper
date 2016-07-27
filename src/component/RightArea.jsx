@@ -12,7 +12,7 @@ class RightArea extends React.Component {
         this.state = {
             tabKey: "1",
             "extra1": '',
-            extra2: ''
+            "extra2": ''
         }
     }
     changeTab(e) {

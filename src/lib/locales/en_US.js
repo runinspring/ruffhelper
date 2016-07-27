@@ -24,7 +24,7 @@ locale_strings[19] = 'Save the rap log';
 locale_strings[20] = 'Select a location to save';
 locale_strings[21] = 'The save log file name';
 locale_strings[22] = 'Rap log saved successfully';
-
+locale_strings[23] = 'Auto Scroll';
 
 locale_strings[43] = "Please make sure the power cable is firmly connected.";
 locale_strings[44] = "Please use 'rap scan' command connect device";

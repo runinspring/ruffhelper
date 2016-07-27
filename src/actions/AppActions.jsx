@@ -9,6 +9,8 @@ export const SHOW_ALERT = 'show_alert';//显示弹出面板
 export const CLOSE_ALERT = 'colse_alert';//移除弹出面板
 export const CLEAN_RAP_LOG = "clean_rap_log";//清除raplog
 export const TESTING = "testing";//测试
+export const AUTO_CMD = 'auto_cmd';
+export const AUTO_LOG = 'auto_log';
 
 import {commands} from '../lib/Commands';
 import {tr} from '../lib/Utils'

@@ -24,7 +24,7 @@ locale_strings[19] = '保存日志到本地';
 locale_strings[20] = '选择要保存的位置';
 locale_strings[21] = '保存日志的文件名';
 locale_strings[22] = '日志保存成功';
-
+locale_strings[23] = '自动滚屏';
 
 locale_strings[43] = '请确保电源线已经牢固的连接了';
 locale_strings[44] = '请使用 rap scan 命令连接设备';
