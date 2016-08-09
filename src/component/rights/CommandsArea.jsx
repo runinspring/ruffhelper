@@ -79,7 +79,7 @@ class CommandsArea extends React.Component {
         //console.log('render:',this.props.version)
         //51 rap version
         var title = `<b> --${tr(51)} <b style="color:red">${this.state.strVersion}</b>`;
-        console.log(777,this.props.projectPath)
+        // console.log(777,this.props.projectPath)
         if (this.props.version) {
             title += ` --[ ${this.state.strPath} ]</b>`;
         }
