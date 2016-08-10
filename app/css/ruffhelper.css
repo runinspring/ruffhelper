@@ -1,8 +1,15 @@
+@font-face {
+ font-family: 'zhanghaishanRegular';
+ src: url('font/ruixian.ttf') format('truetype');
+}  
 body{
+    font-family: zhanghaishanRegular;
     margin:0px; padding:0px;
     overflow-x: hidden;
     overflow-y: hidden;
-    font-size: 12px;
+    /*font-weight: bolder;*/
+    font-style: italic;
+    font-size: 0.75em;
 }
 
 .unselectable {
