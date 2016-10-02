@@ -91,13 +91,12 @@ class MainShell extends React.Component {
                     }
                     //data.histrory = configData.histrory;
                 }
-                if (configData.ruffSDKLocation) {
-                    var sdkPath = existRapSDK(configData.ruffSDKLocation, data.osType);
-                    if (sdkPath) {//判断sdk的路径是否存在
-                        //console.log('sdk的路径存在')
-                        data.ruffSDKLocation = sdkPath;
-                    }
-                }
+                // if (configData.ruffSDKLocation) {//rap 1.5以后有安装包，不需要路径
+                //     var sdkPath = existRapSDK(configData.ruffSDKLocation, data.osType);
+                //     if (sdkPath) {//判断sdk的路径是否存在
+                //         data.ruffSDKLocation = sdkPath;
+                //     }
+                // }
             } catch (e) {
                 //console.log('error:',e)
             }
@@ -121,11 +120,12 @@ class MainShell extends React.Component {
         var self = this;
         console.log('初始化数据2：', data)
         init(this.props.dispatch, this.props, data);
-        if (data.ruffSDKLocation) {//有路径就读取版本号
-            getVersion();
-        }else{//没有路径就弹出选择面板
-            showAlert(PanelSDKSelector);
-        }
+        // if (data.ruffSDKLocation) {//有路径就读取版本号
+        //     getVersion();
+        // }else{//没有路径就弹出选择面板
+        //     showAlert(PanelSDKSelector);
+        // }
+        getVersion();
 
         setTimeout(function () {
             // console.log('loadingEnd')

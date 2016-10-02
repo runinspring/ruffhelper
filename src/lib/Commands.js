@@ -41,11 +41,12 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
     var result = '';
     var outputObj = {}
     //使用指定的 rap 版本
-    var cmdPath = config.saveData.ruffSDKLocation + '/bin/rap';
+    // var cmdPath = config.saveData.ruffSDKLocation + '/bin/rap';
     //把命令解析成数组 比如['deploy','-s']
-    var trueCmd = command.split(' ');   
-    trueCmd.shift();//把最前面的 rap 命令删除
-    var childProcess = spawn(cmdPath, trueCmd, { cwd: parentDir });
+    var trueCmd = command.split(' '); 
+    // trueCmd.shift();//把最前面的 rap 命令删除
+    console.log('trueCmd:',trueCmd)
+    var childProcess = spawn(trueCmd[0],[trueCmd[1]], { cwd: parentDir });
     if (command == 'rap log') {//只保留一个 rap log
         // console.log('rap log 命令');
         if (raplogPid) {
