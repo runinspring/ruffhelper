@@ -13,7 +13,7 @@ export const AUTO_CMD = 'auto_cmd';
 export const AUTO_LOG = 'auto_log';
 
 import {commands} from '../lib/Commands';
-import {tr} from '../lib/Utils'
+import {tr} from '../lib/Utils';
 var dispatch = null;
 var props = null;
 // exports.setDispatch = function (data) {
@@ -121,6 +121,7 @@ function addOutputCooked(data, red = false,type= ADD_OUTPUT) {
 function getVersion() {
     // console.log('获取版本号')
     addOutputCooked(tr(200, 'rap --version'), true);//200 执行命令：xxxx
+    // console.log('config.platform',config.platform)
     //addOutputCooked('<b style="color:red">' + tr(200) + 'rap version' + '</b><br>');//200 执行命令：xxxx
     var reg = /\d+(\.\d+){0,2}/;//匹配 0.1 或者 0.1.0
     commands('rap --version', function (value) {

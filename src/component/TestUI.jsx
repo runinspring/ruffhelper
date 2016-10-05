@@ -5,8 +5,8 @@ import {commands} from '../lib/Commands';
 import {tr} from '../lib/Utils'
 import {getIpAddress,getAvailablePort} from '../lib/Files';
 import {saveString,save} from '../lib/FileUtil';
-import CommandArea from './right/CommandArea.jsx';
-import LogArea from './right/LogArea.jsx';
+// import CommandArea from './right/CommandArea.jsx';
+// import LogArea from './right/LogArea.jsx';
 import ExtraQrCode from './rights/ExtraQrCode.jsx';
 import ExtraButton from './rights/ExtraButton.jsx';
 // import {createServer} from '../server/RapLogServer';

@@ -54,13 +54,13 @@ class MainShell extends React.Component {
          }*/
         //console.log("process.platform:", remote.process.platform)
         if (platform == 'win32') {//win系统
-            data.osType = 'Windows';
+            data.osType = config.platform = 'Windows';
             config.configPath = escapePath(path.dirname(data.appPath) + '/config/ruffhelper.cfg');
             //config.configPath = escapePath(path.dirname(data.appPath) + '/config/ruffhelper.cfg');
             //var cfgPath = remote.process.env.APPDATA || remote.process.env.USERPROFILE + "/AppData/Roaming";
             //config.configPath = escapePath(cfgPath + "/ruffhelper/config/ruffhelper.cfg");
         } else {//darwin  linux
-            data.osType = 'Mac';
+            data.osType = config.platform = 'Mac';
             //config.configPath = path.dirname(data.appPath) + '/config/ruffhelper.cfg';
             var cfgPath = remote.process.env.HOME || ("/Users/" + (remote.process.env.NAME || remote.process.env.LOGNAME));
             // if(!cfgPath) cfgPath = path.dirname(data.appPath);

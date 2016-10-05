@@ -44,7 +44,7 @@ class NewProject extends React.Component {
                     }else{
 
                         var inputObj = {
-                            '? project name':newAppName,
+                            '? app name':newAppName,
                             '? version':newAppVersion,
                             '? description':self.state.newAppDescription,
                             '? author':self.state.newAppAuthor

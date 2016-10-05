@@ -66,7 +66,7 @@ app.on('ready', function () {
     // mainWindow.title = "RuffHelper  "+version;
     //var appIcon = new Tray('/assets/images/icon.png');
     //从服务器位置加载
-    //mainWindow.loadURL("http://localhost:8080");
+    // mainWindow.loadURL("http://localhost:8080");
     //window.onresize = function(){
     //  var wid = document.documentElement.clientWidth;
     //  var hei = document.documentElement.clientHeight;

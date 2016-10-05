@@ -41,10 +41,11 @@ class OpenProject extends React.Component {
             //console.log(hisExist,this.props.config.projectPath)
             if (!hisExist || this.props.config.projectPath != projectPath) {//打开了新的文件夹
                 //console.log("打开了新的文件夹")
-                var files = ['app.json', 'package.json', 'ruff_box.json'];
+                var files = ['app.json', 'package.json', 'ruff_modules'];
                 var existProject = true;
                 for (var i = 0, len = files.length; i < len; i++) {
                     var filePath = projectPath + '\\' + files[i];
+                    console.log('filePath:',filePath,fs.existsSync(escapePath(filePath)));
                     if (!fs.existsSync(escapePath(filePath))) {//判断文件是否存在
                         existProject = false;
                     }

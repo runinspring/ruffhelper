@@ -3,7 +3,7 @@
 1. config.js 里要设置为发布版本
 2. npm run deploy 发布最终版
 3. http-server 启动本地服务器，使用electron本地镜像，避免翻墙
-4. npm run packageXXX 发布对应的版本
+4. npm run packageXXX 发布对应的版本(packagemac,packagewin64)
 
 //electron 打包的注意事项
 需要全局安装的包

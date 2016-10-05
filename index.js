@@ -32,7 +32,7 @@ app.on('ready', function() {
   //appIcon = new Tray('./assets/images/icon.png');
   //console.log(appIcon)
   //mainWindow = new BrowserWindow({width: 730, height: 530,
-  var version = app.getVersion()
+  var version = app.getVersion();
   mainWindow = new BrowserWindow({icon:'./assets/images/icon.png',width: 730, height: 530,
     title:"RuffHelper  "+version,
     center:true,resizable:false,useContentSize:true});
