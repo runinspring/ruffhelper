@@ -2,10 +2,10 @@
 一个 Ruff 开发辅助工具，把常用的 rap 命令可视化操作。
 使用 React + Electron 框架，webpack 编译。
 
-[Ruff -- 用 js 开发智能硬件](https://ruff.io/)
+[Ruff -- 用 js 开发智能硬件](https://ruff.io/zh-cn/)
 
-![preview](./doc/version/v0.5.0.png)
-###[发布日志 v0.5.0](doc/ReleaseNotes.MD)
+![preview](./doc/version/v1.5.0.png)
+###[发布日志 v1.5.0](doc/ReleaseNotes.MD)
 
 ###原理
 工作原理很简单，就是使用 node 子进程调用 rap 的命令,然后把返回的消息显示出来。
