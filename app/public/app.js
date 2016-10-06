@@ -6915,7 +6915,7 @@ webpackJsonp([0],[
 	    });
 	    childProcess.on('error', function (error) {
 	        console.log('error:', error);
-	        if (error.toString().indexOf('spawn /usr/local/bin/rap') > -1) {
+	        if (error.toString().indexOf('spawn /usr/local/bin/rap') > -1 || error.toString().indexOf('spawn rap') > -1) {
 	            (0, _AppActions.addOutputCooked)((0, _Utils.tr)(24), true); //24 系统中未安装 rap, 请前往 https://ruff.io/zh-cn/ 下载安装
 	        }
 	    });

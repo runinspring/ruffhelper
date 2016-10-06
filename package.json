@@ -6,11 +6,11 @@
   "scripts": {
     "dev": "webpack-dev-server --config script/webpack.config.js --hot --devtool eval --progress --colors --hot --content-base app",
     "deploy": "webpack --config script/webpack.production.config.js && node script/remove-use-strict.js",
-    "packagewin64": "electron-packager ./app/ RuffHelper --platform=win32 --arch=x64 --out=build/prerelease --download.mirror=http://127.0.0.1:8080/build/electronzip/ --asar --asar-unpack-dir=server --version=1.4.2 --overwrite  --icon=./app/icon/icon.ico",
-    "packagewin32": "electron-packager ./app/ RuffHelper --platform=win32 --arch=ia32 --out=build/prerelease --download.mirror=http://127.0.0.1:8080/build/electronzip/ --asar --asar-unpack-dir=server --version=1.4.2 --overwrite  --icon=./app/icon/icon.ico",
+    "packagewin64": "electron-packager ./app/ RuffHelper --platform=win32 --arch=x64 --out=build/prerelease --download.mirror=http://127.0.0.1:8080/build/electronzip/ --asar.unpackDir=server --version=1.4.2 --overwrite  --icon=./app/icon/icon.ico",
+    "packagewin32": "electron-packager ./app/ RuffHelper --platform=win32 --arch=ia32 --out=build/prerelease --download.mirror=http://127.0.0.1:8080/build/electronzip/ --asar.unpackDir=server --version=1.4.2 --overwrite  --icon=./app/icon/icon.ico",
     "packagetest": "electron-packager ./app/ RuffHelper --platform=win32 --arch=ia32 --out=build/prerelease --download.mirror=http://127.0.0.1:8080/build/electronzip/ --version=1.4.2 --overwrite  --icon=./app/icon/icon.ico",
-    "packagemac": "electron-packager ./app/ RuffHelper --platform=darwin --arch=x64 --out=build/prerelease --download.mirror=http://127.0.0.1:8080/build/electronzip/  --asar --asar-unpack-dir=server  --version=1.4.2 --overwrite  --icon=./app/icon/icon.icns",
-    "packagelinux": "electron-packager ./app/ RuffHelper --platform=linux --arch=x64 --out=build/prerelease --download.mirror=http://127.0.0.1:8080/build/electronzip/  --asar --asar-unpack-dir=server  --version=1.4.2 --overwrite  --icon=./app/icon/icon.icns",
+    "packagemac": "electron-packager ./app/ RuffHelper --platform=darwin --arch=x64 --out=build/prerelease --download.mirror=http://127.0.0.1:8080/build/electronzip/  --asar.unpackDir=server  --version=1.4.2 --overwrite  --icon=./app/icon/icon.icns",
+    "packagelinux": "electron-packager ./app/ RuffHelper --platform=linux --arch=x64 --out=build/prerelease --download.mirror=http://127.0.0.1:8080/build/electronzip/  --asar.unpackDir=server  --version=1.4.2 --overwrite  --icon=./app/icon/icon.icns",
     "gulp": "gulp",
     "asar": "asar pack app app.asar",
     "start": "electron ."
