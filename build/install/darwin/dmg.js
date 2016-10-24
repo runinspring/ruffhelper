@@ -24,7 +24,7 @@ module.exports = function (datas,callBack) {
         }
     });
     ee.on('progress', function (info) {
-        console.log(info.current + '/' + info.total + ' ' + info.type + ' ' + (info.title || info.status));
+        console.log('progress:',info.current + '/' + info.total + ' ' + info.type + ' ' + (info.title || info.status));
     });
 
     ee.on('error', function (err) {

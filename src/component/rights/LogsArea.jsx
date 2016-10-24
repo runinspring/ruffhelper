@@ -60,7 +60,7 @@ class LogsArea extends React.Component {
         //         console.log('message:',m)
         //    })
         p.on('message', m => {
-            console.log(m)
+            console.log('message:',m)
         })
         p.on('close', function (m) {
             console.log('close:', m)

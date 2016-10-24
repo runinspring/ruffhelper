@@ -4,7 +4,7 @@ export const ADD_OUTPUT = 'add_output';//增加输出内容;
 export const ADD_LOG = 'add_log';//增加log的输出内容
 export const OPEN_PROJECT = 'open_project';//打开项目
 export const REMOVE_PROJECT = 'remove_project';//移除项目
-export const RUFF_SDK_LOCATION = 'ruff_sdk_location';//sdk的位置
+// export const RUFF_SDK_LOCATION = 'ruff_sdk_location';//sdk的位置
 export const SHOW_ALERT = 'show_alert';//显示弹出面板
 export const CLOSE_ALERT = 'colse_alert';//移除弹出面板
 export const CLEAN_RAP_LOG = "clean_rap_log";//清除raplog
@@ -13,7 +13,7 @@ export const AUTO_CMD = 'auto_cmd';
 export const AUTO_LOG = 'auto_log';
 
 import {commands} from '../lib/Commands';
-import {tr} from '../lib/Utils'
+import {tr} from '../lib/Utils';
 var dispatch = null;
 var props = null;
 // exports.setDispatch = function (data) {
@@ -120,23 +120,28 @@ function addOutputCooked(data, red = false,type= ADD_OUTPUT) {
 /**获取版本号*/
 function getVersion() {
     // console.log('获取版本号')
-    addOutputCooked(tr(200, 'rap version'), true);//200 执行命令：xxxx
+    addOutputCooked(tr(200, 'rap --version'), true);//200 执行命令：xxxx
+    // console.log('config.platform',config.platform)
     //addOutputCooked('<b style="color:red">' + tr(200) + 'rap version' + '</b><br>');//200 执行命令：xxxx
     var reg = /\d+(\.\d+){0,2}/;//匹配 0.1 或者 0.1.0
-    commands('rap version', function (value) {
+    commands('rap --version', function (value) {
         addOutputUnCooked(value);
         // console.log('version:',value)
+        // value="dssf1.2.4"
         var result = value.match(reg);
         if (result && result.index == 0) {
-            // console.log('send')
+            // console.log('yes version')
             var obj = {type: CHANGE_CONFIG, data: {rapVersion: value}}
             dispatch(obj);
+        } else {
+            addOutputCooked(tr(24), true);//24 系统中未安装 rap, 请前往 https://ruff.io/zh-cn/ 下载安装
+            // console.log('error')
         }
     });
 }
-exports.setRuffSDKLocation = function (value) {
-    dispatch({type:RUFF_SDK_LOCATION,data:{ruffSDKLocation:value}})
-}
+// exports.setRuffSDKLocation = function (value) {
+//     dispatch({type:RUFF_SDK_LOCATION,data:{ruffSDKLocation:value}})
+// }
 exports.addOutPutBlue = addOutPutBlue;
 exports.addOutputCooked = addOutputCooked;
 exports.addOutputUnCooked = addOutputUnCooked;

@@ -37,6 +37,9 @@ gulp.task("linux", ['getVersion',"getPackageCmd"], function () {
         var srcPath = './build/prerelease/RuffHelper-linux-x64/*';
         var zipName = 'RuffHelper-linux-v'+datas.version+'.zip';
         var zipPath = './build/release';
+        console.log('srcPath:',srcPath);
+        console.log('zipName:',zipName);
+        console.log('zipPath:',zipPath);
         const zip = require('gulp-zip');
         return gulp.src(srcPath)
             .pipe(zip(zipName))

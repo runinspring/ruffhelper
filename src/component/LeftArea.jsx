@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import RapCommand from './left/RapCommand.jsx';
 import OpenProject from './left/OpenProject.jsx';
 import NewProject from  './left/NewProject.jsx';
-import RuffSDK from  './left/RuffSDK.jsx';
+// import RuffSDK from  './left/RuffSDK.jsx';
 import {tr} from '../lib/Utils'
 import { Collapse } from 'antd';
 import config from '../config';
@@ -52,9 +52,7 @@ class LeftArea extends React.Component {
                             <Panel header={tr(2)} key="3">
                                 <NewProject/>
                             </Panel>
-                            <Panel header={tr(10)} key="4">
-                                <RuffSDK/>
-                            </Panel>
+
                         </Collapse>
                     </div>
                 </div>
@@ -62,6 +60,9 @@ class LeftArea extends React.Component {
         )
     }
 }
+// <Panel header={tr(10)} key="4">
+//     <RuffSDK/>
+// </Panel>
 function select(state) {
     return{
         config:state.config

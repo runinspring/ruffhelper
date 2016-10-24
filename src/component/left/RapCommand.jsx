@@ -17,7 +17,7 @@ class RapCommand extends React.Component {
             {name: '---'},
             {name: 'rap deploy', id: 8},{name: 'rap layout', id: 5},
             {name: 'rap start', id: 6},
-            {name: 'rap stop', id: 7}, {name: 'rap version', id: 3}
+            {name: 'rap stop', id: 7}, {name: 'rap --version', id: 3}
         ];
         // {name: 'rap log', id: 1},1: 71, 
         // {name: 'rap system info', id: 4},

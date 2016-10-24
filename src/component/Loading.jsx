@@ -54,13 +54,13 @@ class MainShell extends React.Component {
          }*/
         //console.log("process.platform:", remote.process.platform)
         if (platform == 'win32') {//win系统
-            data.osType = 'Windows';
+            data.osType = config.platform = 'Windows';
             config.configPath = escapePath(path.dirname(data.appPath) + '/config/ruffhelper.cfg');
             //config.configPath = escapePath(path.dirname(data.appPath) + '/config/ruffhelper.cfg');
             //var cfgPath = remote.process.env.APPDATA || remote.process.env.USERPROFILE + "/AppData/Roaming";
             //config.configPath = escapePath(cfgPath + "/ruffhelper/config/ruffhelper.cfg");
         } else {//darwin  linux
-            data.osType = 'Mac';
+            data.osType = config.platform = 'Mac';
             //config.configPath = path.dirname(data.appPath) + '/config/ruffhelper.cfg';
             var cfgPath = remote.process.env.HOME || ("/Users/" + (remote.process.env.NAME || remote.process.env.LOGNAME));
             // if(!cfgPath) cfgPath = path.dirname(data.appPath);
@@ -91,13 +91,12 @@ class MainShell extends React.Component {
                     }
                     //data.histrory = configData.histrory;
                 }
-                if (configData.ruffSDKLocation) {
-                    var sdkPath = existRapSDK(configData.ruffSDKLocation, data.osType);
-                    if (sdkPath) {//判断sdk的路径是否存在
-                        //console.log('sdk的路径存在')
-                        data.ruffSDKLocation = sdkPath;
-                    }
-                }
+                // if (configData.ruffSDKLocation) {//rap 1.5以后有安装包，不需要路径
+                //     var sdkPath = existRapSDK(configData.ruffSDKLocation, data.osType);
+                //     if (sdkPath) {//判断sdk的路径是否存在
+                //         data.ruffSDKLocation = sdkPath;
+                //     }
+                // }
             } catch (e) {
                 //console.log('error:',e)
             }
@@ -121,11 +120,12 @@ class MainShell extends React.Component {
         var self = this;
         console.log('初始化数据2：', data)
         init(this.props.dispatch, this.props, data);
-        if (data.ruffSDKLocation) {//有路径就读取版本号
-            getVersion();
-        }else{//没有路径就弹出选择面板
-            showAlert(PanelSDKSelector);
-        }
+        // if (data.ruffSDKLocation) {//有路径就读取版本号
+        //     getVersion();
+        // }else{//没有路径就弹出选择面板
+        //     showAlert(PanelSDKSelector);
+        // }
+        getVersion();
 
         setTimeout(function () {
             // console.log('loadingEnd')

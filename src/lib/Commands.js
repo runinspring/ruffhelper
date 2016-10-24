@@ -1,8 +1,9 @@
 var iconv = require('iconv-lite');//解决中文乱码
 var config = require('../config');
-import {showAlert,addOutPutBlue} from '../actions/AppActions.jsx';
+import {showAlert,addOutPutBlue,addOutputCooked} from '../actions/AppActions.jsx';
 import {PanelInput,PanelSelecter} from '../component/Alerts.jsx';
 import {tr} from './Utils';
+import fs from 'fs';
 iconv.skipDecodeWarning = true;//忽略报错
 var spawn = require('child_process').spawn;
 var kill = require('tree-kill');
@@ -41,11 +42,32 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
     var result = '';
     var outputObj = {}
     //使用指定的 rap 版本
-    var cmdPath = config.saveData.ruffSDKLocation + '/bin/rap';
+    // var cmdPath = config.saveData.ruffSDKLocation + '/bin/rap';
     //把命令解析成数组 比如['deploy','-s']
-    var trueCmd = command.split(' ');   
-    trueCmd.shift();//把最前面的 rap 命令删除
-    var childProcess = spawn(cmdPath, trueCmd, { cwd: parentDir });
+    var trueCmd = command.split(' ');
+    var arrOpts = [];
+    for(var i=1,len = trueCmd.length;i<len;i++){
+        arrOpts.push(trueCmd[i])
+    }
+    // trueCmd.shift();//把最前面的 rap 命令删除
+    console.log('trueCmd:',trueCmd)
+    console.log('parentDir:',parentDir);
+    // var childProcess = spawn('node',['-v'], { cwd: parentDir });
+    // if(config.)
+    if(config.platform == "Windows"){
+        var childProcess = spawn(trueCmd[0],arrOpts, { cwd: parentDir });
+    }else{//mac
+        childProcess = spawn('/usr/local/bin/rap',arrOpts, { cwd: parentDir });
+        // try {
+        //     console.log(1212)
+        //
+        // }catch (err){
+        //     console.log(2321323,err);
+        //     // addOutputCooked(tr(24), true);//24 系统中未安装 rap, 请前往 https://ruff.io/zh-cn/ 下载安装
+        //     // return;
+        // }
+    }
+
     if (command == 'rap log') {//只保留一个 rap log
         // console.log('rap log 命令');
         if (raplogPid) {
@@ -135,10 +157,10 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
                 if(key=="ERR Hostname required."){
                     addOutPutBlue(tr(44));//44 请使用 rap scan 命令连接设备
                 }
-                if(inputObj['rap wifi'] && key=="? password"){
-                    outPutMessage('Broadcasting WiFi settings to your Ruff device, this might take a while.');
-                    outPutMessage('It is possible that the device became connected during broadcasting but not with this very session. Try `rap scan` even if broadcasting timed out.');
-                }
+                // if(inputObj['rap wifi'] && key=="? password"){
+                //     outPutMessage('Broadcasting WiFi settings to your Ruff device, this might take a while.');
+                //     outPutMessage('It is possible that the device became connected during broadcasting but not with this very session. Try `rap scan` even if broadcasting timed out.');
+                // }
                 delete inputObj[key];
                 return;
             }
@@ -210,6 +232,12 @@ exports.commands = function commands(command, callBackOutput, callBack, parentDi
             addOutPutBlue(tr(213));//命令执行结束
         }
         if (callBack) callBack();
+    });
+    childProcess.on('error', function (error) {
+        console.log('error:',error)
+        if(error.toString().indexOf('spawn /usr/local/bin/rap')>-1 || error.toString().indexOf('spawn rap')>-1){
+            addOutputCooked(tr(24), true);//24 系统中未安装 rap, 请前往 https://ruff.io/zh-cn/ 下载安装
+        }
     })
     
 }
@@ -243,8 +271,8 @@ function outPut(value) {
     // result = result.replace(/\[24D/g, "");
     // result = result.replace(/\[24C/g, "");
     result = result.replace(/\[l000D\[K/g, "");
-    result = result.replace(/\[l000D \[K/g, "");
     result = result.replace(/\[1000D\[K/g, "");
+    result = result.replace(/\[l000D \[K/g, "");
     result = result.replace(/</g, " &lt;")//把 <  替换成&lt;
     result = result.replace(/\[\?25h/g, "")//替换[?25 为空
     result = result.replace(/\[\?25l/g, "")//替换[?25l 为空
