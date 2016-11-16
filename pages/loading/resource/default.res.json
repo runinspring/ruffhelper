@@ -1,0 +1,20 @@
+{
+	"groups": [
+		{
+			"keys": "star_png",
+			"name": "preload"
+		}
+	],
+	"resources": [
+		{
+			"url": "config/description.json",
+			"type": "json",
+			"name": "description_json"
+		},
+		{
+			"url": "assets/star.png",
+			"type": "image",
+			"name": "star_png"
+		}
+	]
+}
