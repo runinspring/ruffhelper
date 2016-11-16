@@ -5,3 +5,8 @@ test/
 build/electronzip/
 ~/
 config/
+pages/loading/.wing
+pages/loading/bin-debug
+pages/loading/bin-release
+pages/loading/wingProperties.json
+pages/loading/libs
