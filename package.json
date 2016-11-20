@@ -52,7 +52,6 @@
   },
   "devDependencies": {
     "appdmg": "^0.3.7",
-    "electron": "^1.4.2",
     "electron-packager": "^8.1.0"
   }
 }
