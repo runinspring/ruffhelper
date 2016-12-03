@@ -90,7 +90,7 @@ class Main extends egret.DisplayObjectContainer {
         var c3 = new egret.Bitmap(RES.getRes('c3_png'));//第3圈
         c3.x = halfWidth;
         c3.y = halfHeight;
-        c3.anchorOffsetX = 132;
+        c3.anchorOffsetX = 131;
         c3.anchorOffsetY = 124;
         container.addChild(c3);
         egret.Tween.get(c3,{loop:true}).to({rotation:-360},20000);
@@ -98,6 +98,7 @@ class Main extends egret.DisplayObjectContainer {
         var c4 = new egret.Bitmap(RES.getRes('c4_png'));//第4圈
         c4.x = halfWidth;
         c4.y = halfHeight;
+        c4.anchorOffsetX = 4;
         c4.anchorOffsetY = 108;
         container.addChild(c4);
         egret.Tween.get(c4,{loop:true}).to({rotation:360},18000);
