@@ -13,7 +13,7 @@ class Main extends React.Component {
 		//console.log('main.render:',this.props);
 		var hei = document.documentElement.clientHeight;
 		return (
-			<div className="unselectable uibody" style={{height:hei}}>
+			<div className="unselectable" style={{height:hei}}>
 				<Provider store={store}>
 					<AppRouter/>
 				</Provider>

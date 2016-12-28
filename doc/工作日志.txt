@@ -8,6 +8,8 @@ autoCmdLog、autoRapLog要保存到配置文件里
 保存自动滚屏的开关状态
 保存日志—保存上次选定的路径，判断一下是否存在
 rap install
+icon.png的位置？
+ mainWindow = new BrowserWindow({icon:'./assets/images/icon.png',width: 730, height: 530,
 ---------------------------------
 2016年10月03日 星期一
 移除选择 ruff sdk 的相关功能,因为有了安装包,不需要设定路径了

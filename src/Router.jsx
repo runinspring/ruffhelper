@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route,IndexRoute,browserHistory,hashHistory} from 'react-router';
+import { Router, Route, IndexRoute, browserHistory, hashHistory} from 'react-router';
 import MainShell from './component/MainShell.jsx';
 import Loading from './component/Loading.jsx';
 import TestUI from './component/TestUI.jsx';
@@ -8,13 +8,13 @@ import TestUI from './component/TestUI.jsx';
 //var history = createBrowserHistory();
 //window.appHistory = history;
 export class AppRouter extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         //console.log('AppRouter');
-        window.location.href='#/';
+        window.location.href = '#/';
     }
-    render(){
-        return(
+    render() {
+        return (
             <div>
                 <Router history={hashHistory}>
                     <Route path="/">

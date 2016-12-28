@@ -1,0 +1,150 @@
+@font-face {
+ font-family: 'zhanghaishanRegular';
+ src: url('font/ruixian.ttf') format('truetype');
+}  
+body{
+    font-family: zhanghaishanRegular;
+    margin:0px; padding:0px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    /*font-weight: bolder;*/
+    font-style: italic;
+    font-size: 0.75em;
+}
+
+.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    /*
+      Introduced in IE 10.
+      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+    -ms-user-select: none;
+    user-select: none;
+}
+.selectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: text;
+    -webkit-user-select: text;
+    /*
+      Introduced in IE 10.
+      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+    -ms-user-select: text;
+    user-select: text;
+}
+/*导航自定义样式*/
+::-webkit-scrollbar {width: 2px;height: 2px; }
+::-webkit-scrollbar-track {background-color: #fff;} /* 滚动条的滑轨背景颜色 */
+::-webkit-scrollbar-thumb { background-color:#6fcbfa;}
+::-webkit-scrollbar-thumb:horizontal{background-color: #fff}
+
+.btnEmpty {height: 22px;width: 22px;border:0px;opacity:0}
+.btnEmpty:focus {outline: none;}
+.btnBlue {margin:0 0 0 0;padding: 4px 6px 4px 6px;background-color: #2db7f5;border: 0px;border-radius:3px;font-size: 12px;color: #fff; line-height: 100%;cursor:pointer;}
+.btnBlue:hover{background-color: #64ccfb;}
+.btnBlue:focus {outline: none;}
+.btnBlue:disabled {background-color: #d9d9d9;}
+.btnGreen {padding: 4px 6px 4px 6px;background-color: #1ec82e;border: 0px;border-radius:3px;font-size: 12px;color: #fff;cursor:pointer}
+.btnGreen:hover{background-color: #34ee46;}
+.btnGreen:focus {outline: none;}
+.btnGreen:disabled {background-color: #d9d9d9;}
+.btnGray {border: 0px;background-color: #ffffff ;color:#666666;width: 167px;height: 22px;font-size: 12px;text-align: left;cursor:pointer;}
+.btnGray p{color:#fff}
+.btnGray:hover{background-color: #f4f4f4;}
+.btnGray:hover p{color:#666666}
+.btnGray:focus {outline: none;}
+/*border-bottom:1px #e9e9e9 solid;*/
+.btnSelect {display: block; background-color: #FFF;border: 0px;width:100%;height:24px;line-height: 24px;font-size: 12px;color: #666666;border-bottom:1px #e9e9e9 solid; text-align: left;cursor:pointer}
+.btnSelect:hover{background-color: #eaf8fe;}
+.btnSelect:focus {outline: none;}
+/*箭头*/
+.uibody{
+    cursor:default;
+}
+/*光标*/
+.textArea{
+    cursor:auto;
+}
+/*手型*/
+.mousePointer{
+    cursor:pointer;
+}
+.layoutAusolute{position: absolute;top: 0}
+.stage{width:730px;height: 530px;line-height:530px;}
+
+.loading{background:#a5e8e5;}
+.loading .bgImage{width:100%;height: 100%;background-image: url(./assets/pattern.png);opacity: 0.2}
+.loading .logoContainer{position: absolute; top:0; text-align: center}
+.loading .logo{background:url(./assets/logo.svg);background-size: 322px 168px;width: 322px;height: 168px;display: inline-block ;vertical-align: middle;}
+/*vertical-align: middle*/
+/*645,336*/
+@keyframes fadeOut{0% {opacity: 1;} 90% {opacity: 0;} 100% {opacity: 0;}}
+@keyframes fadeIn{0% {opacity: 0;} 100% {opacity: 1;}}
+/*@keyframes loadIn2{from {background: red;}to {background: yellow;}}*/
+/*b6e8e6*/
+/*.logo {background:url(logo.svg);width:400px;height:209px;}*/
+/*.alerts{text-align: center}!*整个警告页面*!*/
+.alertPanel{position: absolute;width: 100%}/*单一警告小面板*/
+.alertItem{background-color: #fff;display: inline-block;vertical-align: middle;text-align: left;line-height:18px;border-radius: 8px;width: 240px;height: 100px; }/*单一警告小面板*/
+
+.leftArea{
+    width: 153px;
+    height: 520px;
+    overflow-y: auto;
+}
+.info {position: absolute!important;display:block;}
+.info-hide{width: 0px;height: 0px;visibility: hidden;}
+.info-show{border-radius: 4px;visibility: visible;padding: 2px 4px 2px 4px;background-color: #2db7f5;color: #ffffff;
+    position: fixed;font-size: 12px;z-index: 11;}
+.info-show .arrow{
+    position: absolute;left:-8px;top: 3px;width: 0;
+    height: 0;border-top: 8px solid transparent;border-right: 9px solid #2db7f5; border-bottom: 8px solid transparent;
+}
+.info-show .arrowUp{
+    position: absolute;
+    width: 0;height: 0;
+    border-bottom: 10px solid #2db7f5;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+}
+
+.bg{
+    position: absolute;
+    pointer-events: none;
+    width: 150px;
+    height: 520px;
+    border-radius: 3px;
+    border: 1px solid #d9d9d9;
+    /*box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.05);*/
+}
+.rightArea{
+    position: absolute;
+    margin-left: 158px;
+    /*border-radius: 3px;*/
+    /*border: 1px solid #d9d9d9;*/
+    width: 566px;
+    height:520px;
+}
+.outputArea {
+    height: 450px;
+    /*border:1px solid #000;*/
+    font-size:12px;
+    overflow-y: auto;
+
+    border-radius: 3px;
+    border: 1px solid #d9d9d9;
+    box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.1);
+    /*border-radius: 3px;*/
+    /*border: 1px solid #d9d9d9;*/
+    /*line-height: 12px;*/
+    /*margin-bottom: 30px;*/
+}
+.outputArea pre{
+    margin: 3px;
+    word-wrap: break-word;
+    white-space: pre-wrap!important;
+    /*display: block;*/
+    /*word-break:break-all;*/
+}
