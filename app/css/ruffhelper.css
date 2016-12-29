@@ -13,7 +13,7 @@ body{
     color: #fff;
     overflow-x: hidden;
     overflow-y: hidden;
-    font-style: italic;
+    font-style: italic;/*斜体*/
     font-size: 0.75em;
 }
 .absolute{
@@ -29,6 +29,14 @@ body{
     height: 522px;
     overflow-y: auto;
 }
+.left .container{
+    
+}
+.left .container .header{
+    display: inline;
+    font-style: normal;/*斜体*/
+}
+
 .right{
     margin-left: 158px;
     width: 566px;
@@ -49,7 +57,10 @@ body{
 
 
 
-
+/*鼠标显示为手型*/
+.mousePointer{
+    cursor:pointer;
+}
 .unselectable {
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
