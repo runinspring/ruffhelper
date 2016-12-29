@@ -1,6 +1,6 @@
 import {combineReducers}from 'redux';
 var cfg = require('../config');//
-import {INIT} from '../actions/AppActions.jsx';
+import {INIT,LEFT_CHANGE_CLUMTYPE} from '../actions/AppActions.jsx';
 import {List} from 'immutable';
 var appPath = '';
 let initConfig = {
@@ -37,7 +37,22 @@ var config = function (state = initConfig, action) {
     }
     return result;
 }
+let initLeft={
+    clum0:false,//每个栏目是否显示
+    clum1:false,
+    clum2:false
+}
+var left = function (state=initLeft,action) {
+    var result = Object.assign({},state);
+    switch (action.type){
+        case LEFT_CHANGE_CLUMTYPE:
+            result['clum'+action.data.key] = action.data.value
+            // console.log('left:',result)
+            return result;
+    }
+    return result;
+}
 const appreducer = combineReducers({
-    config
+    config,left
 });
 export default appreducer;
