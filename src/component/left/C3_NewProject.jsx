@@ -9,18 +9,18 @@ class C3_NewProject extends React.Component {
     componentDidMount(){
         //初始化渲染执行之后立刻调用
     }
-    componentDidUpdate(prevProps){
+    componentDidUpdate(prevProps) {
+        console.log(123123)
         //在组件的更新已经同步到 DOM 中之后立刻被调用
     }
     /**关闭组件*/
     closeEnd() {
-        command(LEFT_CHANGE_CLUMTYPE,{key:this.props.clumId,value:false});
+        // command(LEFT_CHANGE_CLUMTYPE,{key:this.props.clumId,value:0});
     }
     render() {
         return(
             <div className="mousePointer" onClick={this.closeEnd.bind(this)}>
                 C3_NewProject
-
             </div>
         )
     }

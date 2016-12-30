@@ -29,6 +29,10 @@ class C1_RapCommand extends React.Component {
 
     componentDidUpdate(prevProps) {
         //在组件的更新已经同步到 DOM 中之后立刻被调用
+        console.log('C1_RapCommand.type:', this.props.type)
+        if (this.props.type == 2) {
+            this.closeEnd();
+        }
     }
     getItems(){
 
@@ -36,14 +40,14 @@ class C1_RapCommand extends React.Component {
     /**关闭组件*/
     closeEnd() {
         setTimeout(()=> {
-            command(LEFT_CHANGE_CLUMTYPE, {key: this.props.clumId, value: false});
-        }, 2000)
+            command(LEFT_CHANGE_CLUMTYPE, {key: this.props.clumId, value: 0});
+        }, 1000)
     }
 
     render() {
         console.log('C1_RapCommand.render')
         return (
-            <div className="mousePointer" onClick={this.closeEnd.bind(this)}>
+            <div className="mousePointer">
                 C1_RapCommand
                 {this.getItems()}
             </div>
@@ -52,7 +56,7 @@ class C1_RapCommand extends React.Component {
 }
 function select(state) {
     return {
-        osType: state.config.osType
+        type: state.left.clum0
     }
 }
 export default connect(select)(C1_RapCommand);
