@@ -10,11 +10,12 @@ class C3_NewProject extends React.Component {
         //初始化渲染执行之后立刻调用
     }
     componentDidUpdate(prevProps) {
-        console.log(123123)
+        // console.log(123123)
         //在组件的更新已经同步到 DOM 中之后立刻被调用
     }
     /**关闭组件*/
     closeEnd() {
+        command(LEFT_CHANGE_CLUMTYPE, {key: this.props.clumId, value: 0});
         // command(LEFT_CHANGE_CLUMTYPE,{key:this.props.clumId,value:0});
     }
     render() {
@@ -27,7 +28,7 @@ class C3_NewProject extends React.Component {
 }
 function select(state) {
     return {
-        osType: state.config.osType
+        type: state.left.clum3
     }
 }
 export default connect(select)(C3_NewProject);

@@ -10,11 +10,12 @@ class C2_OpenProject extends React.Component {
         //初始化渲染执行之后立刻调用
     }
     componentDidUpdate(prevProps) {
-        console.log('C2_OpenProject.type:', this.props.type)
+        // console.log('C2_OpenProject.type:', this.props.type)
         //在组件的更新已经同步到 DOM 中之后立刻被调用
     }
     /**关闭组件*/
     closeEnd() {
+        command(LEFT_CHANGE_CLUMTYPE, {key: this.props.clumId, value: 0});
         // command(LEFT_CHANGE_CLUMTYPE,{key:this.props.clumId,value:0});
     }
     render() {
@@ -28,7 +29,7 @@ class C2_OpenProject extends React.Component {
 }
 function select(state) {
     return {
-        type: state.left.clum1
+        type: state.left.clum2
     }
 }
 export default connect(select)(C2_OpenProject);

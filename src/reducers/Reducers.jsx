@@ -38,9 +38,9 @@ var config = function (state = initConfig, action) {
     return result;
 }
 let initLeft={
-    clum0:0,//每个栏目的打开状态 0关闭 1打开 2关闭中
-    clum1:0,
-    clum2:0
+    clum1:0,//每个栏目的打开状态 0关闭 1打开 2关闭中
+    clum2:0,
+    clum3:0
 }
 var left = function (state=initLeft,action) {
     var result = Object.assign({},state);

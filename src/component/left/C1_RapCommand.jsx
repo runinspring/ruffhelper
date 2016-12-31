@@ -56,7 +56,7 @@ class C1_RapCommand extends React.Component {
 }
 function select(state) {
     return {
-        type: state.left.clum0
+        type: state.left.clum1
     }
 }
 export default connect(select)(C1_RapCommand);

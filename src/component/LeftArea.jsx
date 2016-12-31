@@ -18,14 +18,14 @@ class LeftArea extends React.Component {
         // console.log('LeftArea.render')
         return(
             <div className="absolute left">
-                <LeftContainer header={tr(0)} clumId={0}>
-                    <RapCommand clumId={0}/>
+                <LeftContainer header={tr(0)} clumId={1}>
+                    <RapCommand clumId={1}/>
                 </LeftContainer>
-                <LeftContainer header={tr(1)} clumId={1}>
-                    <OpenProject clumId={1}/>
+                <LeftContainer header={tr(1)} clumId={2}>
+                    <OpenProject clumId={2}/>
                 </LeftContainer>
-                <LeftContainer header={tr(2)} clumId={2}>
-                    <NewProject clumId={2}/>
+                <LeftContainer header={tr(2)} clumId={3}>
+                    <NewProject clumId={3}/>
                 </LeftContainer>
                 
             </div>

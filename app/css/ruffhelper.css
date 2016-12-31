@@ -24,17 +24,25 @@ body{
    font-size: 80px;
 }
 .left{
+    color: #5EFDFF;
     margin: 4px 4px 4px 4px;
-    width: 153px;
+    padding-top: 4px;
+    width: 150px;
     height: 522px;
     overflow-y: auto;
 }
 .left .container{
-    
+    margin-bottom: 10px;
 }
 .left .container .header{
-    display: inline;
+    padding: 4px 10px 4px 10px;
+    border: 1px solid rgba(94,253,255,0.30);
+    border-radius: 3px;
     font-style: normal;/*斜体*/
+}
+.left .container .content{
+    margin-bottom: 10px;
+    padding-left: 10px;
 }
 
 .right{
@@ -45,9 +53,11 @@ body{
 .alert{
     
 }
-
-
-
+/* 细边框: */
+/*opacity: 0.29;*/
+/*border: 1px solid #5EFDFF;*/
+/*box-shadow: 0px -2px 4px 4px rgba(1,199,202,0.50), 0px 2px 4px 4px rgba(1,199,202,0.50);*/
+/*border-radius: 3px;*/
 
 
 
