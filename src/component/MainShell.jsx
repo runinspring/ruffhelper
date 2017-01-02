@@ -10,6 +10,7 @@ class MainShell extends React.Component {
     render(){
         return(
             <div>
+                <iframe className="absolute" style={{border:'0px',width:'100%',height:'100%'}} src="./pages/background/index.html"></iframe>
                 <RightArea/>
                 <LeftArea/>
                 <Alerts/>

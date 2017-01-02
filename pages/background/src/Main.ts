@@ -48,7 +48,7 @@ class Main extends egret.DisplayObjectContainer {
         var bg = new egret.Shape();//背景色
         var max = new egret.Matrix();
         max.createGradientBox(stageWidth, stageHeight);
-        bg.graphics.beginGradientFill(egret.GradientType.RADIAL, [0x292931, 0x000000], [1, 1], [0, 255], max);
+        bg.graphics.beginGradientFill(egret.GradientType.RADIAL, [0x000000, 0x2e2e2e], [1, 1], [0, 255], max);
         bg.graphics.drawRect(0, 0, stageWidth, stageHeight);
         bg.graphics.endFill();
         container.addChild(bg);

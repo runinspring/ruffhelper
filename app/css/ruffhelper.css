@@ -1,76 +1,139 @@
 @font-face {
- font-family: 'ruixian';
- src: url('font/ruixian.ttf') format('truetype');
-}  
+    font-family: 'ruixian';
+    src: url('font/ruixian.ttf') format('truetype');
+}
+
 @font-face {
- font-family: 'deadstar';
- src: url('font/deadstar.otf') format('truetype');
-}  
-body{
+    font-family: 'deadstar';
+    src: url('font/deadstar.otf') format('truetype');
+}
+
+body {
     /*font-family: ruixian;*/
-    margin:0px; padding:0px;
+    margin: 0px;
+    padding: 0px;
     background-color: #2e2e2e;
-    color: #fff;
     overflow-x: hidden;
     overflow-y: hidden;
-    font-style: italic;/*斜体*/
     font-size: 0.75em;
 }
-.absolute{
+
+.absolute {
     position: absolute;
 }
-.loading{
-   font-family: deadstar; 
-   font-size: 80px;
+
+.loading {
+    font-family: deadstar;
+    font-size: 80px;
 }
-.left{
-    color: #5EFDFF;
+
+.left { /*左侧区域*/
+    font-family: ruixian;
+    /*font-family: Helvetica;*/
+    color: #4cc1fd;
     margin: 4px 4px 4px 4px;
     padding-top: 4px;
     width: 150px;
     height: 522px;
     overflow-y: auto;
 }
-.left .container{
+
+.left .container { /*大栏目容器*/
     margin-bottom: 10px;
-}
-.left .container .header{
-    padding: 4px 10px 4px 10px;
-    border: 1px solid rgba(94,253,255,0.30);
-    border-radius: 3px;
-    font-style: normal;/*斜体*/
-}
-.left .container .content{
-    margin-bottom: 10px;
-    padding-left: 10px;
 }
 
-.right{
+.left .container .header { /*标题*/
+    text-align: center;
+    text-shadow: 0 0 5px #4cc1fd;
+    padding: 4px 10px 4px 10px;
+    border: 1px solid rgba(76, 193, 253, 0.6);
+    border-radius: 3px;
+    font-style: normal; /*斜体*/
+}
+
+.left .container .rapcommand {
+    /*不换行*/
+    word-break: keep-all;
+    white-space: nowrap;
+
+    font-style: italic; /*斜体*/
+    margin: 4px 10px 0px 10px;
+    color: #5EFDFF;
+}
+
+.left .container .rapcommand:hover {
+    animation: rapcommandHover 0.3s ease-in-out infinite alternate;
+}
+
+.left .container .rapcommand .border {
+    background: rgba(76, 193, 253, 0.3);
+    border-radius: 2px;
+    border: 1px solid rgba(76, 193, 253, 0.8);
+}
+
+.left .container .rapcommand .border:hover {
+    border-radius: 4px;
+    background: rgba(76, 193, 253, 0); /*背景色透明*/
+}
+
+
+.right {
     margin-left: 158px;
     width: 566px;
-    height:530px;
+    height: 530px;
 }
-.alert{
-    
+
+.alert {
+
 }
-/* 细边框: */
-/*opacity: 0.29;*/
-/*border: 1px solid #5EFDFF;*/
-/*box-shadow: 0px -2px 4px 4px rgba(1,199,202,0.50), 0px 2px 4px 4px rgba(1,199,202,0.50);*/
-/*border-radius: 3px;*/
 
+/*宽度打开和关闭的动画*/
+@keyframes widthShow {
+    0% {
+        width: 0px
+    }
+    100% {
+        width: 100%
+    }
+}
 
+@keyframes widthClose {
+    0% {
+        width: 100%
+    }
+    100% {
+        width: 0px;
+    }
+}
 
-
-
-
-
-
+@-webkit-keyframes rapcommandHover {
+    from {
+        box-shadow: 0 0 10px #4cc1fd,
+        0 0 5px #4cc1fd,
+        0 0 7px #4cc1fd,
+        0 0 10px rgba(76, 193, 253, 0.1),
+        0 0 15px rgba(76, 193, 253, 0.1),
+        0 0 20px rgba(76, 193, 253, 0.1),
+        0 0 25px rgba(76, 193, 253, 0.1),
+        0 0 38px rgba(76, 193, 253, 0.1);
+    }
+    to {
+        box-shadow: 0 0 5px #4cc1fd,
+        0 0 2px #4cc1fd,
+        0 0 4px #4cc1fd,
+        0 0 5px rgba(76, 193, 253, 0.1),
+        0 0 9px rgba(76, 193, 253, 0.1),
+        0 0 10px rgba(76, 193, 253, 0.1),
+        0 0 12px rgba(76, 193, 253, 0.1),
+        0 0 19px rgba(76, 193, 253, 0.1);
+    }
+}
 
 /*鼠标显示为手型*/
-.mousePointer{
-    cursor:pointer;
+.mousePointer {
+    cursor: pointer;
 }
+
 .unselectable {
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
@@ -82,6 +145,7 @@ body{
     -ms-user-select: none;
     user-select: none;
 }
+
 .selectable {
     -moz-user-select: -moz-none;
     -khtml-user-select: text;

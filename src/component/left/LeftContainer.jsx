@@ -12,17 +12,17 @@ class LeftContainer extends React.Component {
         }
     }
     /**显示子元素的逻辑 */
-    showChildren() {
-        // console.log('clum:'+this.props.clumId,this.props.left)
-        //0关闭 1打开 2关闭中
-        var typeId = this.props.left['clum' + this.props.clumId];
-        if (typeId == 0) {
-            return <div/>
-        } else {
-            return this.state.children;
-        }
-
-    }
+    // showChildren() {
+    //     // console.log('clum:'+this.props.clumId,this.props.left)
+    //     //0关闭 1打开 2关闭中
+    //     var typeId = this.props.left['clum' + this.props.clumId];
+    //     if (typeId == 0) {
+    //         return <div/>
+    //     } else {
+    //         return this.state.children;
+    //     }
+    //
+    // }
     /**点击header显示子对象*/
     clickHeader() {
         var clumId = this.props.clumId;
@@ -41,8 +41,8 @@ class LeftContainer extends React.Component {
         return (
             <div className="container">
                 <div className="header mousePointer" onClick={this.clickHeader.bind(this) }>{this.props.header}</div>
-                <div className="content">
-                    {this.showChildren() }
+                <div>
+                    {this.state.children }
                 </div>
             </div>
         )
