@@ -76,6 +76,7 @@ class Loading extends React.Component {
     initEnd(data) {
         init(this.props.dispatch, data);
         // console.log('props.config:',this.props.config)
+        // console.log('history:',this.props.config.histrory)
         // console.log('data:', data);
         // console.log('config:', config);
         window.location.href = '#/main';

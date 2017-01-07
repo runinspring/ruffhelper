@@ -1,6 +1,6 @@
 import {combineReducers}from 'redux';
 var cfg = require('../config');//
-import {INIT,LEFT_CHANGE_CLUMTYPE} from '../actions/AppActions.jsx';
+import {INIT,LEFT_CHANGE_CLUMTYPE,LOG_ADD,LOG_CLEAN} from '../actions/AppActions.jsx';
 import {List} from 'immutable';
 var appPath = '';
 let initConfig = {
@@ -52,7 +52,22 @@ var left = function (state=initLeft,action) {
     }
     return result;
 }
+var logContent = function (state=[],action) {
+    // var result = Object.assign({},state);
+    var result = List(state);
+    // console.log('logContent:',result,action)
+    switch (action.type){
+        case LOG_ADD:
+            // result.push(action.data);
+            result = result.push(action.data)
+            return result;
+        case LOG_CLEAN:
+            return [];
+        default:
+            return state;
+    }
+}
 const appreducer = combineReducers({
-    config,left
+    config,left,logContent
 });
 export default appreducer;
