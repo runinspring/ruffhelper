@@ -78,7 +78,7 @@ body {
 .left .container .openProject{/*选择ruff项目*/
     /*font-style: italic; !*斜体*!*/
     text-align: center;
-    margin: 4px 10px 0px 10px;
+    margin: 4px 10px 4px 10px;
     color: #5EFDFF;
     background: rgba(76, 193, 253, 0.3);
     border-radius: 2px;
@@ -86,6 +86,24 @@ body {
 }
 .left .container .openProject:hover{
     background: rgba(76, 193, 253, 0.6);
+}
+.left .container .openHistroryBlock{
+    display: block;
+    text-align: center;
+    margin-bottom: 2px;
+}
+.left .container .openHistroryContent{
+    text-align: center;
+    display: inline-block;
+    color: #4cc1fd;
+    /*color: #5EFDFF;*/
+    border-bottom: 1px solid rgba(76, 193, 253, 0.8);
+}
+.left .container .openHistroryContent:hover{
+    color: #5EFDFF;
+    border-bottom: 1px solid #5EFDFF;
+    /*color: #4cc1fd;*/
+    /*background: rgba(76, 193, 253, 0.3);*/
 }
 
 .right {
@@ -99,7 +117,7 @@ body {
 .right .logArea{
     margin-top: 100px;
     overflow-y: auto;
-    padding-right: 2px;
+    padding:0 2px 0 2px;
     height: 412px;
 }
 .right .logArea .content{
@@ -145,6 +163,44 @@ body {
     }
     100% {
         width: 0px;
+    }
+}
+@keyframes widthScaleShow {
+    0% {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    100% {
+        opacity: 1.0;
+        transform: scaleX(1);
+    }
+}
+
+@keyframes widthScaleClose {
+    0% {
+        opacity: 1.0;
+        transform: scaleX(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+}
+@keyframes alphaShow {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1.0;
+    }
+}
+
+@keyframes alphaClose {
+    0% {
+        opacity: 1.0;
+    }
+    100% {
+        opacity: 0;
     }
 }
 

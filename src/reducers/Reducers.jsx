@@ -1,6 +1,7 @@
 import {combineReducers}from 'redux';
 var cfg = require('../config');//
-import {INIT,LEFT_CHANGE_CLUMTYPE,LOG_ADD,LOG_CLEAN} from '../actions/AppActions.jsx';
+import {save} from '../lib/FileUtil';
+import {INIT,LEFT_CHANGE_CLUMTYPE,LOG_ADD,LOG_CLEAN,OPEN_RUFF_PROJECT} from '../actions/AppActions.jsx';
 import {List} from 'immutable';
 var appPath = '';
 let initConfig = {
@@ -34,12 +35,34 @@ var config = function (state = initConfig, action) {
             // console.log('saveData',saveData)
             // console.log(12312,result.histrory.get(0))
             return result;
+        case OPEN_RUFF_PROJECT:
+            var histrory = result.histrory.unshift(action.data);//把最后打开的放在最上面
+            var openPath = action.data.path;
+            for(var i=1,len=histrory.size;i<len;i++){
+                if(openPath == histrory.get(i).path){
+                    histrory = histrory.delete(i);
+                }
+            }
+            if (histrory.size > 20) {
+                histrory = histrory.slice(0, 20);
+            }
+            result.histrory = histrory;
+            result.ruffProjectPath = openPath;
+            cfg.saveData.histrory = histrory;
+            saveConfig();
+            return result;
     }
     return result;
 }
+var saveConfig = function () {
+    //console.log('save:',appPath,saveData)
+    //console.log(cfg.saveData)
+    //save(appPath + '\\config\\ruffhelper.cfg',cfg.saveData);
+    save(cfg.configPath, cfg.saveData);
+}
 let initLeft={
     clum1:0,//每个栏目的打开状态 0关闭 1打开 2关闭中
-    clum2:0,
+    clum2:1,
     clum3:0
 }
 var left = function (state=initLeft,action) {

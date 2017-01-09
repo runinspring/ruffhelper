@@ -26,7 +26,7 @@ class C1_RapCommand extends React.Component {
     }
 
     componentDidMount() {
-        console.log('componentDidMount')
+        // console.log('componentDidMount')
         //初始化渲染执行之后立刻调用
         let self = this;
         var tree = ReactDOM.findDOMNode(this.refs['tree']);
