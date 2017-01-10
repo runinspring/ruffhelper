@@ -87,24 +87,26 @@ body {
 .left .container .openProject:hover{
     background: rgba(76, 193, 253, 0.6);
 }
-.left .container .openHistroryBlock{
-    display: block;
-    text-align: center;
-    margin-bottom: 2px;
-}
 .left .container .openHistroryContent{
-    text-align: center;
-    display: inline-block;
-    color: #4cc1fd;
-    /*color: #5EFDFF;*/
-    border-bottom: 1px solid rgba(76, 193, 253, 0.8);
+    padding-left: 8px;
+    overflow: hidden;
+    color: #5EFDFF;
 }
 .left .container .openHistroryContent:hover{
-    color: #5EFDFF;
-    border-bottom: 1px solid #5EFDFF;
+    /*color: #5EFDFF;*/
+    /*border-bottom: 1px solid #5EFDFF;*/
     /*color: #4cc1fd;*/
-    /*background: rgba(76, 193, 253, 0.3);*/
+    background: rgba(76, 193, 253, 0.3);
 }
+.left .container .openHistroryContent p{/*关闭X的效果*/
+    right:8px;
+    color: rgba(94, 253, 255, 0);
+}
+.left .container .openHistroryContent:hover p{
+    color: rgba(94, 253, 255, 1);
+}
+
+
 
 .right {
     font-family: ruixian;

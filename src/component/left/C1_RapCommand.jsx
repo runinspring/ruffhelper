@@ -72,7 +72,6 @@ class C1_RapCommand extends React.Component {
             //
             return (
                 <div key={'cmd' + index} style={style}>
-
                     <div className="rapcommand mousePointer">
                         <div style={{overflow: 'hidden'}}>
                             <div className="border">

@@ -11,6 +11,9 @@ rap install
 icon.png的位置？
  mainWindow = new BrowserWindow({icon:'./assets/images/icon.png',width: 730, height: 530,
 ---------------------------------
+2017年01月11日 星期三
+增加选中历史项目的效果
+
 2017年01月10日 星期二
 增加打开项目的动画和相关逻辑
 

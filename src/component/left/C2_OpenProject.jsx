@@ -42,41 +42,6 @@ class C2_OpenProject extends React.Component {
         })
     }
 
-    getWord() {
-        var word = 's'
-        for (var i = 0, len = Math.floor(Math.random() * 100); i < len; i++) {
-            word += Math.floor(Math.random() * 10)
-        }
-        return word;
-    }
-
-    onOpenFolder2() {
-        // if(!this.isOpen){
-        //     this.isOpen = true;
-        //     dialog.showOpenDialog({properties: ['openDirectory']}, this.onOpenFolderEnd.bind(this));
-        // }
-        // if(Math.random()<0.2){
-        //     command(LOG_ADD,{color:'black',value:this.getWord()});
-        // }else if(Math.random()<0.4) {
-        //     command(LOG_ADD,{color:'red',value:this.getWord()});
-        // }else if(Math.random()<0.6) {
-        //     command(LOG_ADD,{color:'#5EFDFF',value:this.getWord()});
-        // }else
-        // {
-        //     command(LOG_ADD,{color:'white',value:this.getWord()});
-        // }
-        // command(LOG_ADD,{color:'white',value:this.getWord()});
-        // command(LOG_ADD,{color:'#5EFDFF',value:this.getWord()});
-        if (Math.random() < 0.5) {
-            addLog(this.getWord())
-            // command(LOG_ADD,{color:'#5EFDFF',value:this.getWord()});
-        } else {
-            addLog(this.getWord(), '#5EFDFF')
-            // command(LOG_ADD,{color:'white',value:this.getWord()});
-        }
-
-        // dialog.showOpenDialog({properties: ['openDirectory']}, this.onOpenFolderEnd.bind(this));
-    }
 
     onOpenFolder() {
         if (!this.isOpen) {
@@ -126,18 +91,19 @@ class C2_OpenProject extends React.Component {
             }
         });
     }
-    getOpenButton(){//打开项目的按钮
+
+    getOpenButton() {//打开项目的按钮
         var type = this.props.type;
         // console.log('type:', type)
         if (type == 0) {
             return <div/>
         }
-        if(type==1){
+        if (type == 1) {
             var style = {
-                animation: `alphaShow  0.5s ease`,
+                animation: `alphaShow  0.6s ease`,
                 animationFillMode: 'both'
             };
-        }else if(type==2){
+        } else if (type == 2) {
             style = {
                 animation: `alphaClose 0.3s ease`,
                 animationFillMode: 'forwards'
@@ -150,6 +116,17 @@ class C2_OpenProject extends React.Component {
             </div>
         </div>
     }
+
+    /**从历史记录里打开项目*/
+    onOpenProjectByHistrory(_path) {
+        if (fs.existsSync(_path)) {//判断Egret json文件是否存在
+            this.onOpenFolderEnd([_path]);//存在项目，打开
+        } else {
+            addOutputCooked(tr(205, _path), true);//205--路径不存在
+            removeProject({path: _path});//移除路径
+        }
+    }
+
     getHistrory() {
         var type = this.props.type;
         // console.log('type:', type)
@@ -159,17 +136,21 @@ class C2_OpenProject extends React.Component {
         return this.props.histrory.map((item, index)=> {
             if (type == 1) {
                 var style = {
-                    animation: `widthScaleShow  0.3s ease ${index * 0.1}s`,
+                    animation: `widthShow  0.4s ease ${index * 0.1}s`,
                     animationFillMode: 'both'
                 };
             } else {
                 style = {
-                    animation: `widthScaleClose 0.2s ease ${index * 0.1}s`,
+                    animation: `widthClose 0.2s ease ${index * 0.1}s`,
                     animationFillMode: 'forwards'
                 };
             }
-            return <div key={"his" + index} className="openHistroryBlock" style={style}>
-                <div className="openHistroryContent">{item.name}</div>
+            return <div key={"his" + index} style={style}>
+                <div className="openHistroryContent" >
+                    <p className="absolute"
+                       onClick={(e)=>{e.preventDefault();e.stopPropagation();}}>X</p>
+                    {item.name}
+                </div>
             </div>
         })
     }
