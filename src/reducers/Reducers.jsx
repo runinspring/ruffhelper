@@ -1,7 +1,7 @@
 import {combineReducers}from 'redux';
 var cfg = require('../config');//
 import {save} from '../lib/FileUtil';
-import {INIT,LEFT_CHANGE_CLUMTYPE,LOG_ADD,LOG_CLEAN,OPEN_RUFF_PROJECT} from '../actions/AppActions.jsx';
+import {INIT,LEFT_CHANGE_CLUMTYPE,LOG_ADD,LOG_CLEAN,OPEN_RUFF_PROJECT,REMOVE_RUFF_PROJECT} from '../actions/AppActions.jsx';
 import {List} from 'immutable';
 var appPath = '';
 let initConfig = {
@@ -32,15 +32,15 @@ var config = function (state = initConfig, action) {
                 result.ruffProjectPath = action.data.histrory[0].path;
             }
             appPath = result.appPath;
-            // console.log('saveData',saveData)
-            // console.log(12312,result.histrory.get(0))
             return result;
         case OPEN_RUFF_PROJECT:
             var histrory = result.histrory.unshift(action.data);//把最后打开的放在最上面
             var openPath = action.data.path;
             for(var i=1,len=histrory.size;i<len;i++){
+                console.log(i,histrory.get(i))
                 if(openPath == histrory.get(i).path){
                     histrory = histrory.delete(i);
+                    break;
                 }
             }
             if (histrory.size > 20) {
@@ -49,6 +49,19 @@ var config = function (state = initConfig, action) {
             result.histrory = histrory;
             result.ruffProjectPath = openPath;
             cfg.saveData.histrory = histrory;
+            saveConfig();
+            return result;
+        case REMOVE_RUFF_PROJECT:
+            var deletePath = action.data.path;
+            var histrory = result.histrory;
+            for (var i = 0, len = histrory.size; i < len; i++) {
+
+                if (deletePath == histrory.get(i).path) {
+                    result.histrory = histrory.delete(i);
+                    break;
+                }
+            }
+            cfg.saveData.histrory = result.histrory;
             saveConfig();
             return result;
     }

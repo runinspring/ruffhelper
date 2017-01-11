@@ -15,7 +15,7 @@ export default class LogContent extends React.Component {
             var timeAni = 0.1+(wid/564)*0.4;
             this.setState({
                 height:Math.ceil(this.refs.content.offsetHeight),
-                width:Math.ceil(this.refs.content.offsetWidth)+2,
+                width:Math.ceil(this.refs.content.offsetWidth)+4,
                 timeAni:timeAni
             })
             // console.log('wid:',wid)
