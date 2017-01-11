@@ -16,11 +16,11 @@ release 里面是稳定的发布版本
 
 
 ###调试开发流程
-npm install 安装各种包,需要翻墙，可以使用 [cnpm](https://npm.taobao.org/)
-
-1. npm run dev 启动 webpack，自动编译 react
-2. npm run start 启动 electron
-3. happy coding
+1. **npm install** 安装各种包,有的需要翻墙，可以使用 [cnpm](https://npm.taobao.org/)
+2. **npm install electron@1.4.2 -g** 全局安装 electron
+3. **npm run dev** 启动 webpack，自动编译 react
+4. **npm run start** 启动 electron
+5. happy coding
 
 ###[发布流程](doc/publish.MD)
 
