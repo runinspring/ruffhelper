@@ -32,7 +32,8 @@ body {
     /*font-family: Helvetica;*/
     color: #4cc1fd;
     margin: 4px 4px 4px 4px;
-    padding-top: 4px;
+    /*padding-top: 4px;*/
+    padding: 4px 0px 0 0;
     width: 150px;
     height: 522px;
     overflow-y: auto;
@@ -88,7 +89,10 @@ body {
     background: rgba(76, 193, 253, 0.6);
 }
 .left .container .openHistroryContent{
-    /*padding-left: 8px;*/
+    /*不换行*/
+    word-break: keep-all;
+    white-space: nowrap;
+    padding-left: 8px;
     overflow: hidden;
     color: #5EFDFF;
 }

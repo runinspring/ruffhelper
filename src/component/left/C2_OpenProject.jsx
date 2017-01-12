@@ -11,7 +11,7 @@ import {
     COLOR_GREEN,
     OPEN_RUFF_PROJECT, REMOVE_RUFF_PROJECT
 } from '../../actions/AppActions';
-import {tr} from '../../lib/Utils';
+import {tr, cutCharByLength} from '../../lib/Utils';
 var fs = require('fs');
 var path = require('path');
 import {escapePath} from '../../lib/FileUtil';
@@ -87,7 +87,7 @@ class C2_OpenProject extends React.Component {
                     addLog(tr(203), COLOR_RED);//不是有效的 ruff 项目
                 }
                 // console.log('existProject:', existProject)
-            }else{//打开的还是当前的项目
+            } else {//打开的还是当前的项目
                 var baseName = path.basename(projectPath);
                 addLog(tr(204, baseName), COLOR_GREEN);//204 切换至项目【xxx】
             }
@@ -125,8 +125,8 @@ class C2_OpenProject extends React.Component {
             // addLog(tr(204, baseName), COLOR_GREEN);//204 切换至项目【xxx】
             this.onOpenFolderEnd([_path]);//存在项目，打开
         } else {
-            addLog(tr(205,_path),COLOR_RED);//205--路径不存在
-            command(REMOVE_RUFF_PROJECT,{path: _path});//移除路径
+            addLog(tr(205, _path), COLOR_RED);//205--路径不存在
+            command(REMOVE_RUFF_PROJECT, {path: _path});//移除路径
         }
     }
 
@@ -148,6 +148,13 @@ class C2_OpenProject extends React.Component {
                     animationFillMode: 'forwards'
                 };
             }
+            // return <div key={"his" + index} style={style}>
+            //     <div className="openHistroryContent">
+            //         <div >
+            //             dadsfasdfads
+            //         </div>
+            //     </div>
+            // </div>
             return <div key={"his" + index} style={style}>
                 <div className="openHistroryContent" onClick={()=> {
                     this.onOpenProjectByHistrory(item.path)
@@ -156,9 +163,9 @@ class C2_OpenProject extends React.Component {
                        onClick={(e)=> {
                            e.preventDefault();
                            e.stopPropagation();
-                           command(REMOVE_RUFF_PROJECT,{path: item.path})
+                           command(REMOVE_RUFF_PROJECT, {path: item.path})
                        }}>X</p>
-                    {item.name}
+                    {`+ ${cutCharByLength(item.name, 16)}`}
                 </div>
             </div>
         })
