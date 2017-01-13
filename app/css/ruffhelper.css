@@ -111,6 +111,10 @@ body {
 .left .container .openHistroryContent:hover p{
     color: rgba(94, 253, 255, 1);
 }
+.left .input{
+    color: #5EFDFF;
+}
+
 
 
 
