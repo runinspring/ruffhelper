@@ -6,7 +6,7 @@ import NewProject from './left/C3_NewProject';
 import LeftContainer from './left/LeftContainer';
 import {tr} from '../lib/Utils';
 class LeftArea extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         // this.state={
         //     clum1:false,//每个栏目是否展开
@@ -14,27 +14,31 @@ class LeftArea extends React.Component {
         //     clum3:false
         // }
     }
-    render(){
+
+    render() {
         // console.log('LeftArea.render')
-        return(
-            <div className="absolute left">
-                <LeftContainer header={tr(0)} clumId={1}>
-                    <RapCommand clumId={1}/>
-                </LeftContainer>
-                <LeftContainer header={tr(1)} clumId={2}>
-                    <OpenProject clumId={2}/>
-                </LeftContainer>
-                <LeftContainer header={tr(2)} clumId={3}>
-                    <NewProject clumId={3}/>
-                </LeftContainer>
-                
+        return (
+
+            <div className="absolute" style={{overflow: 'hidden', width: '152px'}}>
+                <div className="left">
+                    <LeftContainer header={tr(0)} clumId={1}>
+                        <RapCommand clumId={1}/>
+                    </LeftContainer>
+                    <LeftContainer header={tr(1)} clumId={2}>
+                        <OpenProject clumId={2}/>
+                    </LeftContainer>
+                    <LeftContainer header={tr(2)} clumId={3}>
+                        <NewProject clumId={3}/>
+                    </LeftContainer>
+                </div>
             </div>
+
         )
     }
 }
 function select(state) {
-    return{
-        config:state.config
+    return {
+        config: state.config
     }
 }
 export default connect(select)(LeftArea);

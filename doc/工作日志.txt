@@ -12,6 +12,9 @@ icon.png的位置？
  mainWindow = new BrowserWindow({icon:'./assets/images/icon.png',width: 730, height: 530,
 ---------------------------------
 2017年01月13日 星期五
+隐藏了左侧的滚动条
+
+2017年01月13日 星期五
 选择ruff项目，如果文件名过长，需要截掉一段
 
 2017年01月11日 星期三
