@@ -1,7 +1,7 @@
 import React from 'react';
 import {tr} from '../../lib/Utils';
 import {escapePath} from '../../lib/FileUtil';
-import LocationSelector from './../left/cp/LocationSelector.jsx';
+import LocationSelector from './../left/cp/FolderSelector.jsx';
 import {Input} from 'antd';
 import {setRuffSDKLocation, closeAlert} from '../../actions/AppActions.jsx';
 var fs = require('fs');

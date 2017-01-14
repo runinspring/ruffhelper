@@ -1,7 +1,36 @@
-.JInput {
+.JUI {
+    font-size: 12px;
     color: #5EFDFF;
-    border-radius: 3px;
+    border-radius: 2px;
     border: 1px solid rgba(76, 193, 253, 0.6);
     background: rgba(76, 193, 253, 0.3);
+    width: 100%;
+}
+
+.JInput {
     padding: 0 4px 0 4px;
+}
+
+.JButton {
+    cursor: pointer;
+}
+
+.JButton:hover {
+    background: rgba(76, 193, 253, 0.6);
+}
+
+.JButton:disabled {
+    color: rgba(94, 253, 255, 0.4);
+    background: rgba(76, 193, 253, 0.1);
+}
+
+.JButton:focus {
+    outline: none;
+}
+
+.JSelector{/*文件夹选择器*/
+    text-align: center;
+}
+.JSelector:hover{
+    background: rgba(76, 193, 253, 0.6);
 }

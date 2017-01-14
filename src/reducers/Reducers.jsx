@@ -37,7 +37,7 @@ var config = function (state = initConfig, action) {
             var histrory = result.histrory.unshift(action.data);//把最后打开的放在最上面
             var openPath = action.data.path;
             for(var i=1,len=histrory.size;i<len;i++){
-                console.log(i,histrory.get(i))
+                // console.log(i,histrory.get(i))
                 if(openPath == histrory.get(i).path){
                     histrory = histrory.delete(i);
                     break;

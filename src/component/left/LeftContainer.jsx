@@ -35,7 +35,6 @@ class LeftContainer extends React.Component {
         } else if (clumId!=3 && typeId == 1) {//rap command会有一个延时效果，不再这里关闭
             command(LEFT_CHANGE_CLUMTYPE, { key: clumId, value: 2 });
         }else {//打开的时候进入关闭中状态
-            console.log(12312)
             command(LEFT_CHANGE_CLUMTYPE, { key: clumId, value: 0 });
         }
 

@@ -3,6 +3,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {dialog} from 'remote';
 import ReactDOM from 'react-dom';
+import FolderSelector from '../ui/FolderSelector';
 import {
     LEFT_CHANGE_CLUMTYPE,
     command,
@@ -18,7 +19,6 @@ import {escapePath} from '../../lib/FileUtil';
 class C2_OpenProject extends React.Component {
     constructor(props) {
         super(props)
-        this.isOpen = false;//是否打开了`打开文件夹`的对话框
         this.idxAniEnd = 0;
     }
 
@@ -42,55 +42,43 @@ class C2_OpenProject extends React.Component {
         })
     }
 
-
-    onOpenFolder() {
-        if (!this.isOpen) {
-            this.isOpen = true;
-        } else {
-            return;
-        }
-        dialog.showOpenDialog({properties: ['openDirectory']}, this.onOpenFolderEnd.bind(this));
-    }
-
-    onOpenFolderEnd(paths) {
-        this.isOpen = false;
-        console.log('打开文件夹的路径:', paths);
+    onOpenFolderEnd(openPath) {
+        // this.isOpen = false;
+        console.log('打开文件夹的路径:', openPath);
         // console.log('历史记录:', this.props.histrory);
         var hisExist = false;//历史里是否有
-        if (paths) {
-            var projectPath = escapePath(paths[0]);
-            // console.log('escapePath:', projectPath);
-            for (let i = 0, len = this.props.histrory.size; i < len; i++) {
-                if (projectPath == this.props.histrory.get(i).path) {
-                    hisExist = true;
+        var projectPath = escapePath(openPath);
+        // console.log('escapePath:', projectPath);
+        for (let i = 0, len = this.props.histrory.size; i < len; i++) {
+            if (projectPath == this.props.histrory.get(i).path) {
+                hisExist = true;
+                break;
+            }
+        }
+
+        if (!hisExist || this.props.config.ruffProjectPath != projectPath) {//打开了新的文件夹
+            var files = ['app.json', 'package.json', 'ruff_modules'];
+            var existProject = true;
+            for (var i = 0, len = files.length; i < len; i++) {
+                var filePath = projectPath + '\\' + files[i];
+                // console.log('filePath:',filePath,fs.existsSync(escapePath(filePath)));
+                if (!fs.existsSync(escapePath(filePath))) {//判断文件是否存在
+                    existProject = false;
                     break;
                 }
             }
-
-            if (!hisExist || this.props.config.ruffProjectPath != projectPath) {//打开了新的文件夹
-                var files = ['app.json', 'package.json', 'ruff_modules'];
-                var existProject = true;
-                for (var i = 0, len = files.length; i < len; i++) {
-                    var filePath = projectPath + '\\' + files[i];
-                    // console.log('filePath:',filePath,fs.existsSync(escapePath(filePath)));
-                    if (!fs.existsSync(escapePath(filePath))) {//判断文件是否存在
-                        existProject = false;
-                        break;
-                    }
-                }
-                if (existProject) {//是ruff项目
-                    var baseName = path.basename(projectPath);
-                    addLog(tr(204, baseName), COLOR_GREEN);//204 切换至项目【xxx】
-                    command(OPEN_RUFF_PROJECT, {name: baseName, path: projectPath});
-
-                } else {
-                    addLog(tr(203), COLOR_RED);//不是有效的 ruff 项目
-                }
-                // console.log('existProject:', existProject)
-            } else {//打开的还是当前的项目
+            if (existProject) {//是ruff项目
                 var baseName = path.basename(projectPath);
                 addLog(tr(204, baseName), COLOR_GREEN);//204 切换至项目【xxx】
+                command(OPEN_RUFF_PROJECT, {name: baseName, path: projectPath});
+
+            } else {
+                addLog(tr(203), COLOR_RED);//不是有效的 ruff 项目
             }
+            // console.log('existProject:', existProject)
+        } else {//打开的还是当前的项目
+            var baseName = path.basename(projectPath);
+            addLog(tr(204, baseName), COLOR_GREEN);//204 切换至项目【xxx】
         }
     }
 
@@ -113,9 +101,9 @@ class C2_OpenProject extends React.Component {
         }
         // tr(1) 选择ruff项目
         return <div style={style}>
-            <div className="openProject" onClick={this.onOpenFolder.bind(this)}>
-                {tr(1)}
-            </div>
+            <FolderSelector defaultValue={tr(1)} style={{
+                margin: '4px 0 4px 10px', width: '128px'
+            }} openFolderCallBack={this.onOpenFolderEnd.bind(this)}/>
         </div>
     }
 
@@ -123,7 +111,7 @@ class C2_OpenProject extends React.Component {
     onOpenProjectByHistrory(_path) {
         if (fs.existsSync(_path)) {//判断Egret json文件是否存在
             // addLog(tr(204, baseName), COLOR_GREEN);//204 切换至项目【xxx】
-            this.onOpenFolderEnd([_path]);//存在项目，打开
+            this.onOpenFolderEnd(_path);//存在项目，打开
         } else {
             addLog(tr(205, _path), COLOR_RED);//205--路径不存在
             command(REMOVE_RUFF_PROJECT, {path: _path});//移除路径
@@ -139,22 +127,18 @@ class C2_OpenProject extends React.Component {
         return this.props.histrory.map((item, index)=> {
             if (type == 1) {
                 var style = {
-                    animation: `widthShow  0.4s ease ${index * 0.1}s`,
+                    width:`${Math.random()}px`,
+                    animation: `widthShow  0.4s ease ${index * 0.1}s infinite`,
                     animationFillMode: 'both'
                 };
             } else {
                 style = {
+                    width:'100%',
                     animation: `widthClose 0.2s ease ${index * 0.1}s`,
                     animationFillMode: 'forwards'
                 };
             }
-            // return <div key={"his" + index} style={style}>
-            //     <div className="openHistroryContent">
-            //         <div >
-            //             dadsfasdfads
-            //         </div>
-            //     </div>
-            // </div>
+            // console.log('type:',style)
             return <div key={"his" + index} style={style}>
                 <div className="openHistroryContent" onClick={()=> {
                     this.onOpenProjectByHistrory(item.path)
@@ -172,10 +156,10 @@ class C2_OpenProject extends React.Component {
     }
 
     render() {
+        //tr 1 选择ruff项目
         return (
             <div className="mousePointer" ref="tree">
                 {this.getOpenButton()}
-
                 <div >
                     {this.getHistrory()}
                 </div>

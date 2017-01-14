@@ -29,15 +29,11 @@ body {
 
 .left { /*左侧区域*/
     font-family: ruixian;
-    /*font-family: Helvetica;*/
     color: #4cc1fd;
     margin: 4px 0px 4px 4px;
-    /*padding-top: 4px;*/
     padding: 4px 0px 0 0;
     width: 150px;
     height: 522px;
-    /*scroll:no;*/
-    /*overflow-x:hidden;*/
     overflow-y: scroll;
 }
 
@@ -78,18 +74,7 @@ body {
     border-radius: 4px;
     background: rgba(76, 193, 253, 0); /*背景色透明*/
 }
-.left .container .openProject{/*选择ruff项目*/
-    /*font-style: italic; !*斜体*!*/
-    text-align: center;
-    margin: 4px 10px 4px 10px;
-    color: #5EFDFF;
-    background: rgba(76, 193, 253, 0.3);
-    border-radius: 2px;
-    border: 1px solid rgba(76, 193, 253, 0.8);
-}
-.left .container .openProject:hover{
-    background: rgba(76, 193, 253, 0.6);
-}
+
 .left .container .openHistroryContent{
     /*不换行*/
     word-break: keep-all;

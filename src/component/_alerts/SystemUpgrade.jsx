@@ -2,7 +2,7 @@
 import React from 'react';
 import {tr} from '../../lib/Utils';
 import {Input,Checkbox} from 'antd';
-import LocationSelector from './../left/cp/LocationSelector.jsx';
+import LocationSelector from './../left/cp/FolderSelector.jsx';
 import {closeAlert} from '../../actions/AppActions.jsx';
 var fs = require('fs');
 export default class SystemUpgrade extends React.Component {
