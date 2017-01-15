@@ -64,6 +64,8 @@ var config = function (state = initConfig, action) {
             cfg.saveData.histrory = result.histrory;
             saveConfig();
             return result;
+        default:
+            return state;
     }
     return result;
 }

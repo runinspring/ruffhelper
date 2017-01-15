@@ -75,7 +75,7 @@ body {
     background: rgba(76, 193, 253, 0); /*背景色透明*/
 }
 
-.left .container .openHistroryContent{
+.left .container .openHistroryItem {
     /*不换行*/
     word-break: keep-all;
     white-space: nowrap;
@@ -83,25 +83,23 @@ body {
     overflow: hidden;
     color: #5EFDFF;
 }
-.left .container .openHistroryContent:hover{
-    /*color: #5EFDFF;*/
-    /*border-bottom: 1px solid #5EFDFF;*/
-    /*color: #4cc1fd;*/
+
+.left .container .openHistroryItem:hover {
     background: rgba(76, 193, 253, 0.3);
 }
-.left .container .openHistroryContent p{/*关闭X的效果*/
-    right:8px;
+
+.left .container .openHistroryItem p { /*关闭X的效果*/
+    right: 8px;
     color: rgba(94, 253, 255, 0);
 }
-.left .container .openHistroryContent:hover p{
+
+.left .container .openHistroryItem:hover p {
     color: rgba(94, 253, 255, 1);
 }
-.left .input{
+
+.left .input {
     color: #5EFDFF;
 }
-
-
-
 
 .right {
     font-family: ruixian;
@@ -111,18 +109,20 @@ body {
     border: 1px solid rgba(76, 193, 253, 0.6);
     border-radius: 3px;
 }
-.right .logArea{
+
+.right .logArea {
     margin-top: 100px;
     overflow-y: auto;
-    padding:0 4px 0 2px;
+    padding: 0 4px 0 2px;
     height: 412px;
 }
-.right .logArea .content{
+
+.right .logArea .content {
     font-style: italic; /*斜体*/
     font-size: 14px;
     width: auto;
-    word-break:break-all;
-    display:inline-block;
+    word-break: break-all;
+    display: inline-block;
     padding: 0 8px 0 4px;
     overflow: hidden;
     /*color: rgba(76, 193, 253, 0.8);*/
@@ -140,28 +140,32 @@ body {
     /*height: 100%;*/
     /*background: rgba(76, 193, 253, 0.1);*/
 }
+
 .alert {
 
 }
 
 /*宽度打开和关闭的动画*/
 @keyframes widthShow {
-    0% {
-        width: 0px
+    from {
+        width: 0px;
+        opacity: 0
     }
-    100% {
-        width: 100%
+    to {
+        width: 100%;
+        opacity: 1
     }
 }
 
 @keyframes widthClose {
-    0% {
+    from {
         width: 100%
     }
-    100% {
+    to {
         width: 0px;
     }
 }
+
 @keyframes widthScaleShow {
     0% {
         opacity: 0;
@@ -183,6 +187,7 @@ body {
         transform: scaleX(0);
     }
 }
+
 @keyframes alphaShow {
     0% {
         opacity: 0;
@@ -252,8 +257,22 @@ body {
     -ms-user-select: text;
     user-select: text;
 }
+
 /*导航自定义样式*/
-::-webkit-scrollbar {width: 2px;height: 2px; }
-::-webkit-scrollbar-track {background-color: rgba(76, 193, 253, 0)} /* 滚动条的滑轨背景颜色 */
-::-webkit-scrollbar-thumb { background-color:#5EFDFF;}
-::-webkit-scrollbar-thumb:horizontal{background-color: #fff}
+::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(76, 193, 253, 0)
+}
+
+/* 滚动条的滑轨背景颜色 */
+::-webkit-scrollbar-thumb {
+    background-color: #5EFDFF;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    background-color: #fff
+}

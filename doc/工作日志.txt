@@ -11,6 +11,9 @@ rap install
 icon.png的位置？
  mainWindow = new BrowserWindow({icon:'./assets/images/icon.png',width: 730, height: 530,
 ---------------------------------
+2017年01月16日 星期一
+增加打开历史的循环动画
+
 2017年01月14日 星期六
 增加左侧新建项目的输入框
 把输入框和文件夹选择器单独提UI组件

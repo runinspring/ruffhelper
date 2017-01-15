@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {dialog} from 'remote';
 import ReactDOM from 'react-dom';
 import FolderSelector from '../ui/FolderSelector';
+import Item from './openproject/Item';
 import {
     LEFT_CHANGE_CLUMTYPE,
     command,
@@ -119,44 +120,20 @@ class C2_OpenProject extends React.Component {
     }
 
     getHistrory() {
-        var type = this.props.type;
+        var aniType = this.props.type;
         // console.log('type:', type)
-        if (type == 0) {
+        if (aniType == 0) {
             return <div/>
         }
         return this.props.histrory.map((item, index)=> {
-            if (type == 1) {
-                var style = {
-                    width:`${Math.random()}px`,
-                    animation: `widthShow  0.4s ease ${index * 0.1}s infinite`,
-                    animationFillMode: 'both'
-                };
-            } else {
-                style = {
-                    width:'100%',
-                    animation: `widthClose 0.2s ease ${index * 0.1}s`,
-                    animationFillMode: 'forwards'
-                };
-            }
-            // console.log('type:',style)
-            return <div key={"his" + index} style={style}>
-                <div className="openHistroryContent" onClick={()=> {
-                    this.onOpenProjectByHistrory(item.path)
-                }}>
-                    <p className="absolute"
-                       onClick={(e)=> {
-                           e.preventDefault();
-                           e.stopPropagation();
-                           command(REMOVE_RUFF_PROJECT, {path: item.path})
-                       }}>X</p>
-                    {`+ ${cutCharByLength(item.name, 16)}`}
-                </div>
-            </div>
+            return <Item key={"hisItem" + index} index={index} item={item} aniType={aniType}
+                         clickCallBack={this.onOpenProjectByHistrory.bind(this)}/>
         })
     }
 
     render() {
         //tr 1 选择ruff项目
+        // console.log('open:',this.props)
         return (
             <div className="mousePointer" ref="tree">
                 {this.getOpenButton()}
