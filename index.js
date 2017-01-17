@@ -33,7 +33,8 @@ app.on('ready', function() {
   //console.log(appIcon)
   //mainWindow = new BrowserWindow({width: 730, height: 530,
   var version = app.getVersion();
-  mainWindow = new BrowserWindow({icon:'./assets/images/icon.png',width: 730, height: 530,
+  mainWindow = new BrowserWindow({icon:'./app/css/assets/test.png',width: 730, height: 530,
+  // mainWindow = new BrowserWindow({icon:'./assets/images/icon.png',width: 730, height: 530,
     title:"RuffHelper  "+version,
     center:true,resizable:false,useContentSize:true});
   //cosnole.log(123,Menu)

@@ -25,7 +25,7 @@ var config = function (state = initConfig, action) {
         case INIT:
             result = Object.assign({}, result, action.data);
             result.histrory = List(action.data.histrory);
-            cfg.saveData.ruffSDKLocation = result.ruffSDKLocation;
+            // cfg.saveData.ruffSDKLocation = result.ruffSDKLocation;
             cfg.saveData.histrory = result.histrory;
             if (action.data.histrory && action.data.histrory.length > 0) {//默认打开第一个项目
                 //console.log(result.histrory.get(0).path)
@@ -76,7 +76,7 @@ var saveConfig = function () {
     save(cfg.configPath, cfg.saveData);
 }
 let initLeft={
-    clum1:0,//每个栏目的打开状态 0关闭 1打开 2关闭中
+    clum1:1,//每个栏目的打开状态 0关闭 1打开 2关闭中
     clum2:1,
     clum3:1
 }

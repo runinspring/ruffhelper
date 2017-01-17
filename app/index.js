@@ -4,7 +4,7 @@ const MenuItem = electron.MenuItem;
 const {app} = electron; // Module to control application life.
 const {BrowserWindow} = electron; // Module to create native browser window.
 var mainWindow = null;
-var appIcon = null;
+// var appIcon = null;
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
     // On OS X it is common for applications and their menu bar
@@ -27,7 +27,7 @@ app.on('ready', function () {
     //mainWindow = new BrowserWindow({width: 730, height: 530,
     var version = app.getVersion()
     mainWindow = new BrowserWindow({
-        icon: './assets/images/icon.png', width: 730, height: 530,
+        width: 730, height: 530,
         title: "RuffHelper  " + version,
         center: true, resizable: false, useContentSize: true
     });

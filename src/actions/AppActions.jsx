@@ -4,6 +4,7 @@ export const OPEN_RUFF_PROJECT = 'open_ruff_project';//打开ruff项目
 export const REMOVE_RUFF_PROJECT = 'remove_ruff_project';//移除历史记录里的项目
 export const LOG_ADD = 'log_add';//增加log信息
 export const LOG_CLEAN = 'log_clean';//清除log信息
+import { sendCommands } from '../lib/RapCommand';
 var dispatch = null;
 /**初始化，保存dispatch */
 exports.init = function (_dispatch, data) {
@@ -12,7 +13,7 @@ exports.init = function (_dispatch, data) {
 }
 /**通用的命令*/
 function command(command, data) {
-    var obj = {type: command, data: data}
+    var obj = { type: command, data: data }
     // console.log('command:',obj)
     dispatch(obj);
 }
@@ -41,6 +42,13 @@ exports.addLog = function (data, color) {
                 break;
         }
     }
-
     command(LOG_ADD, obj);
+}
+/**
+ * 发送rap命令
+ * @param cmd string 发送的命令
+ * @param callback 回调方法
+ */
+exports.rapCommand = function (cmd, parentDir, callback) {
+    sendCommands(cmd, parentDir);
 }

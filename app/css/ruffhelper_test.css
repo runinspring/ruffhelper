@@ -1,0 +1,278 @@
+@font-face {
+    font-family: 'ruixian';
+    src: url('font/ruixian.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'deadstar';
+    src: url('font/deadstar.otf') format('truetype');
+}
+
+body {
+    /*font-family: ruixian;*/
+    margin: 0px;
+    padding: 0px;
+    background-color: #2e2e2e;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    font-size: 0.75em;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.loading {
+    font-family: deadstar;
+    font-size: 80px;
+}
+
+.left { /*左侧区域*/
+    font-family: ruixian;
+    color: #4cc1fd;
+    margin: 4px 0px 4px 4px;
+    padding: 4px 0px 0 0;
+    width: 150px;
+    height: 522px;
+    overflow-y: scroll;
+}
+
+.left .container { /*大栏目容器*/
+    margin-bottom: 10px;
+}
+
+.left .container .header { /*标题*/
+    text-align: center;
+    text-shadow: 0 0 5px #4cc1fd;
+    padding: 4px 10px 4px 10px;
+    border: 1px solid rgba(76, 193, 253, 0.6);
+    border-radius: 3px;
+    font-style: normal; /*斜体*/
+}
+
+.left .container .rapcommand {
+    /*不换行*/
+    word-break: keep-all;
+    white-space: nowrap;
+
+    font-style: italic; /*斜体*/
+    margin: 4px 10px 0px 10px;
+    color: #5EFDFF;
+}
+
+.left .container .rapcommand:hover {
+    animation: rapcommandHover 0.3s ease-in-out infinite alternate;
+}
+
+.left .container .rapcommand .border {
+    background: rgba(76, 193, 253, 0.3);
+    border-radius: 2px;
+    border: 1px solid rgba(76, 193, 253, 0.8);
+}
+
+.left .container .rapcommand .border:hover {
+    border-radius: 4px;
+    background: rgba(76, 193, 253, 0); /*背景色透明*/
+}
+
+.left .container .openHistroryItem {
+    /*不换行*/
+    word-break: keep-all;
+    white-space: nowrap;
+    padding-left: 8px;
+    overflow: hidden;
+    color: #5EFDFF;
+}
+
+.left .container .openHistroryItem:hover {
+    background: rgba(76, 193, 253, 0.3);
+}
+
+.left .container .openHistroryItem p { /*关闭X的效果*/
+    right: 8px;
+    color: rgba(94, 253, 255, 0);
+}
+
+.left .container .openHistroryItem:hover p {
+    color: rgba(94, 253, 255, 1);
+}
+
+.left .input {
+    color: #5EFDFF;
+}
+
+.right {
+    font-family: ruixian;
+    margin: 8px 0 4px 158px;
+    width: 566px;
+    height: 514px;
+    border: 1px solid rgba(76, 193, 253, 0.6);
+    border-radius: 3px;
+}
+
+.right .logArea {
+    margin-top: 100px;
+    overflow-y: auto;
+    padding: 0 4px 0 2px;
+    height: 412px;
+}
+
+.right .logArea .content {
+    font-style: italic; /*斜体*/
+    font-size: 14px;
+    width: auto;
+    word-break: break-all;
+    display: inline-block;
+    padding: 0 8px 0 4px;
+    overflow: hidden;
+    /*color: rgba(76, 193, 253, 0.8);*/
+    /*color: #5EFDFF;*/
+    color: white;
+    margin: 0 2px 2px 0;
+    /*margin-bottom: 2px;*/
+    border: 1px solid rgba(76, 193, 253, 0.8);
+    border-radius: 3px;
+    /*background: rgba(76, 193, 253, 0.8);*/
+    background: rgba(76, 193, 253, 0.6);
+    /*background: rgba(255, 255, 255, 0.2);*/
+    /*background: rgba(0, 0, 0, 0.6);*/
+
+    /*height: 100%;*/
+    /*background: rgba(76, 193, 253, 0.1);*/
+}
+
+.alert {
+
+}
+
+/*宽度打开和关闭的动画*/
+@keyframes widthShow {
+    from {
+        width: 0px;
+        opacity: 0
+    }
+    to {
+        width: 100%;
+        opacity: 1
+    }
+}
+
+@keyframes widthClose {
+    from {
+        width: 100%
+    }
+    to {
+        width: 0px;
+    }
+}
+
+@keyframes widthScaleShow {
+    0% {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    100% {
+        opacity: 1.0;
+        transform: scaleX(1);
+    }
+}
+
+@keyframes widthScaleClose {
+    0% {
+        opacity: 1.0;
+        transform: scaleX(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+}
+
+@keyframes alphaShow {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1.0;
+    }
+}
+
+@keyframes alphaClose {
+    0% {
+        opacity: 1.0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes rapcommandHover {
+    from {
+        box-shadow: 0 0 10px #4cc1fd,
+        0 0 5px #4cc1fd,
+        0 0 7px #4cc1fd,
+        0 0 10px rgba(76, 193, 253, 0.1),
+        0 0 15px rgba(76, 193, 253, 0.1),
+        0 0 20px rgba(76, 193, 253, 0.1),
+        0 0 25px rgba(76, 193, 253, 0.1),
+        0 0 38px rgba(76, 193, 253, 0.1);
+    }
+    to {
+        box-shadow: 0 0 5px #4cc1fd,
+        0 0 2px #4cc1fd,
+        0 0 4px #4cc1fd,
+        0 0 5px rgba(76, 193, 253, 0.1),
+        0 0 9px rgba(76, 193, 253, 0.1),
+        0 0 10px rgba(76, 193, 253, 0.1),
+        0 0 12px rgba(76, 193, 253, 0.1),
+        0 0 19px rgba(76, 193, 253, 0.1);
+    }
+}
+
+/*鼠标显示为手型*/
+.mousePointer {
+    cursor: pointer;
+}
+
+.unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    /*
+      Introduced in IE 10.
+      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.selectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: text;
+    -webkit-user-select: text;
+    /*
+      Introduced in IE 10.
+      See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+    */
+    -ms-user-select: text;
+    user-select: text;
+}
+
+/*导航自定义样式*/
+::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(76, 193, 253, 0)
+}
+
+/* 滚动条的滑轨背景颜色 */
+::-webkit-scrollbar-thumb {
+    background-color: #5EFDFF;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    background-color: #fff
+}
