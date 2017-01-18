@@ -2,7 +2,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import ReactDOM from 'react-dom';
-import { LEFT_CHANGE_CLUMTYPE, command, rapCommand, addLog,COLOR_RED } from '../../actions/AppActions';
+import { LEFT_CHANGE_CLUMTYPE, command, rapCommand, addLog, COLOR_RED } from '../../actions/AppActions';
 import { tr } from '../../lib/Utils';
 class C1_RapCommand extends React.Component {
     constructor(props) {
@@ -53,13 +53,15 @@ class C1_RapCommand extends React.Component {
         // }
     }
     executeCommand() {
-        // console.log('executeCommand')
+        console.log('executeCommand')
         var projectPath = this.props.ruffProjectPath;
         if (!projectPath) {
             addLog(tr(210), COLOR_RED);//请先打开 ruff 项目
+        } else {
+            addLog(tr(200, 'rap --version'));//200 执行命令：xxxx
+            rapCommand('rap --version', projectPath);
         }
-        addLog(tr(200, 'rap --version'));//200 执行命令：xxxx
-        rapCommand('rap --version',projectPath);
+
         // RapCommand.command('rap --version')
     }
     getItems() {
