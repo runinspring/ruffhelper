@@ -20,7 +20,7 @@ exports.sendCommands = function (command, parentDir) {
         childProcess = spawn('/usr/local/bin/rap',arrOpts, { cwd: parentDir });
     }
     var raplogPid = childProcess.pid;
-    console.log('pid:',raplogPid)
+    console.log('raplogPid:',raplogPid)
 
 
     childProcess.stdout.on('data', function (data) {
