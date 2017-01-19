@@ -23,8 +23,6 @@ exports.sendCommands = function (command, parentDir, callBack, inputObj) {
     }
     var raplogPid = childProcess.pid;
     console.log('raplogPid:', raplogPid)
-
-
     childProcess.stdout.on('data', function (data) {
         var result = decodeData(data);
         console.log('stdout.data:', `"${result}"`)
@@ -91,6 +89,7 @@ function decodeData(data) {
     result = result.replace(/\[K/g, "");
     return result;
 }
+/**清除非法字符的纯净结果*/
 function getPureResult(value) {
-    return value.replace(/[^\w\?\(\)-]/g, '');//清除非法字符的纯净结果
+    return value.replace(/[^\w\?\(\)-]/g, '');
 }
