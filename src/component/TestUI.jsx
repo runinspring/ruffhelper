@@ -15,8 +15,8 @@ class TestUI extends React.Component {
         return (
             <div>
 
-                <LeftContainer header={tr(1)} clumId={2}>
-                    <RapCommand clumId={1} />
+                <LeftContainer header={tr(3)} clumId={3}>
+                    <NewProject clumId={3} />
                 </LeftContainer>
                 <LeftContainer header={tr(2)} clumId={2}>
                     <OpenProject clumId={2} />

@@ -1,7 +1,7 @@
 /**新建一个rap项目*/
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { LEFT_CHANGE_CLUMTYPE, command, addLog, COLOR_RED } from '../../actions/AppActions';
+import { LEFT_CHANGE_CLUMTYPE, addLog, COLOR_RED, COLOR_GREEN, rapCommand } from '../../actions/AppActions';
 import { tr, cutCharByLength } from '../../lib/Utils';
 import Input from '../ui/Input';
 import FolderSelector from '../ui/FolderSelector';
@@ -17,8 +17,13 @@ class C3_NewProject extends React.Component {
             newAppVersion: '0.1.0',
             newAppDescription: '',
             newAppAuthor: '',
-
         }
+        //test
+        this.state.newAppPath = '/Users/zhangyu/jeff/ZhiHuaSiStudio/2016/ruffhelper/config'
+        this.state.newAppName = 't22';
+    }
+    componentDidMount() {
+        this.onCreateRuffProject();//test
     }
     onCreateRuffProject() {
         console.log('onCreateRuffProject')
@@ -37,23 +42,30 @@ class C3_NewProject extends React.Component {
             this.setState({ newAppVersion: '0.1.0' })
         } else if (fs.existsSync(newAppPath)) {//console.log('路径正确')
             var createPath = `${newAppPath}/${newAppName}`;//创建的路径
+            //testing
+            var inputObj = {
+                '? app name': newAppName,
+                '? version': newAppVersion,
+                '? description': self.state.newAppDescription,
+                '? author': self.state.newAppAuthor
+            }
+            rapCommand('rap init', createPath,null,inputObj);//testing
+            //testing
             if (fs.existsSync(createPath)) {
                 addLog(tr(206, createPath), COLOR_RED);//该项目已存在
             } else {
                 fs.mkdir(createPath, function (err) {
                     if (err) {
                         addLog(tr(208, err), COLOR_RED);//创建项目失败
-                    } else {//符合要求
-                        
-                    }
+                    } else {//成功
+                        addLog(tr(209, createPath), COLOR_GREEN);////创建文件夹
 
+                    }
                 })
             }
-
         } else {//console.log('路径不存在');
             addLog(tr(205, newAppPath), COLOR_RED);//路径不存在
         }
-        console.log('succ');
     }
 
     render() {
