@@ -1,5 +1,6 @@
 var config = require('../config');
 var spawn = require('child_process').spawn;
+import { addLog, COLOR_RED } from '../actions/AppActions.jsx';
 exports.sendCommands = function (command, parentDir, callBack, inputObj) {
     console.log('RapCommand.sendCommand:', command)
 
@@ -14,6 +15,7 @@ exports.sendCommands = function (command, parentDir, callBack, inputObj) {
     console.log('arrOpts:', arrOpts);
     console.log('parentDir:', parentDir);
     console.log('platform:', config.platform)
+    var outputObj = {};
     if (config.platform == "Windows") {
         var childProcess = spawn(trueCmd[0], arrOpts, { cwd: parentDir });
     } else {//mac
@@ -26,18 +28,44 @@ exports.sendCommands = function (command, parentDir, callBack, inputObj) {
     childProcess.stdout.on('data', function (data) {
         var result = decodeData(data);
         console.log('stdout.data:', `"${result}"`)
-        var pureResult = result.replace(/[^\w\?\(\)-]/g, '');//清除非法字符的纯净结果
+        var pureResult = getPureResult(result);
         console.log('pureResult', pureResult)
         if (!result || pureResult == "") {//console.log('没有返回消息，跳过');
             return;
         }
-        console.log('inputObj:', inputObj)
+        // console.log('inputObj:', inputObj)
+        var find = false;
         for (var key in inputObj) {
             if (result.indexOf(key) > -1) {
-                // childProcess.stdin.write(value + '\n');
+                var inputValue = inputObj[key];
+                childProcess.stdin.write(inputValue + '\n');
+                if (inputValue) {
+                    result = key + ": " + inputValue;
+                } else {
+                    result = key+":";
+                }
+                console.log('-----addLog-----:', result);
+                find = true;
+                addLog(result);
+                delete inputObj[key];
+                outputObj[getPureResult(key)] = inputValue;
+                break;
             }
         }
-
+        console.log('outputObj:', outputObj)
+        for (key in outputObj) {//输出的信息里不包含输入的内容
+            if (pureResult.indexOf(key) > -1) {
+                find = true;
+                return;
+            }
+        }
+        if (!find) {
+            console.log('-----addLog2-----:', result);
+            addLog(result);
+        }
+    })
+    childProcess.stdout.on('end', function (data) {
+        console.log("stdout.end:", data);
     })
     childProcess.stderr.on('data', function (data) {
         console.log("stderr:", data);
@@ -60,5 +88,9 @@ function decodeData(data) {
         // console.log('清除掉开头的换行');
         result = result.replace(/\n/, "");
     }
+    result = result.replace(/\[K/g, "");
     return result;
+}
+function getPureResult(value) {
+    return value.replace(/[^\w\?\(\)-]/g, '');//清除非法字符的纯净结果
 }

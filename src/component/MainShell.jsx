@@ -11,8 +11,8 @@ class MainShell extends React.Component {
     render() {
         return (
             <div>
-                <Test />
-                <RightArea />
+                <Test className='absolute'/>
+                <RightArea className='absolute'/>
             </div>
         )
     }

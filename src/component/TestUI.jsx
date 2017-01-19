@@ -13,7 +13,7 @@ class TestUI extends React.Component {
     // <NewProject clumId={3} />
     render() {
         return (
-            <div>
+            <div className="absolute" style={{overflow: 'hidden', width: '152px'}}>
 
                 <LeftContainer header={tr(3)} clumId={3}>
                     <NewProject clumId={3} />

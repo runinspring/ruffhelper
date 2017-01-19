@@ -14,7 +14,7 @@ class C3_NewProject extends React.Component {
         this.state = {
             newAppPath: '',
             newAppName: '',
-            newAppVersion: '0.1.0',
+            newAppVersion: '0.2.0',
             newAppDescription: '',
             newAppAuthor: '',
         }
