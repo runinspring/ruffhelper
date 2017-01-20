@@ -19,8 +19,8 @@ class C3_NewProject extends React.Component {
             newAppAuthor: '',
         }
         //test
-        this.state.newAppPath = '/Users/zhangyu/jeff/ZhiHuaSiStudio/2016/ruffhelper/config'
-        this.state.newAppName = 't22';
+        // this.state.newAppPath = '/Users/zhangyu/jeff/ZhiHuaSiStudio/2016/ruffhelper/config'
+        // this.state.newAppName = 't22';
     }
     componentDidMount() {
         this.onCreateRuffProject();//test
@@ -32,7 +32,7 @@ class C3_NewProject extends React.Component {
         var newAppName = this.state.newAppName;
         var newAppVersion = this.state.newAppVersion;
         if (!/^[0-9a-z]+$/.test(newAppName)) {
-            console.log('项目名称只能是小写的英文字母')
+            // console.log('项目名称只能是小写的英文字母')
             // addOutputCooked(tr(214),true);//项目名称只能是小写的英文字母
             addLog(tr(214), COLOR_RED);
             return;
@@ -43,13 +43,14 @@ class C3_NewProject extends React.Component {
         } else if (fs.existsSync(newAppPath)) {//console.log('路径正确')
             var createPath = `${newAppPath}/${newAppName}`;//创建的路径
             //testing
-            var inputObj = {
-                '? app name': newAppName,
-                '? version': newAppVersion,
-                '? description': self.state.newAppDescription,
-                '? author': self.state.newAppAuthor
-            }
-            rapCommand('rap init', createPath,null,inputObj);//testing
+            // var inputObj = {
+            //     '? app name': newAppName,
+            //     '? version': newAppVersion,
+            //     '? description': self.state.newAppDescription,
+            //     '? author': self.state.newAppAuthor
+            // }
+            // rapCommand('rap init', createPath,null,inputObj);//testing
+            // rapCommand('rap --version')
             //testing
             if (fs.existsSync(createPath)) {
                 addLog(tr(206, createPath), COLOR_RED);//该项目已存在
@@ -106,7 +107,7 @@ class C3_NewProject extends React.Component {
                     self.setState({ newAppDescription: value })
                 } } />
                 <div style={styleItem}>{tr(9)}</div>
-                <Input value={this.state.newAppAuthor} placeholer={tr(9)} onChange={(value) => {
+                <Input value={this.state.newAppAuthor} placeholer={tr(9)}  onChange={(value) => {
                     self.setState({ newAppAuthor: value })
                 } } />
                 <div style={{ margin: '6px 16px 0 8px ' }}>

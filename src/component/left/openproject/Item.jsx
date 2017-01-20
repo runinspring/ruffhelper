@@ -1,9 +1,11 @@
 import React, {PropTypes} from 'react';
 import {
+    addLog,
     command,
-    REMOVE_RUFF_PROJECT
+    REMOVE_RUFF_PROJECT,
+    COLOR_GREEN
 } from '../../../actions/AppActions';
-import {cutCharByLength} from '../../../lib/Utils';
+import {tr,cutCharByLength} from '../../../lib/Utils';
 export default class Item extends React.Component {
     constructor(props) {
         super(props)
@@ -58,6 +60,7 @@ export default class Item extends React.Component {
                        e.preventDefault();
                        e.stopPropagation();
                        command(REMOVE_RUFF_PROJECT, {path: item.path})
+                       addLog(tr(211,item.name),COLOR_GREEN);
                    }}>X</p>
                 {`+ ${cutCharByLength(item.name, 16)}`}
             </div>

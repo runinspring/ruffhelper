@@ -1,6 +1,7 @@
 var config = require('../config');
 var spawn = require('child_process').spawn;
-import { addLog, COLOR_RED } from '../actions/AppActions.jsx';
+import { tr } from './Utils';
+import { addLog, COLOR_RED ,COLOR_GREEN} from '../actions/AppActions.jsx';
 exports.sendCommands = function (command, parentDir, callBack, inputObj) {
     console.log('RapCommand.sendCommand:', command)
 
@@ -47,6 +48,10 @@ exports.sendCommands = function (command, parentDir, callBack, inputObj) {
                 addLog(result);
                 delete inputObj[key];
                 outputObj[getPureResult(key)] = inputValue;
+                if(Object.getOwnPropertyNames(inputObj).length == 0) {
+                    inputObj = null;
+                    childProcess.stdin.end();//输入结束
+                }
                 break;
             }
         }
@@ -70,6 +75,14 @@ exports.sendCommands = function (command, parentDir, callBack, inputObj) {
     });
     childProcess.on('exit', function (code, signal) {
         console.log('stdout.exit:', code, signal)
+        if(command!='rap log'){
+            addLog(tr(213),COLOR_GREEN);//命令执行结束
+        }
+        if (signal) {
+            console.log('kill')
+            childProcess = null;
+        }
+        if (callBack) callBack();
     })
     childProcess.on('error', function (error) {
         console.log('error:', error)

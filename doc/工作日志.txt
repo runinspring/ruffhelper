@@ -11,6 +11,9 @@ rap install
 icon.png的位置？
  mainWindow = new BrowserWindow({icon:'./assets/images/icon.png',width: 730, height: 530,
 ---------------------------------
+2017年1月20日 周五
+增加命令行结束的监听
+
 2017年01月16日 星期一
 增加打开历史的循环动画
 
