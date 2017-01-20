@@ -31,6 +31,7 @@ var config = function (state = initConfig, action) {
                 //console.log(result.histrory.get(0).path)
                 result.ruffProjectPath = action.data.histrory[0].path;
             }
+            console.log('----openPath111----:',result.ruffProjectPath)
             appPath = result.appPath;
             return result;
         case OPEN_RUFF_PROJECT:
@@ -47,6 +48,7 @@ var config = function (state = initConfig, action) {
                 histrory = histrory.slice(0, 20);
             }
             result.histrory = histrory;
+            console.log('----openPath222----:',openPath)
             result.ruffProjectPath = openPath;
             cfg.saveData.histrory = histrory;
             saveConfig();
@@ -77,7 +79,7 @@ var saveConfig = function () {
 }
 let initLeft={
     clum1:1,//每个栏目的打开状态 0关闭 1打开 2关闭中
-    clum2:1,
+    clum2:0,
     clum3:1
 }
 var left = function (state=initLeft,action) {

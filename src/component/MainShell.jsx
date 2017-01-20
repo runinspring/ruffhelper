@@ -8,15 +8,15 @@ class MainShell extends React.Component {
     constructor(props) {
         super(props)
     }
+    // render() {
+    //     return (
+    //         <div>
+    //             <Test className='absolute'/>
+    //             <RightArea className='absolute'/>
+    //         </div>
+    //     )
+    // }
     render() {
-        return (
-            <div>
-                <Test className='absolute'/>
-                <RightArea className='absolute'/>
-            </div>
-        )
-    }
-    render2() {
         return (
             <div>
                 <iframe className="absolute" style={{ marginLeft: '80px', border: '0px', width: '100%', height: '100%', opacity: '0.5' }} src="./pages/background/index.html"></iframe>

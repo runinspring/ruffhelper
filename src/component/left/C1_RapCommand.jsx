@@ -42,7 +42,11 @@ class C1_RapCommand extends React.Component {
                 command(LEFT_CHANGE_CLUMTYPE, { key: self.props.clumId, value: 0 });
             }
         })
-        this.executeCommand();
+        // var self = this;
+        setTimeout(function () {
+            self.executeCommand();
+        },1000)
+        // this.executeCommand();
     }
 
     componentDidUpdate(prevProps) {
@@ -53,13 +57,18 @@ class C1_RapCommand extends React.Component {
         // }
     }
     executeCommand() {
-        console.log('executeCommand')
+        // console.log('executeCommand')
+        // addLog('rap --version')
+        // return;
         var projectPath = this.props.ruffProjectPath;
+        // console.log(2222,projectPath)
         if (!projectPath) {
             addLog(tr(210), COLOR_RED);//请先打开 ruff 项目
         } else {
-            addLog(tr(200, 'rap --version'));//200 执行命令：xxxx
+            // addLog(tr(200, 'rap --version'));//200 执行命令：xxxx
+            // addLog('rap --version')
             rapCommand('rap --version', projectPath);
+            // addLog("请先打开 ruff 项目请先打开 ruff 项目请先打开 ruff 项目请先打开 ruff 项目项目项目项目")
         }
 
         // RapCommand.command('rap --version')
@@ -89,7 +98,7 @@ class C1_RapCommand extends React.Component {
                         <div style={{ overflow: 'hidden' }}>
                             <div className="border">
                                 <div style={{ paddingLeft: '4px', overflow: 'hidden' }}>
-                                    <div style={style} onClick={self.executeCommand.bind(this)}>{item.name}</div>
+                                    <div style={style} onClick={self.executeCommand.bind(self)}>{item.name}</div>
                                 </div>
                             </div>
                         </div>

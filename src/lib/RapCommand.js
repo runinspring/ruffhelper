@@ -99,6 +99,8 @@ function decodeData(data) {
         // console.log('清除掉开头的换行');
         result = result.replace(/\n/, "");
     }
+    result = result.replace(/\n$/, "");//去掉最后一个\n
+
     result = result.replace(/\[K/g, "");
     return result;
 }

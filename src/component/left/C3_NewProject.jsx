@@ -23,10 +23,10 @@ class C3_NewProject extends React.Component {
         // this.state.newAppName = 't22';
     }
     componentDidMount() {
-        this.onCreateRuffProject();//test
+        // this.onCreateRuffProject();//test
     }
     onCreateRuffProject() {
-        console.log('onCreateRuffProject')
+        // console.log('onCreateRuffProject')
         var self = this;
         var newAppPath = this.state.newAppPath;
         var newAppName = this.state.newAppName;
@@ -42,16 +42,6 @@ class C3_NewProject extends React.Component {
             this.setState({ newAppVersion: '0.1.0' })
         } else if (fs.existsSync(newAppPath)) {//console.log('路径正确')
             var createPath = `${newAppPath}/${newAppName}`;//创建的路径
-            //testing
-            // var inputObj = {
-            //     '? app name': newAppName,
-            //     '? version': newAppVersion,
-            //     '? description': self.state.newAppDescription,
-            //     '? author': self.state.newAppAuthor
-            // }
-            // rapCommand('rap init', createPath,null,inputObj);//testing
-            // rapCommand('rap --version')
-            //testing
             if (fs.existsSync(createPath)) {
                 addLog(tr(206, createPath), COLOR_RED);//该项目已存在
             } else {
@@ -60,7 +50,14 @@ class C3_NewProject extends React.Component {
                         addLog(tr(208, err), COLOR_RED);//创建项目失败
                     } else {//成功
                         addLog(tr(209, createPath), COLOR_GREEN);////创建文件夹
-
+                        var inputObj = {
+                            '? app name': newAppName,
+                            '? version': newAppVersion,
+                            '? description': self.state.newAppDescription,
+                            '? author': self.state.newAppAuthor
+                        }
+                        rapCommand('rap init', createPath,null,inputObj);//testing
+                        // rapCommand('rap --version')
                     }
                 })
             }
