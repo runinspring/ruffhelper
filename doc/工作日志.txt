@@ -11,6 +11,10 @@ rap install
 icon.png的位置？
  mainWindow = new BrowserWindow({icon:'./assets/images/icon.png',width: 730, height: 530,
 ---------------------------------
+2017年01月21日 星期六
+移除router，重新整合loading和Mainshell
+增加新建项目的动画
+
 2017年1月20日 周五
 增加命令行结束的监听
 

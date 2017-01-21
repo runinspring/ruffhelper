@@ -15,15 +15,13 @@ export class AppRouter extends React.Component {
     }
     render() {
         return (
-            <div>
-                <Router history={hashHistory}>
-                    <Route path="/">
-                        <IndexRoute component={Loading}/>
-                        <Route path="main" component={MainShell}/>
-                        <Route path="test" component={TestUI}/>
-                    </Route>
-                </Router>
-            </div>
+            <Router history={hashHistory}>
+                <Route path="/">
+                    <IndexRoute component={Loading}/>
+                    <Route path="main" component={MainShell}/>
+                    <Route path="test" component={TestUI}/>
+                </Route>
+            </Router>
         )
     }
 }

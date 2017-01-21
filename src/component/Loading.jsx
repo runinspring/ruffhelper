@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import remote,{app, BrowserWindow} from 'remote';
+import remote, {app, BrowserWindow} from 'remote';
 import config, {isPublic, isApp} from '../config';
 import {escapePath, save} from '../lib/FileUtil';
 import path from 'path';
 import {read} from '../lib/FileUtil';
-import {getIpAddress,getAvailablePort} from '../lib/Files';
+import {getIpAddress, getAvailablePort} from '../lib/Files';
 import fs from 'fs';
 import {init} from '../actions/AppActions.jsx';
 // import {tr} from '../lib/Utils';
@@ -17,6 +17,9 @@ import {init} from '../actions/AppActions.jsx';
 class Loading extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            loadEnd: false
+        }
     }
 
     componentDidMount() {
@@ -51,7 +54,7 @@ class Loading extends React.Component {
                 if (configData.histrory) {
                     data.histrory = [];
                     var hisPath = "";
-                    for (let i = 0, len = configData.histrory.length; i < len; i++){
+                    for (let i = 0, len = configData.histrory.length; i < len; i++) {
                         hisPath = escapePath(configData.histrory[i].path);
                         if (fs.existsSync(hisPath)) {//路径存在，不存在的就忽略了
                             data.histrory.push({path: hisPath, name: path.basename(hisPath)});
@@ -64,7 +67,7 @@ class Loading extends React.Component {
                 console.log('config err:', e);
             }
         }
-        
+
         getAvailablePort((port) => {//获取端口号的ip地址
             data.port = port;
             data.ip = getIpAddress();
@@ -72,20 +75,43 @@ class Loading extends React.Component {
             self.initEnd(data);//初始化结束
         })
     }
+
     /**初始化结束 */
     initEnd(data) {
         init(this.props.dispatch, data);
+
+        // setTimeout(()=> {
+        //     this.setState({loadEnd: true})
+        //     this.props.loadEndCallback();
+        //     // window.location.href = '#/main';
+        // }, 1000)
+
+        this.setState({loadEnd: true})
+        this.props.loadEndCallback();
+
+
         // console.log('props.config:',this.props.config)
         // console.log('history:',this.props.config.histrory)
         // console.log('data:', data);
         // console.log('config:', config);
-        window.location.href = '#/main';
+
     }
+
     render() {
-        // console.log('render')
+        var styleLoading = {}
+        if (!this.state.loadEnd) {//没加载结束
+            styleLoading.animation = `alphaShow  1s ease`;
+        } else {
+            styleLoading.animation = `alphaClose  1s ease`;
+            styleLoading.animationFillMode = 'forwards';
+        }
+        // console.log(11,styleLoading)
         return (
-            <div className="loading">
-                
+            <div className="absolute loading" style={styleLoading}>
+                <div style={{margin: 'auto'}}>
+                    <div className="word">RUFF</div>
+                    <div className="word">HELPER</div>
+                </div>
             </div>
         )
     }
@@ -95,5 +121,8 @@ function select(state) {
     return {
         config: state.config
     }
+}
+Loading.propTypes = {
+    loadEndCallback: PropTypes.func.isRequired,//结束后的回调
 }
 export default connect(select)(Loading);

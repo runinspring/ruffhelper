@@ -25,6 +25,7 @@ exports.sendCommands = function (command, parentDir, callBack, inputObj) {
     var raplogPid = childProcess.pid;
     console.log('raplogPid:', raplogPid)
     childProcess.stdout.on('data', function (data) {
+        console.log(111,data.toString('utf8'))
         var result = decodeData(data);
         console.log('stdout.data:', `"${result}"`)
         var pureResult = getPureResult(result);
@@ -43,7 +44,7 @@ exports.sendCommands = function (command, parentDir, callBack, inputObj) {
                 } else {
                     result = key+":";
                 }
-                console.log('-----addLog-----:', result);
+                // console.log('-----addLog-----:', result);
                 find = true;
                 addLog(result);
                 delete inputObj[key];
@@ -63,7 +64,7 @@ exports.sendCommands = function (command, parentDir, callBack, inputObj) {
             }
         }
         if (!find) {
-            console.log('-----addLog2-----:', result);
+            // console.log('-----addLog2-----:', result);
             addLog(result);
         }
     })
@@ -99,9 +100,11 @@ function decodeData(data) {
         // console.log('清除掉开头的换行');
         result = result.replace(/\n/, "");
     }
-    result = result.replace(/\n$/, "");//去掉最后一个\n
-
+    // console.log('r1:',result)
+    result = result.replace(/\r\n|\n|\n\n$/, "");//去掉最后一个\n
+    // console.log('r2:',result)
     result = result.replace(/\[K/g, "");
+    // console.log('r3:',result)
     return result;
 }
 /**清除非法字符的纯净结果*/

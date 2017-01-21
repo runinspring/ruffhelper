@@ -23,8 +23,25 @@ body {
 }
 
 .loading {
+    background-color: #2e2e2e;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    text-align: center;
     font-family: deadstar;
     font-size: 80px;
+    line-height: 80px;
+}
+.loading .word{
+    color: #2e2e2e;
+    text-shadow: 0 0 5px #4cc1fd,
+    0 0 2px #4cc1fd,
+    0 0 4px #4cc1fd,
+    0 0 5px rgba(76, 193, 253, 0.1),
+    0 0 9px rgba(76, 193, 253, 0.1),
+    0 0 10px rgba(76, 193, 253, 0.1),
+    0 0 12px rgba(76, 193, 253, 0.1),
+    0 0 19px rgba(76, 193, 253, 0.1);
 }
 
 .left { /*左侧区域*/
@@ -185,6 +202,14 @@ body {
     }
     100% {
         opacity: 1.0;
+    }
+}
+@keyframes alphaShowHalf {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.5;
     }
 }
 
