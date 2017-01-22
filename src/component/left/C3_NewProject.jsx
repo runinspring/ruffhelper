@@ -2,7 +2,7 @@
 import React, {PropTypes} from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
-import {LEFT_CHANGE_CLUMTYPE, addLog, COLOR_RED, COLOR_GREEN, rapCommand,command} from '../../actions/AppActions';
+import {LEFT_CHANGE_CLUMTYPE, addLog, COLOR_RED, COLOR_GREEN, rapCommand, command} from '../../actions/AppActions';
 import {tr} from '../../lib/Utils';
 import Input from '../ui/Input';
 import FolderSelector from '../ui/FolderSelector';
@@ -36,7 +36,7 @@ class C3_NewProject extends React.Component {
             // console.log(self.idxAniEnd)
             if (self.idxAniEnd == 11) {//动画结束，关闭面板
                 self.idxAniEnd = 0;
-                command(LEFT_CHANGE_CLUMTYPE, { key: self.props.clumId, value: 0 });
+                command(LEFT_CHANGE_CLUMTYPE, {key: self.props.clumId, value: 0});
             }
         })
         // this.onCreateRuffProject();//test
@@ -94,7 +94,8 @@ class C3_NewProject extends React.Component {
         var disabled = this.state.newAppPath && this.state.newAppName ? false : true;
         var getAni = function (index) {
             var aniName = type == 1 ? 'alphaShow' : 'alphaClose';
-            return `${aniName} 0.4s ease ${index * 0.04}s`;
+            var delay = aniName == 'alphaShow' ? index * 0.04 : (10 - index) * 0.04;
+            return `${aniName} 0.4s ease ${delay}s`;
         }
         var getFillMode = function () {
             return type == 1 ? 'both' : 'forwards';
@@ -152,7 +153,7 @@ class C3_NewProject extends React.Component {
                 <Input style={getAniStyle(9)} value={this.state.newAppAuthor} placeholer={tr(9)} onChange={(value) => {
                     self.setState({newAppAuthor: value})
                 } }/>
-                <div style={getAniStyle(10)} >
+                <div style={getAniStyle(10)}>
                     <div style={{margin: '6px 16px 0 8px '}}>
                         <button className="JUI JButton" disabled={disabled}
                                 onClick={this.onCreateRuffProject.bind(this)}>{tr(5)}</button>

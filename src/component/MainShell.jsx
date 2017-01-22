@@ -28,8 +28,8 @@ class MainShell extends React.Component {
                         marginLeft: '80px',
                         border: '0px',
                         width: '100%',
-                        height: '100%',opacity:'0.5',
-                        animation: `alphaShowHalf  3s ease`
+                        height: '100%',
+                        animation: `alphaShow  3s ease`
                     }} src="./pages/background/index.html"></iframe>
                     {/*<div className="absolute" style={{width:'100%',height:'100%', backgroundColor:'rgba(0, 0, 0, 0.5)'}}/>*/}
                     <RightArea />

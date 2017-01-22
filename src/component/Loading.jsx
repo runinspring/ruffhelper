@@ -80,14 +80,14 @@ class Loading extends React.Component {
     initEnd(data) {
         init(this.props.dispatch, data);
 
-        // setTimeout(()=> {
-        //     this.setState({loadEnd: true})
-        //     this.props.loadEndCallback();
-        //     // window.location.href = '#/main';
-        // }, 1000)
+        setTimeout(()=> {
+            this.setState({loadEnd: true})
+            this.props.loadEndCallback();
+            // window.location.href = '#/main';
+        }, 1000)
 
-        this.setState({loadEnd: true})
-        this.props.loadEndCallback();
+        // this.setState({loadEnd: true})
+        // this.props.loadEndCallback();
 
 
         // console.log('props.config:',this.props.config)

@@ -123,8 +123,8 @@ body {
     margin: 8px 0 4px 158px;
     width: 566px;
     height: 514px;
-    border: 1px solid rgba(76, 193, 253, 0.6);
-    border-radius: 3px;
+    /*border: 1px solid rgba(76, 193, 253, 0.6);*/
+    /*border-radius: 3px;*/
 }
 
 .right .logArea {
@@ -132,6 +132,8 @@ body {
     overflow-y: auto;
     padding: 0 4px 0 2px;
     height: 412px;
+    border-radius: 6px;
+    background: rgba(150, 150, 150,0.3);
 }
 
 .right .logArea .content {
