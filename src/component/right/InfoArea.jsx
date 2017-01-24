@@ -1,6 +1,7 @@
+/**x右侧上方的信息区域*/
 import React from 'react';
 import {connect} from 'react-redux';
-class Template extends React.Component {
+class InfoArea extends React.Component {
     constructor(props) {
         super(props)
     }
