@@ -15,3 +15,13 @@ function decode(result) {
 }
 var t2 = '1.6.2\n\n[?25h'
 console.log('result2:',decode(t2))
+
+
+ var version = '0.2.1';
+ var reg = /\d+(\.\d+){0,2}/;//匹配 0.1 或者 0.1.0
+ var result = version.match(reg);
+ console.log('result:',result)
+
+  var version2 = 'a.2.1';
+ var result2 = version2.match(reg);
+ console.log('result2:',result2)

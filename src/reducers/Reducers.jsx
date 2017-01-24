@@ -1,12 +1,12 @@
 import {combineReducers}from 'redux';
 var cfg = require('../config');//
 import {save} from '../lib/FileUtil';
-import {INIT,LEFT_CHANGE_CLUMTYPE,LOG_ADD,LOG_CLEAN,OPEN_RUFF_PROJECT,REMOVE_RUFF_PROJECT} from '../actions/AppActions.jsx';
+import {INIT,LEFT_CHANGE_CLUMTYPE,LOG_ADD,LOG_CLEAN,CHANGE_CONFIG,OPEN_RUFF_PROJECT,REMOVE_RUFF_PROJECT} from '../actions/AppActions.jsx';
 import {List} from 'immutable';
 var appPath = '';
 let initConfig = {
     language: '',//语言默认中文 zh_CN
-    // rapVersion: "",//rap 版本号
+    rapVersion: "",//rap 版本号
     // rapVersionDec: "",//版本号的描述信息  比如:未安装rap
     osType: "",//操作系统 Windows Mac
     appPath: '',//应用的路径
@@ -65,6 +65,9 @@ var config = function (state = initConfig, action) {
             }
             cfg.saveData.histrory = result.histrory;
             saveConfig();
+            return result;
+        case CHANGE_CONFIG:
+            result = Object.assign({}, result, action.data);
             return result;
         default:
             return state;

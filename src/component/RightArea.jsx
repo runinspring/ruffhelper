@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import LogContent from './right/LogContent';
+import InfoArea from './right/InfoArea';
 class RightArea extends React.Component {
     constructor(props) {
         super(props)
@@ -55,6 +56,7 @@ class RightArea extends React.Component {
     render() {
         return (
             <div className="absolute right">
+                <InfoArea/>
                 <div id="logArea" className="logArea">
                     {this.getLogContent()}
                 </div>

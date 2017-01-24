@@ -57,7 +57,6 @@ body {
 .left .container { /*大栏目容器*/
     margin-bottom: 10px;
 }
-
 .left .container .header { /*标题*/
     text-align: center;
     text-shadow: 0 0 5px #4cc1fd;
@@ -125,6 +124,14 @@ body {
     height: 514px;
     /*border: 1px solid rgba(76, 193, 253, 0.6);*/
     /*border-radius: 3px;*/
+}
+.right .infoArea{
+    color: #4cc1fd;
+    text-shadow: 0 0 5px #4cc1fd;
+    border-radius: 3px;
+    border: 1px solid rgba(76, 193, 253, 0.8);
+    background:rgba(76, 193, 253, 0.2);
+    padding: 0 2px 0 2px;
 }
 
 .right .logArea {

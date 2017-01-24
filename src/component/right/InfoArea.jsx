@@ -13,15 +13,15 @@ class InfoArea extends React.Component {
     }
     render() {
         return(
-            <div>
-
+            <div className="infoArea">
+                <div>Rap Version:{this.props.rapVersion}</div>
             </div>
         )
     }
 }
 function select(state) {
     return {
-        osType: state.config.osType
+        rapVersion: state.config.rapVersion
     }
 }
-export default connect(select)(Template);
+export default connect(select)(InfoArea);

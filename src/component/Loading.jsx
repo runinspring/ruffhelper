@@ -7,7 +7,7 @@ import path from 'path';
 import {read} from '../lib/FileUtil';
 import {getIpAddress, getAvailablePort} from '../lib/Files';
 import fs from 'fs';
-import {init} from '../actions/AppActions.jsx';
+import {init,rapCommand} from '../actions/AppActions.jsx';
 // import {tr} from '../lib/Utils';
 // import {init,getVersion,showAlert} from '../actions/AppActions.jsx';
 // import {existRapSDK,getIpAddress,getAvailablePort} from '../lib/Files';
@@ -78,16 +78,22 @@ class Loading extends React.Component {
 
     /**初始化结束 */
     initEnd(data) {
+        var self = this;
         init(this.props.dispatch, data);
+        rapCommand('rap --version',null,()=>{
+            // console.log('getVersion');
+            setTimeout(()=> {
+                self.setState({loadEnd: true})
+                self.props.loadEndCallback();
+                // window.location.href = '#/main';
+            }, 1000);
+            // self.setState({loadEnd: true})
+            // self.props.loadEndCallback();
+        },null,false)
 
-        setTimeout(()=> {
-            this.setState({loadEnd: true})
-            this.props.loadEndCallback();
-            // window.location.href = '#/main';
-        }, 1000)
 
-        // this.setState({loadEnd: true})
-        // this.props.loadEndCallback();
+        //
+
 
 
         // console.log('props.config:',this.props.config)

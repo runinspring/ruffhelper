@@ -2,7 +2,7 @@ var config = require('../config');
 var spawn = require('child_process').spawn;
 import { tr } from './Utils';
 import { addLog, COLOR_RED ,COLOR_GREEN} from '../actions/AppActions.jsx';
-exports.sendCommands = function (command, parentDir, callBack, inputObj) {
+exports.sendCommands = function (command, parentDir, callBackMessage,callBackEnd, inputObj) {
     console.log('RapCommand.sendCommand:', command)
 
     //把命令解析成数组 比如['deploy','-s']
@@ -12,10 +12,10 @@ exports.sendCommands = function (command, parentDir, callBack, inputObj) {
         arrOpts.push(trueCmd[i])
     }
 
-    console.log('trueCmd:', trueCmd);
-    console.log('arrOpts:', arrOpts);
-    console.log('parentDir:', parentDir);
-    console.log('platform:', config.platform)
+    // console.log('trueCmd:', trueCmd);
+    // console.log('arrOpts:', arrOpts);
+    // console.log('parentDir:', parentDir);
+    // console.log('platform:', config.platform)
     var outputObj = {};
     if (config.platform == "Windows") {
         var childProcess = spawn(trueCmd[0], arrOpts, { cwd: parentDir });
@@ -23,13 +23,13 @@ exports.sendCommands = function (command, parentDir, callBack, inputObj) {
         childProcess = spawn('/usr/local/bin/rap', arrOpts, { cwd: parentDir });
     }
     var raplogPid = childProcess.pid;
-    console.log('raplogPid:', raplogPid)
+    // console.log('raplogPid:', raplogPid)
     childProcess.stdout.on('data', function (data) {
-        console.log(111,data.toString('utf8'))
+        // console.log(111,data.toString('utf8'))
         var result = decodeData(data);
-        console.log('stdout.data:', `"${result}"`)
+        // console.log('stdout.data:', `"${result}"`)
         var pureResult = getPureResult(result);
-        console.log('pureResult', pureResult)
+        // console.log('pureResult', pureResult)
         if (!result || pureResult == "") {//console.log('没有返回消息，跳过');
             return;
         }
@@ -46,7 +46,7 @@ exports.sendCommands = function (command, parentDir, callBack, inputObj) {
                 }
                 // console.log('-----addLog-----:', result);
                 find = true;
-                addLog(result);
+                callBackMessage(result);
                 delete inputObj[key];
                 outputObj[getPureResult(key)] = inputValue;
                 if(Object.getOwnPropertyNames(inputObj).length == 0) {
@@ -56,7 +56,7 @@ exports.sendCommands = function (command, parentDir, callBack, inputObj) {
                 break;
             }
         }
-        console.log('outputObj:', outputObj)
+        // console.log('outputObj:', outputObj)
         for (key in outputObj) {//输出的信息里不包含输入的内容
             if (pureResult.indexOf(key) > -1) {
                 find = true;
@@ -65,25 +65,25 @@ exports.sendCommands = function (command, parentDir, callBack, inputObj) {
         }
         if (!find) {
             // console.log('-----addLog2-----:', result);
-            addLog(result);
+            callBackMessage(result);
         }
     })
     childProcess.stdout.on('end', function (data) {
-        console.log("stdout.end:", data);
+        // console.log("stdout.end:", data);
     })
     childProcess.stderr.on('data', function (data) {
         console.log("stderr:", data);
     });
     childProcess.on('exit', function (code, signal) {
-        console.log('stdout.exit:', code, signal)
-        if(command!='rap log'){
-            addLog(tr(213),COLOR_GREEN);//命令执行结束
-        }
+        // console.log('stdout.exit:', code, signal)
+        // if(command!='rap log'){
+        //     addLog(tr(213),COLOR_GREEN);//命令执行结束
+        // }
         if (signal) {
-            console.log('kill')
+            // console.log('kill')
             childProcess = null;
         }
-        if (callBack) callBack();
+        if (callBackEnd) callBackEnd();
     })
     childProcess.on('error', function (error) {
         console.log('error:', error)
@@ -100,11 +100,8 @@ function decodeData(data) {
         // console.log('清除掉开头的换行');
         result = result.replace(/\n/, "");
     }
-    // console.log('r1:',result)
     result = result.replace(/\r\n|\n|\n\n$/, "");//去掉最后一个\n
-    // console.log('r2:',result)
     result = result.replace(/\[K/g, "");
-    // console.log('r3:',result)
     return result;
 }
 /**清除非法字符的纯净结果*/

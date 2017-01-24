@@ -65,8 +65,7 @@ class C1_RapCommand extends React.Component {
         if (!projectPath) {
             addLog(tr(210), COLOR_RED);//请先打开 ruff 项目
         } else {
-            // addLog(tr(200, 'rap --version'));//200 执行命令：xxxx
-            // addLog('rap --version')
+
             rapCommand('rap --version', projectPath);
             // addLog("请先打开 ruff 项目请先打开 ruff 项目请先打开 ruff 项目请先打开 ruff 项目项目项目项目")
         }
