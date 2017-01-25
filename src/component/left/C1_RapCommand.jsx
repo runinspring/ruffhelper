@@ -96,7 +96,7 @@ class C1_RapCommand extends React.Component {
                     <div className="rapcommand mousePointer">
                         <div style={{ overflow: 'hidden' }}>
                             <div className="border">
-                                <div style={{ paddingLeft: '4px', overflow: 'hidden' }}>
+                                <div style={{ paddingLeft: '4px', overflow: 'hidden',margin:'3px 0 3px 0' }}>
                                     <div style={style} onClick={self.executeCommand.bind(self)}>{item.name}</div>
                                 </div>
                             </div>

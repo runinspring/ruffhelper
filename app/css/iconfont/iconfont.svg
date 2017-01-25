@@ -1,0 +1,45 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>
+Created by FontForge 20120731 at Wed Jan 25 17:55:56 2017
+ By admin
+</metadata>
+<defs>
+<font id="iconfont" horiz-adv-x="1024" >
+  <font-face 
+    font-family="iconfont"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1024"
+    panose-1="2 0 6 3 0 0 0 0 0 0"
+    ascent="896"
+    descent="-128"
+    x-height="792"
+    bbox="0 -34 1024 802"
+    underline-thickness="0"
+    underline-position="0"
+    unicode-range="U+0078-E8E5"
+  />
+<missing-glyph 
+ />
+    <glyph glyph-name=".notdef" 
+ />
+    <glyph glyph-name=".notdef" 
+ />
+    <glyph glyph-name=".null" horiz-adv-x="0" 
+ />
+    <glyph glyph-name="nonmarkingreturn" horiz-adv-x="341" 
+ />
+    <glyph glyph-name="x" unicode="x" horiz-adv-x="1001" 
+d="M281 543q-27 -1 -53 -1h-83q-18 0 -36.5 -6t-32.5 -18.5t-23 -32t-9 -45.5v-76h912v41q0 16 -0.5 30t-0.5 18q0 13 -5 29t-17 29.5t-31.5 22.5t-49.5 9h-133v-97h-438v97zM955 310v-52q0 -23 0.5 -52t0.5 -58t-10.5 -47.5t-26 -30t-33 -16t-31.5 -4.5q-14 -1 -29.5 -0.5
+t-29.5 0.5h-32l-45 128h-439l-44 -128h-29h-34q-20 0 -45 1q-25 0 -41 9.5t-25.5 23t-13.5 29.5t-4 30v167h911zM163 247q-12 0 -21 -8.5t-9 -21.5t9 -21.5t21 -8.5q13 0 22 8.5t9 21.5t-9 21.5t-22 8.5zM316 123q-8 -26 -14 -48q-5 -19 -10.5 -37t-7.5 -25t-3 -15t1 -14.5
+t9.5 -10.5t21.5 -4h37h67h81h80h64h36q23 0 34 12t2 38q-5 13 -9.5 30.5t-9.5 34.5q-5 19 -11 39h-368zM336 498v228q0 11 2.5 23t10 21.5t20.5 15.5t34 6h188q31 0 51.5 -14.5t20.5 -52.5v-227h-327z" />
+    <glyph glyph-name="ellipsis" unicode="&#xe8e5;" 
+d="M256 300v0q-27 0 -46 19t-19 45v0q0 27 19 46t46 19v0q27 0 45.5 -19t18.5 -46v0q0 -26 -18.5 -45t-45.5 -19zM513 300v0q-27 0 -46 19t-19 45v0q0 27 19 46t46 19v0q27 0 45.5 -19t18.5 -46v0q0 -26 -18.5 -45t-45.5 -19zM770 300v0q-27 0 -45.5 19t-18.5 45v0
+q0 27 18.5 46t45.5 19v0q27 0 45.5 -19t18.5 -46v0q0 -26 -18.5 -45t-45.5 -19z" />
+    <glyph glyph-name="folder" unicode="&#xe604;" 
+d="M981 529h-59v107q0 19 -14 33t-33 14h-422l-86 119h-320q-20 0 -33.5 -13.5t-13.5 -32.5v-746v0q0 -15 9 -27q13 -17 35 -17h764q14 0 26 8.5t15 22.5l175 478v3q0 22 -12 36.5t-31 14.5zM34 756q0 5 3.5 8.5t9.5 3.5h303l85 -119h440q5 0 8.5 -4t3.5 -9v-107h-670
+q-3 0 -7 -1q-12 -2 -21.5 -10t-13.5 -20l-141 -385v643zM817 7q-2 -7 -9 -7h-764q-5 0 -8 4t-2 7l174 477q2 7 9 7h705h59q7 0 9 -14z" />
+  </font>
+</defs></svg>

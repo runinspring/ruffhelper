@@ -82,7 +82,7 @@ var saveConfig = function () {
 }
 let initLeft={
     clum1:0,//每个栏目的打开状态 0关闭 1打开 2关闭中
-    clum2:0,
+    clum2:1,
     clum3:1
 }
 var left = function (state=initLeft,action) {

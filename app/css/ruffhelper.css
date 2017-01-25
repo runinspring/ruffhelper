@@ -46,12 +46,14 @@ body {
 
 .left { /*左侧区域*/
     font-family: ruixian;
+    font-size: 12px;
     color: #4cc1fd;
     margin: 4px 0px 4px 4px;
     padding: 4px 0px 0 0;
     width: 150px;
     height: 522px;
     overflow-y: scroll;
+
 }
 
 .left .container { /*大栏目容器*/
@@ -60,7 +62,7 @@ body {
 .left .container .header { /*标题*/
     text-align: center;
     text-shadow: 0 0 5px #4cc1fd;
-    padding: 4px 10px 4px 10px;
+    padding: 7px 10px 7px 10px;
     border: 1px solid rgba(76, 193, 253, 0.6);
     border-radius: 3px;
     font-style: normal; /*斜体*/
@@ -95,18 +97,23 @@ body {
     /*不换行*/
     word-break: keep-all;
     white-space: nowrap;
-    padding-left: 8px;
+    padding: 4px 0 4px 8px;
     overflow: hidden;
     color: #5EFDFF;
+    float: left;
+    width: 130px;
+
 }
 
 .left .container .openHistroryItem:hover {
     background: rgba(76, 193, 253, 0.3);
+
 }
 
 .left .container .openHistroryItem p { /*关闭X的效果*/
     right: 8px;
     color: rgba(94, 253, 255, 0);
+    margin: 0;
 }
 
 .left .container .openHistroryItem:hover p {
@@ -130,10 +137,22 @@ body {
     text-shadow: 0 0 5px #4cc1fd;
     border-radius: 3px;
     border: 1px solid rgba(76, 193, 253, 0.8);
-    background:rgba(76, 193, 253, 0.2);
-    padding: 0 2px 0 2px;
+    display: flex;
 }
-
+.right .infoArea .rapVersion{
+    display: inline;
+    background:rgba(76, 193, 253, 0.2);
+    padding: 3px 6px 3px 2px;
+    float: left;
+}
+.right .infoArea .projectPath{
+    display: inline;
+    float: left;
+    margin: auto;
+    margin-left: 2px;
+    /*align-items: center;*/
+    /*position: relative;*/
+}
 .right .logArea {
     margin-top: 100px;
     overflow-y: auto;
@@ -257,6 +276,10 @@ body {
 /*鼠标显示为手型*/
 .mousePointer {
     cursor: pointer;
+}
+/*float：left时，用于撑开父div*/
+.clear{
+    clear: both;
 }
 
 .unselectable {

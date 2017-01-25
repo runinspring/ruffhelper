@@ -90,7 +90,7 @@ class C3_NewProject extends React.Component {
         }
         // console.log(this.state)
         var self = this;
-        var styleItem = {marginLeft: '5px', display: 'block'}
+        // var styleItem = {marginLeft: '5px', display: 'block'}
         var disabled = this.state.newAppPath && this.state.newAppName ? false : true;
         var getAni = function (index) {
             var aniName = type == 1 ? 'alphaShow' : 'alphaClose';
@@ -102,7 +102,7 @@ class C3_NewProject extends React.Component {
         }
         var getStyleItem = function (index) {
             // console.log('getStyleItem')
-            var style = {marginLeft: '5px', display: 'block'}
+            var style = {margin: '3px 0 3px 5px', display: 'block'}
             style.animation = getAni(index);
             style.animationFillMode = getFillMode();
             // console.log('style:', style)
@@ -125,15 +125,16 @@ class C3_NewProject extends React.Component {
                 <div style={getAniStyle(1)}>
                     <div style={{width: '140px', display: 'block'}}>
                         <Input placeholer={tr(4)} value={this.state.newAppPath}
-                               style={{width: '118px', display: 'inline-block', float: 'left'}} onChange={(value) => {
+                               style={{width: '118px',float: 'left'}} onChange={(value) => {
                             self.setState({newAppPath: value})
                         } }/>
                         <FolderSelector style={{
-                            position: 'relative', left: '116px', marginLeft: '4px',
-                            width: '20px', height: '20px'
-                        }} padding='0 4px' iconSVGUrl="css/assets/ellipsis.svg" openFolderCallBack={(value) => {
+                            float: 'left',
+                            width: '20px', height: '20px',marginLeft:'2px'
+                        }} padding='0 4px' iconName="icon-ellipsis" openFolderCallBack={(value) => {
                             this.setState({newAppPath: value})
                         } }/>
+                        <div style={{clear:'both'}}/>
                     </div>
                 </div>
                 <div style={getStyleItem(2)}>{tr(6)}</div>

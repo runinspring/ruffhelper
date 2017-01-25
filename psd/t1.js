@@ -25,3 +25,7 @@ console.log('result2:',decode(t2))
   var version2 = 'a.2.1';
  var result2 = version2.match(reg);
  console.log('result2:',result2)
+
+
+float 父DVI没有高度，最后加一个 clear:'both'
+垂直居中

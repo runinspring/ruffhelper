@@ -57,7 +57,7 @@ class C2_OpenProject extends React.Component {
             }
         }
 
-        if (!hisExist || this.props.config.ruffProjectPath != projectPath) {//打开了新的文件夹
+        if (!hisExist || this.props.ruffProjectPath != projectPath) {//打开了新的文件夹
             var files = ['app.json', 'package.json', 'ruff_modules'];
             var existProject = true;
             for (var i = 0, len = files.length; i < len; i++) {
@@ -103,7 +103,8 @@ class C2_OpenProject extends React.Component {
         // tr(1) 选择ruff项目
         return <div style={style}>
             <FolderSelector defaultValue={tr(1)} style={{
-                margin: '4px 0 4px 10px', width: '128px'
+                margin: '4px 0 4px 10px', width: '128px',
+                padding:'3px 0 4px 0'
             }} openFolderCallBack={this.onOpenFolderEnd.bind(this)}/>
         </div>
     }
@@ -148,7 +149,7 @@ class C2_OpenProject extends React.Component {
 function select(state) {
     return {
         type: state.left.clum2,
-        config: state.config,
+        ruffProjectPath: state.config.ruffProjectPath,
         histrory: state.config.histrory
     }
 }

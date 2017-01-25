@@ -1,4 +1,10 @@
+@font-face {
+    font-family: 'ruixian';
+    src: url('font/ruixian.ttf') format('truetype');
+}
+
 .JUI {
+    font-family: ruixian;
     font-size: 12px;
     color: #5EFDFF;
     border-radius: 2px;
@@ -8,15 +14,24 @@
 }
 
 .JInput {
-    padding: 0 4px 0 4px;
+    padding: 2px 4px 2px 4px;
+}
+
+input::-webkit-input-placeholder {
+   color: rgba(94, 253, 255, 0.6) !important;
 }
 
 .JButton {
     cursor: pointer;
+    text-align: center;
 }
 
 .JButton:hover {
     background: rgba(76, 193, 253, 0.6);
+}
+
+.JButton:active {
+    background: rgba(76, 193, 253, 0.);
 }
 
 .JButton:disabled {
@@ -28,9 +43,9 @@
     outline: none;
 }
 
-.JSelector{/*文件夹选择器*/
-    text-align: center;
-}
-.JSelector:hover{
-    background: rgba(76, 193, 253, 0.6);
-}
+/*.JSelector{!*文件夹选择器*!*/
+/*text-align: center;*/
+/*}*/
+/*.JSelector:hover{*/
+/*background: rgba(76, 193, 253, 0.6);*/
+/*}*/

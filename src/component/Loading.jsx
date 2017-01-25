@@ -83,12 +83,12 @@ class Loading extends React.Component {
         rapCommand('rap --version',null,()=>{
             // console.log('getVersion');
             setTimeout(()=> {
-                self.setState({loadEnd: true})
-                self.props.loadEndCallback();
+                // self.setState({loadEnd: true})
+                // self.props.loadEndCallback();
                 // window.location.href = '#/main';
             }, 1000);
-            // self.setState({loadEnd: true})
-            // self.props.loadEndCallback();
+            self.setState({loadEnd: true})
+            self.props.loadEndCallback();
         },null,false)
 
 

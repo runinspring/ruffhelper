@@ -6,18 +6,20 @@ export default class FolderSelector extends React.Component {
         this.isOpen = false;//是否打开了`打开文件夹`的对话框
         // this.state.value = this.props.defaultValue || '';
     }
-    onOpenFolder(){
+
+    onOpenFolder() {
         // console.log('onOpenFolder',this.isOpen)
-        if(!this.isOpen){
+        if (!this.isOpen) {
             this.isOpen = true;
-        }else{
+        } else {
             return;
         }
         dialog.showOpenDialog({properties: ['openDirectory']}, this.onOpenFolderEnd.bind(this));
     }
+
     onOpenFolderEnd(paths) {
         this.isOpen = false;
-        if(paths && paths.length>0){
+        if (paths && paths.length > 0) {
             this.props.openFolderCallBack(paths[0]);
         }
 
@@ -29,19 +31,24 @@ export default class FolderSelector extends React.Component {
         if (this.props.style) {
             style = this.props.style;
         }
+        // style.display = 'flex';
+        style.textAlign = 'center'
         var self = this;
-        var getSVGBackground = function () {
-            if(!self.props.iconSVGUrl){
-                return <div/>
-            }else{
-                return <div className="absolute" style={{background:`url(${self.props.iconSVGUrl})`,
-                    backgroundSize:'contain',
-                    width:self.props.style.width, height:self.props.style.height}}/>
+        var getIcon = function () {
+            var className ='';
+            if (!self.props.iconName) {
+                className= ''
+            } else {
+                className = `mousePointer iconfont ${self.props.iconName}`
             }
+            return <div className={className}/>
         }
+        // {background:`url(${self.props.iconSVGUrl})`
+        // style={{backgroundSize:'contain',
+        // width:self.props.style.width, height:self.props.style.height}}
         return (
-            <div className="mousePointer JUI JSelector" style={style} onClick={this.onOpenFolder.bind(this)}>
-                {getSVGBackground()}
+            <div className="mousePointer JUI JButton" style={style} onClick={this.onOpenFolder.bind(this)}>
+                {getIcon()}
                 <div style={{margin: this.props.margin, padding: this.props.padding}}>
                     {this.props.defaultValue}
                 </div>
@@ -52,8 +59,8 @@ FolderSelector.propTypes = {
     defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),//要显示的值
     onChange: PropTypes.func,//input 内容改变的回调方法
     style: PropTypes.object,//样式
-    iconSVGUrl: PropTypes.string,//图标的链接
+    iconName: PropTypes.string,//图标的名称
     padding: PropTypes.string,
     margin: PropTypes.string,
-    openFolderCallBack:PropTypes.func.isRequired,
+    openFolderCallBack: PropTypes.func.isRequired,
 }
