@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {LEFT_CHANGE_CLUMTYPE, addLog, COLOR_RED, COLOR_GREEN, rapCommand, command} from '../../actions/AppActions';
 import {tr} from '../../lib/Utils';
 import Input from '../ui/Input';
+import Button from '../ui/Button';
 import FolderSelector from '../ui/FolderSelector';
 var fs = require('fs');
 var path = require('path');
@@ -118,20 +119,20 @@ class C3_NewProject extends React.Component {
         //tr:4 Ruff 项目位置;5 创建项目;6 Ruff 项目名称;7项目版本;8项目描述;9项目作者
         // console.log('newAppPath:',this.state.newAppPath)
         // var styleHeader = { padding: '0 4px 0 4px', color: '#5EFDFF' }
-        var styleHeader = {padding: '0 4px 0 4px'}
+        var styleHeader = {padding: '0 4px 0 4px',width:'130px'}
         return (
             <div ref="tree" style={styleHeader}>
                 <div style={getStyleItem(0)}>{tr(4)}</div>
                 <div style={getAniStyle(1)}>
                     <div style={{width: '140px', display: 'block'}}>
                         <Input placeholer={tr(4)} value={this.state.newAppPath}
-                               style={{width: '118px',float: 'left'}} onChange={(value) => {
+                               style={{width: '110px',float: 'left'}} onChange={(value) => {
                             self.setState({newAppPath: value})
                         } }/>
                         <FolderSelector style={{
                             float: 'left',
-                            width: '20px', height: '20px',marginLeft:'2px'
-                        }} padding='0 4px' iconName="icon-ellipsis" openFolderCallBack={(value) => {
+                            width: '16px', height: '18px',marginLeft:'2px'
+                        }} iconName="icon-ellipsis" openFolderCallBack={(value) => {
                             this.setState({newAppPath: value})
                         } }/>
                         <div style={{clear:'both'}}/>
@@ -155,9 +156,9 @@ class C3_NewProject extends React.Component {
                     self.setState({newAppAuthor: value})
                 } }/>
                 <div style={getAniStyle(10)}>
-                    <div style={{margin: '6px 16px 0 8px '}}>
-                        <button className="JUI JButton" disabled={disabled}
-                                onClick={this.onCreateRuffProject.bind(this)}>{tr(5)}</button>
+                    <div style={{padding:'4px 0 0 8px'}}>
+                        <Button disabled={disabled} value={tr(5)} style={{height:'18px'}}
+                                onClick={this.onCreateRuffProject.bind(this)}>{tr(5)}</Button>
                     </div>
                 </div>
 
@@ -165,6 +166,8 @@ class C3_NewProject extends React.Component {
         )
     }
 }
+{/*<button className="JUI JButton" disabled={disabled}*/}
+        // onClick={this.onCreateRuffProject.bind(this)}>{tr(5)}</button>
 function select(state) {
     return {
         type: state.left.clum3

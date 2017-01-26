@@ -1,4 +1,3 @@
-import React from 'react';
 import {connect} from 'react-redux';
 class Template extends React.Component {
     constructor(props) {

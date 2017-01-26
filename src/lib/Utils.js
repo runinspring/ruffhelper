@@ -57,7 +57,7 @@ exports.cutCharToCenter = function (str, num) {
     //console.log("arrFront:", strFront);
     //console.log("arrBack:", strBack);
     if (isBreak) {
-        strFront += "..../";
+        strFront += "....../";
     }
     return strFront + strBack;
 }

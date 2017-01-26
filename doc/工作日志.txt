@@ -11,6 +11,12 @@ rap install
 icon.png的位置？
  mainWindow = new BrowserWindow({icon:'./assets/images/icon.png',width: 730, height: 530,
 ---------------------------------
+2017年1月27日 周五
+增加按钮组件，优化样式
+
+2017年1月26日 周四
+移除了antd的样式
+
 2017年01月25日 星期三
 增加版本号的验证
 

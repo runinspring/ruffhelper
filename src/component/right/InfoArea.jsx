@@ -1,7 +1,8 @@
 /**x右侧上方的信息区域*/
 import React from 'react';
 import {connect} from 'react-redux';
-import {tr,cutCharToCenter} from '../../lib/Utils';
+import {tr, cutCharToCenter} from '../../lib/Utils';
+import Button from '../ui/Button';
 class InfoArea extends React.Component {
     constructor(props) {
         super(props)
@@ -17,15 +18,22 @@ class InfoArea extends React.Component {
 
     render() {
         var projectPath = this.props.ruffProjectPath;
-        console.log(11,projectPath)
+        console.log(11, projectPath)
         var strPath = projectPath ? projectPath : tr(54);//54 请先选择 Ruff 项目
-        strPath = `[${cutCharToCenter(strPath,50)}]`
-        var stylePath = projectPath?{}:{color:'#ffccff'}
+        strPath = `[${cutCharToCenter(strPath, 48)}]`
+        var stylePath = projectPath ? {} : {color: '#ffccff'}
         return (
-            <div className="infoArea">
-                <div className="rapVersion">Rap Version:{this.props.rapVersion}</div>
+            <div className="infoArea unselectable">
+                <div className="rapVersion">
+                    <div style={{display:'flex',height:'100%'}}>
+                        <div style={{margin:'auto'}}>Rap Version:{this.props.rapVersion}</div>
+                    </div>
+                </div>
                 <div className="projectPath" style={stylePath}>{strPath}</div>
-                <div style={{clear:'both'}}/>
+                <div className="openProject">
+                    <Button style={{width: '26px', height: '16px', margin: '1px 0 1px 0'}} iconName="icon-folder"/>
+                </div>
+                <div style={{clear: 'both'}}/>
             </div>
         )
     }

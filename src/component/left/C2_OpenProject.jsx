@@ -104,7 +104,7 @@ class C2_OpenProject extends React.Component {
         return <div style={style}>
             <FolderSelector defaultValue={tr(1)} style={{
                 margin: '4px 0 4px 10px', width: '128px',
-                padding:'3px 0 4px 0'
+                padding:'3px 0 3px 0'
             }} openFolderCallBack={this.onOpenFolderEnd.bind(this)}/>
         </div>
     }
