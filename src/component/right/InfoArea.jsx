@@ -3,6 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {tr, cutCharToCenter} from '../../lib/Utils';
 import Button from '../ui/Button';
+import {shell} from 'electron';
 class InfoArea extends React.Component {
     constructor(props) {
         super(props)
@@ -25,13 +26,16 @@ class InfoArea extends React.Component {
         return (
             <div className="infoArea unselectable">
                 <div className="rapVersion">
-                    <div style={{display:'flex',height:'100%'}}>
-                        <div style={{margin:'auto'}}>Rap Version:{this.props.rapVersion}</div>
+                    <div style={{display: 'flex', height: '100%'}}>
+                        <div style={{margin: 'auto'}}>Rap Version:{this.props.rapVersion}</div>
                     </div>
                 </div>
                 <div className="projectPath" style={stylePath}>{strPath}</div>
                 <div className="openProject">
-                    <Button style={{width: '26px', height: '16px', margin: '1px 0 1px 0'}} iconName="icon-folder"/>
+                    <Button style={{width: '26px', height: '16px', margin: '1px 0 1px 0'}} iconName="icon-folder"
+                            onClick={() => {
+                                shell.openItem(this.props.ruffProjectPath);
+                            } }/>
                 </div>
                 <div style={{clear: 'both'}}/>
             </div>

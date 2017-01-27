@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {addOutputCooked, setRuffSDKLocation,getVersion} from '../../actions/AppActions.jsx'
 import LocationSelector from './cp/LocationSelector.jsx';
 import {tr} from '../../lib/Utils'
-import {existRapSDK} from '../../lib/Files';
+import {existRapSDK} from '../../lib/~Files';
 import {escapePath} from '../../lib/FileUtil'
 var fs = require('fs');
 var path = require('path');

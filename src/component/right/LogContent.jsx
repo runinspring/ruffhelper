@@ -25,7 +25,7 @@ export default class LogContent extends React.Component {
             // console.log('wid:',wid)
             var timeAni = 0.1 + (wid / 564) * 0.4;
             this.setState({
-                height: Math.ceil(this.refs.content.offsetHeight),
+                height: Math.ceil(this.refs.content.offsetHeight-2),
                 width: Math.ceil(wid),
                 timeAni: timeAni
             })
@@ -48,12 +48,13 @@ export default class LogContent extends React.Component {
         if (this.state.height > 0) {
             style.height = this.state.height;
             style.animation = `widthShow ${this.state.timeAni}s ease`;
+            style.padding = "2px 8px 2px 4px"
             // style.animationFillMode='backwords';
         }
 
         return (
             <div style={styleContainer} >
-                <div ref="container" >
+                <div ref="container">
                     <div ref="content" className="content selectable" style={style}>
                         {this.props.content.value}
                     </div>

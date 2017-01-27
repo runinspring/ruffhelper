@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {tr} from '../../lib/Utils';
 import LocationSelector from './../left/cp/FolderSelector.jsx';
-import {existRapSDK} from '../../lib/Files';
+import {existRapSDK} from '../../lib/~Files';
 import {setRuffSDKLocation,closeAlert} from '../../actions/AppActions.jsx';
 var fs = require('fs');
 class SDKSelecter extends React.Component {
