@@ -19,7 +19,7 @@ class InfoArea extends React.Component {
 
     render() {
         var projectPath = this.props.ruffProjectPath;
-        console.log(11, projectPath)
+        // console.log(11, projectPath)
         var strPath = projectPath ? projectPath : tr(54);//54 请先选择 Ruff 项目
         strPath = `[${cutCharToCenter(strPath, 48)}]`
         var stylePath = projectPath ? {} : {color: '#ffccff'}

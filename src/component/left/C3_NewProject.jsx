@@ -130,8 +130,8 @@ class C3_NewProject extends React.Component {
                             self.setState({newAppPath: value})
                         } }/>
                         <FolderSelector style={{
-                            float: 'left',
-                            width: '16px', height: '18px',marginLeft:'2px'
+                            float: 'left', paddingLeft:'2px',
+                            width: '17px', height: '18px',marginLeft:'2px'
                         }} iconName="icon-ellipsis" openFolderCallBack={(value) => {
                             this.setState({newAppPath: value})
                         } }/>
