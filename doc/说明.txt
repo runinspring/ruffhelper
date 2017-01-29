@@ -8,6 +8,9 @@ https://npm.taobao.org/mirrors/electron/
 export RUFF_HOME=/Volumes/D/apps/ruff-sdk-mac-0.8.0
 export PATH=$PATH:$RUFF_HOME/bin
 
+矢量图标
+http://www.iconfont.cn
+字号大小 12
 
 electron-packager platform参数有 --all：全部；或者 --platform=darwin 、linux、mas、win32
 

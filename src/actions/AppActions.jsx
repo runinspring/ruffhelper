@@ -1,12 +1,21 @@
-export const INIT = "init";//初始化
-export const LEFT_CHANGE_CLUMTYPE = 'left_change_clumtype';//改变左侧每个栏目的开启状态，0关闭 1打开 2关闭中
-export const CHANGE_CONFIG = 'change_config';//改变配置文件
-export const OPEN_RUFF_PROJECT = 'open_ruff_project';//打开ruff项目
-export const REMOVE_RUFF_PROJECT = 'remove_ruff_project';//移除历史记录里的项目
-export const LOG_ADD = 'log_add';//增加log信息
-export const LOG_CLEAN = 'log_clean';//清除log信息
-export const COLOR_GREEN = 'color_green';//绿色为提示信息
-export const COLOR_RED = 'color_red';//红色为警告信息
+/*初始化*/
+export const INIT = "init";
+/*改变左侧每个栏目的开启状态，0关闭 1打开 2关闭中*/
+export const LEFT_CHANGE_CLUMTYPE = 'left_change_clumtype';
+/*改变配置文件*/
+export const CHANGE_CONFIG = 'change_config';
+/*打开ruff项目*/
+export const OPEN_RUFF_PROJECT = 'open_ruff_project';
+/*移除历史记录里的项目*/
+export const REMOVE_RUFF_PROJECT = 'remove_ruff_project';
+/*增加log信息*/
+export const LOG_ADD = 'log_add';
+/*清除log信息*/
+export const LOG_CLEAN = 'log_clean';
+/*绿色为提示信息*/
+export const COLOR_GREEN = 'color_green';
+/*红色为警告信息*/
+export const COLOR_RED = 'color_red';
 import {sendCommands} from '../lib/RapCommand';
 import {tr} from '../lib/Utils';
 var dispatch = null;

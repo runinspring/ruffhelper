@@ -1,6 +1,10 @@
 
 @font-face {font-family: "iconfont";
-  src: url('iconfont.woff?t=1485338156711') format('woff') /* chrome, firefox */
+  src: url('iconfont.eot?t=1485683275103'); /* IE9*/
+  src: url('iconfont.eot?t=1485683275103#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1485683275103') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1485683275103') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1485683275103#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -11,7 +15,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-delete:before { content: "\e605";font-size: 14px; }
+
 .icon-ellipsis:before { content: "\e8e5"; }
+
+.icon-save:before { content: "\e651"; }
 
 .icon-folder:before { content: "\e604"; }
 

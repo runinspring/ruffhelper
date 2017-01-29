@@ -81,7 +81,7 @@ var saveConfig = function () {
     save(cfg.configPath, cfg.saveData);
 }
 let initLeft={
-    clum1:0,//每个栏目的打开状态 0关闭 1打开 2关闭中
+    clum1:1,//每个栏目的打开状态 0关闭 1打开 2关闭中
     clum2:1,
     clum3:1
 }

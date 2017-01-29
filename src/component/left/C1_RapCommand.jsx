@@ -56,17 +56,24 @@ class C1_RapCommand extends React.Component {
         //     // this.closeEnd();
         // }
     }
-    executeCommand() {
+    executeCommand(e) {
         // console.log('executeCommand')
         // addLog('rap --version')
         // return;
+        console.log(2222,this)
         var projectPath = this.props.ruffProjectPath;
-        // console.log(2222,projectPath)
+
         if (!projectPath) {
             addLog(tr(210), COLOR_RED);//请先打开 ruff 项目
         } else {
-
-            rapCommand('rap --version', projectPath);
+            if(e){
+                var cmd = e.currentTarget.innerHTML;
+            }else{
+                cmd = 'rap --version';
+            }
+            rapCommand(cmd, projectPath);
+            // console.log('ddd',e.currentTarget)
+            // rapCommand('rap --version', projectPath);
             // addLog("请先打开 ruff 项目请先打开 ruff 项目请先打开 ruff 项目请先打开 ruff 项目项目项目项目")
         }
 
@@ -97,7 +104,7 @@ class C1_RapCommand extends React.Component {
                         <div style={{ overflow: 'hidden' }}>
                             <div className="border">
                                 <div style={{ paddingLeft: '4px', overflow: 'hidden',margin:'3px 0 3px 0' }}>
-                                    <div style={style} onClick={self.executeCommand.bind(self)}>{item.name}</div>
+                                    <div ref={`cmd${index}`} style={style} onClick={self.executeCommand.bind(self)}>{item.name}</div>
                                 </div>
                             </div>
                         </div>

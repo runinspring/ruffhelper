@@ -11,6 +11,9 @@ rap install
 icon.png的位置？
  mainWindow = new BrowserWindow({icon:'./assets/images/icon.png',width: 730, height: 530,
 ---------------------------------
+2017年1月29日 周日
+增加右上方的的命令按钮和提示文字
+
 2017年1月28日 周六
 合并fileUtil和File两个文件，优化右侧log信息样式
 

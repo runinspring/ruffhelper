@@ -1,3 +1,4 @@
+import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 class Template extends React.Component {
     constructor(props) {
