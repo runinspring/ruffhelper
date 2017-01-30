@@ -17,7 +17,7 @@ master 分支为开发调试版本，我在重构代码，重新制作动态UI�
 
 ###调试开发流程
 1. **npm install** 安装各种包,有的需要翻墙，可以使用 [cnpm](https://npm.taobao.org/)
-2. **npm install electron@1.4.2 -g** 全局安装 electron
+2. **npm install electron@1.5.0 -g** 全局安装 electron
 3. **npm run dev** 启动 webpack，自动编译 react
 4. **npm run start** 启动 electron
 5. happy coding

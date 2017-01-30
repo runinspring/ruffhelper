@@ -59,8 +59,8 @@ class C1_RapCommand extends React.Component {
     executeCommand(e) {
         // console.log('executeCommand')
         // addLog('rap --version')
-        // return;
-        console.log(2222,this)
+        // return;return
+        // console.log(2222,this)
         var projectPath = this.props.ruffProjectPath;
 
         if (!projectPath) {
