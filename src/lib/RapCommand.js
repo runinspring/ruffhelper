@@ -1,6 +1,6 @@
 var config = require('../config');
 var spawn = require('child_process').spawn;
-var exec = require('child_process').exec;
+var exec = require('child_process').exec;//exec最大数据不能超过200k，rap log会超出，只能使用spawn
 import { tr } from './Utils';
 import { addLog, COLOR_RED ,COLOR_GREEN} from '../actions/AppActions.jsx';
 exports.sendCommands = function (command, parentDir, callBackMessage,callBackEnd, inputObj) {
@@ -29,8 +29,8 @@ exports.sendCommands = function (command, parentDir, callBackMessage,callBackEnd
     } else {//mac
 
         // childProcess = exec(trueCmd[0], arrOpts, { cwd: parentDir });
-        // childProcess = spawn('/usr/local/bin/rap', arrOpts, { cwd: parentDir });
-        childProcess = exec(execCommand, { cwd: parentDir });
+        childProcess = spawn('/usr/local/bin/rap', arrOpts, { cwd: parentDir });
+        // childProcess = exec(execCommand, { cwd: parentDir });
     }
     var raplogPid = childProcess.pid;
     // console.log('raplogPid:', raplogPid)
