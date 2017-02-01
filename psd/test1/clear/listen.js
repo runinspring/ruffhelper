@@ -1,22 +1,40 @@
 // http://stackoverflow.com/questions/9962197/node-js-readline-not-waiting-for-a-full-line-on-socket-connections/10012306#10012306
 //关键词 readline child_process
-var readline = require('readline');
-// var exec = require('child_process').exec;
-// var childProcess = exec('node clear.js',{ stdio: ['pipe', 'pipe', process.stderr] });
+// var readline = require('readline');
 var spawn = require('child_process').spawn;
-var child = spawn('node',['clear.js']);
+var options = {
+	encoding:'buffer',
+	stdio:[0,'pipe',null]
+}
+var child = spawn('node',['clear1.js'],options);
 
-// var rd = readline.createInterface({
-//     output: process.stdout,
-//     terminal: false
-// });
-// rd.on('line', function(line) {
-//     // var child = spawn('node',['clear.js']);
-// })
-// readline.createInterface({
-//   input: child.stdout,
-//   terminal: false
-// }).on('line', function(line) {
-//   console.log(99,line);
-// });
+// console.log(11,child.stdout)
+// child.stdout.clearLine = function (dir) {
+//   require('readline').clearLine(this, dir);
+// }
 
+// console.log('outaaa:',child)
+// newStdout.pipe(rawStdout);//内容输出到控制台
+
+child.stdout.on('data', function (data) {
+	var result = data.toString('utf8');
+	console.log('data:',result);
+	// console.log(999,child.out)
+})
+child.stdout.on('end', function (data) {
+        console.log("stdout.end:", data);
+})
+child.stderr.on('data', function (data) {
+	// console.log('outabbb:',child.stdout.clearLine)
+	var result = data.toString('utf8');
+    console.log("stderr:", result);
+});
+child.on('message', function (data) {
+        console.log('stdout.message:', data)
+});
+child.on('exit', function (code, signal) {
+        console.log('stdout.exit:', code, signal)
+});
+child.on('error', function (error) {
+        console.log('error:', error)
+});
