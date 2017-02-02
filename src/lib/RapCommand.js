@@ -27,7 +27,6 @@ exports.sendCommands = function (command, parentDir, callBackMessage,callBackEnd
     if (config.platform == "Windows") {
         var childProcess = spawn(trueCmd[0], arrOpts, { cwd: parentDir });
     } else {//mac
-
         // childProcess = exec(trueCmd[0], arrOpts, { cwd: parentDir });
         childProcess = spawn('/usr/local/bin/rap', arrOpts, { cwd: parentDir });
         // childProcess = exec(execCommand, { cwd: parentDir });
