@@ -1,19 +1,19 @@
 var config = require('../config');
 var spawn = require('child_process').spawn;
-var exec = require('child_process').exec;//exec最大数据不能超过200k，rap log会超出，只能使用spawn
+// var exec = require('child_process').exec;//exec最大数据不能超过200k，rap log会超出，只能使用spawn
 import { tr } from './Utils';
 import { addLog, COLOR_RED ,COLOR_GREEN} from '../actions/AppActions.jsx';
 exports.sendCommands = function (command, parentDir, callBackMessage,callBackEnd, inputObj) {
     console.log('RapCommand.sendCommand:', command)
 
     //把命令解析成数组 比如['deploy','-s']
-    var execCommand = 'rap'
+    // var execCommand = 'rap'
     var trueCmd = command.split(' ');
     var arrOpts = [];
     for (var i = 1, len = trueCmd.length; i < len; i++) {
 
         arrOpts.push(trueCmd[i])
-        execCommand += ` ${trueCmd[i]}`
+        // execCommand += ` ${trueCmd[i]}`
     }
 
     // console.log('trueCmd:', trueCmd);
@@ -23,7 +23,7 @@ exports.sendCommands = function (command, parentDir, callBackMessage,callBackEnd
     var outputObj = {};
     console.log('arrOpts:',arrOpts)
     console.log('parentDir:',parentDir)
-    console.log('execCommand:',execCommand)
+    // console.log('execCommand:',execCommand)
     if (config.platform == "Windows") {
         var childProcess = spawn(trueCmd[0], arrOpts, { cwd: parentDir });
     } else {//mac
