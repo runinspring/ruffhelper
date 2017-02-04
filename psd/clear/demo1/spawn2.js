@@ -1,5 +1,5 @@
 
-console.log('-------spawn-------')
+console.log('-------spawn2-------')
 var spawn = require('respawn');
 // var spawn = require('child_process').spawn;
 var options = {
