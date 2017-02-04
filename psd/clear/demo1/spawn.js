@@ -8,6 +8,13 @@ var options = {
 options={}
 var child = spawn('node',['clear1.js'],options)
 console.log('child.pid:',child.pid)
+process.stdout.clearLine = 
+child.stdout['clearLine'] = function (dir) {
+  require('readline').clearLine(this, dir);
+}
+// child.__defineGetter__('stdout',function(){//重新定义process.stdout的Getter
+//     return process.stdout;
+// });
 
 // child.stdout.clearLine = function(stream, dir) {
 //   if (stream === null || stream === undefined)

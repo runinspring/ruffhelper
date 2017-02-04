@@ -1,19 +1,29 @@
 {
-    "name": "demo1",
-    "version": "1.0.0",
-    "description": "",
-    "main": "clear1.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "child-process-promise": "^2.2.0",
-        "ps-node": "^0.1.4"
-    },
-    "ruff": {
-        "dependencies": {},
-        "devDependencies": {}
-    }
+  "name": "demo1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "clear1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "buffered-spawn": "^3.3.2",
+    "bunyan": "^1.8.5",
+    "bunyan-fork": "^0.1.1",
+    "cfork": "^1.6.0",
+    "child-process-promise": "^2.2.0",
+    "cross-spawn": "^5.0.1",
+    "execa": "^0.6.0",
+    "execspawn": "^1.0.1",
+    "intercept-stdout": "^0.1.2",
+    "proc-tools": "^1.0.0",
+    "ps-node": "^0.1.4",
+    "respawn": "^2.4.1"
+  },
+  "ruff": {
+    "dependencies": {},
+    "devDependencies": {}
+  }
 }
