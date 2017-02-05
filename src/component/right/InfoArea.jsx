@@ -4,7 +4,8 @@ import {connect} from 'react-redux';
 import {tr, cutCharToCenter} from '../../lib/Utils';
 import {shell} from 'electron';
 import ExtraButton from './ExtraButton';
-import {command, addLog,LOG_CLEAN,COLOR_RED } from '../../actions/AppActions';
+import {command, addLog,LOG_CLEAN,COLOR_RED,SHOW_ALERT } from '../../actions/AppActions';
+import {PanelSaveLog} from '../../component/Alerts';
 class InfoArea extends React.Component {
     constructor(props) {
         super(props)
@@ -12,10 +13,17 @@ class InfoArea extends React.Component {
 
     componentDidMount() {
         //初始化渲染执行之后立刻调用
+        this.saveLog();
     }
 
     componentDidUpdate(prevProps) {
         //在组件的更新已经同步到 DOM 中之后立刻被调用
+    }
+    saveLog(){
+        console.log('saveLog')
+        command(SHOW_ALERT,{type:PanelSaveLog,callback:(path)=>{
+            console.log('savePath:',path)
+        }})
     }
 
     render() {
@@ -35,7 +43,7 @@ class InfoArea extends React.Component {
                 <ExtraButton id={0} onClick={() => {
                     shell.openItem(this.props.ruffProjectPath);
                 } }/>
-                <ExtraButton id={1} />
+                <ExtraButton id={1} onClick={this.saveLog.bind(this)}/>
                 <ExtraButton id={2} onClick={()=>{
                     command(LOG_CLEAN);
                     setTimeout(()=>{

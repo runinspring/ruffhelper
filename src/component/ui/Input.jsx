@@ -12,6 +12,17 @@ export default class Input extends React.Component {
     }
     componentDidUpdate(prevProps){
         //在组件的更新已经同步到 DOM 中之后立刻被调用
+       this.setRight();
+    }
+    /**把光标移动到最右边*/
+    setRight(){
+        setTimeout(()=>{
+            var input = this.refs.input;
+            input.scrollLeft = input.scrollWidth;
+            console.log('setRight')
+            console.log('scrollLeft:',input.scrollLeft)
+        },1)
+
     }
     onChange(e){
         var value = e.target.value;
@@ -30,8 +41,9 @@ export default class Input extends React.Component {
         }
         // console.log('input.value:',this.props.value)
         return(
-            <input className="JUI JInput" style={style} onChange={this.onChange.bind(this)} value={this.props.value}
-                   placeholder={this.props.placeholer}
+            <input ref="input" className="JUI JInput" style={style} onChange={this.onChange.bind(this)} value={this.props.value}
+                   placeholder={this.props.placeholer} onBlur={this.setRight.bind(this)}
+
             />
         )
     }

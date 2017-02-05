@@ -228,9 +228,32 @@ body {
 }
 
 .alert {
-
+    display: flex;
+    color: #5EFDFF;
+    font-family: ruixian;
+    font-size: 14px;
+    /*background: rgba(125, 125, 125, 0.13);*/
+    /*background: rgba(83, 83, 83, 0.13);*/
+    background: rgba(0, 0, 0, 0.5);
 }
-
+.alert .panel{
+    margin: auto;
+    display: block;
+    padding: 10px;
+    border: 1px solid rgba(76, 193, 253, 0.8);
+    border-radius: 3px;
+    /*background: rgba(255, 255, 255, 0.2);*/
+    background: rgba(76, 193, 253, 0.2);
+    /*background: rgba;*/
+    text-align: center;
+}
+.alert .panel div{
+    margin-bottom: 2px;
+}
+.stage{
+    width: 730px;
+    height: 530px;
+}
 /*宽度打开和关闭的动画*/
 @keyframes widthShow {
     from {

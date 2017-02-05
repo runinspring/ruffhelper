@@ -1,7 +1,7 @@
 import {combineReducers}from 'redux';
 var cfg = require('../config');//
 import {save} from '../lib/FileUtil';
-import {INIT,LEFT_CHANGE_CLUMTYPE,LOG_ADD,LOG_CLEAN,CHANGE_CONFIG,OPEN_RUFF_PROJECT,REMOVE_RUFF_PROJECT} from '../actions/AppActions.jsx';
+import {INIT,LEFT_CHANGE_CLUMTYPE,LOG_ADD,LOG_CLEAN,CHANGE_CONFIG,OPEN_RUFF_PROJECT,REMOVE_RUFF_PROJECT,SHOW_ALERT,CLOSE_ALERT} from '../actions/AppActions.jsx';
 import {List} from 'immutable';
 var appPath = '';
 let initConfig = {
@@ -81,7 +81,7 @@ var saveConfig = function () {
     save(cfg.configPath, cfg.saveData);
 }
 let initLeft={
-    clum1:1,//每个栏目的打开状态 0关闭 1打开 2关闭中
+    clum1:0,//每个栏目的打开状态 0关闭 1打开 2关闭中
     clum2:1,
     clum3:1
 }
@@ -110,7 +110,39 @@ var logContent = function (state=[],action) {
             return state;
     }
 }
+/**弹出层的面板信息
+ * idx 面板的序号,每次增加,如果没有面板了才归零,用于key的计算,防止刷新错误
+ * panels 面板信息数组{index:序号,type:'sdkselector',callback:fun,data:{}}
+ * */
+var alerts = function (state = { index: 0, panels: [] }, action) {
+    var result = Object.assign({}, state)
+    switch (action.type) {
+        case SHOW_ALERT:
+            result.index += 1;
+            var panel = action.data;
+            panel.index = state.index;
+            result.panels.push(panel);
+            return result;
+        case CLOSE_ALERT:
+            var idx = action.data;
+            var idxRemove;
+            for (var i = 0, len = result.panels.length; i < len; i++) {
+                if (idx == result.panels[i].index) {
+                    idxRemove = i;
+                    break;
+                }
+            }
+            result.panels.splice(idxRemove, 1);
+            if (result.panels.length == 0) {
+                result.index = 0;
+            }
+            return result;
+        default:
+            return state;
+    }
+    // return state;
+}
 const appreducer = combineReducers({
-    config,left,logContent
+    config,left,logContent,alerts
 });
 export default appreducer;

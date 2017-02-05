@@ -21,8 +21,8 @@ exports.sendCommands = function (command, parentDir, callBackMessage,callBackEnd
     // console.log('parentDir:', parentDir);
     // console.log('platform:', config.platform)
     var outputObj = {};
-    console.log('arrOpts:',arrOpts)
-    console.log('parentDir:',parentDir)
+    // console.log('arrOpts:',arrOpts)
+    // console.log('parentDir:',parentDir)
     // console.log('execCommand:',execCommand)
     if (config.platform == "Windows") {
         var childProcess = spawn(trueCmd[0], arrOpts, { cwd: parentDir });
@@ -36,7 +36,7 @@ exports.sendCommands = function (command, parentDir, callBackMessage,callBackEnd
     childProcess.stdout.on('data', function (data) {
         // console.log(111,data.toString('utf8'))
         var result = decodeData(data);
-        console.log('stdout.data12:', `"${result}"`)
+        // console.log('stdout.data12:', `"${result}"`)
         var pureResult = getPureResult(result);
         // console.log('pureResult', pureResult)
         if (!result || pureResult == "") {//console.log('没有返回消息，跳过');
@@ -47,7 +47,7 @@ exports.sendCommands = function (command, parentDir, callBackMessage,callBackEnd
         for (var key in inputObj) {
             if (result.indexOf(key) > -1) {
                 var inputValue = inputObj[key];
-                console.log('inputValue:',inputValue)
+                // console.log('inputValue:',inputValue)
                 childProcess.stdin.write(inputValue + '\n');
                 if (inputValue) {
                     result = key + ": " + inputValue;

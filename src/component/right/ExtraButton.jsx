@@ -20,7 +20,7 @@ export default class ExtraButton extends React.Component {
     }
 
     showInfo(e) {
-        console.log('showInfo')
+        // console.log('showInfo')
         var tip = this.refs.tip;
         tip.className = 'infoShow';
         // console.log(777,e.getBoundingClientRect)

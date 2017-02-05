@@ -16,6 +16,10 @@ export const LOG_CLEAN = 'log_clean';
 export const COLOR_GREEN = 'color_green';
 /*红色为警告信息*/
 export const COLOR_RED = 'color_red';
+/**显示弹出面板*/
+export const SHOW_ALERT = 'show_alert';
+/**移除弹出面板*/
+export const CLOSE_ALERT = 'colse_alert';
 import {sendCommands} from '../lib/RapCommand';
 import {tr} from '../lib/Utils';
 var dispatch = null;
