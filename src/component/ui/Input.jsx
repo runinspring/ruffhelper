@@ -19,8 +19,8 @@ export default class Input extends React.Component {
         setTimeout(()=>{
             var input = this.refs.input;
             input.scrollLeft = input.scrollWidth;
-            console.log('setRight')
-            console.log('scrollLeft:',input.scrollLeft)
+            // console.log('setRight')
+            // console.log('scrollLeft:',input.scrollLeft)
         },1)
 
     }
