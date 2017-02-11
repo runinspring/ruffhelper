@@ -18,7 +18,7 @@ class Alerts extends React.Component {
         var getPanels = this.props.alerts.panels.map(function (item, index) {
             switch (item.type) {
                 case PanelSaveLog:
-                    return <SaveLog key={'alert' + item.index} index={index}/>
+                    return <SaveLog key={'alert' + item.index} index={index} item={item}/>
                 default:
                     return <div key={'alert' + item.index}>empty</div>
             }

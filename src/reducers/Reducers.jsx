@@ -126,7 +126,7 @@ var alerts = function (state = { index: 0, panels: [] }, action) {
         case CLOSE_ALERT:
             var idx = action.data;
             var idxRemove;
-            console.log('idx:',idx);
+            // console.log('idx:',idx);
             for (var i = 0, len = result.panels.length; i < len; i++) {
                 if (idx == result.panels[i].index) {
                     idxRemove = i;

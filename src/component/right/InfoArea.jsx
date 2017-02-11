@@ -2,9 +2,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {tr, cutCharToCenter} from '../../lib/Utils';
+import {saveString} from '../../lib/FileUtil';
 import {shell} from 'electron';
 import ExtraButton from './ExtraButton';
-import {command, addLog,LOG_CLEAN,COLOR_RED,SHOW_ALERT } from '../../actions/AppActions';
+import {command, addLog,LOG_CLEAN,COLOR_RED,COLOR_GREEN,SHOW_ALERT } from '../../actions/AppActions';
 import {PanelSaveLog} from '../../component/Alerts';
 class InfoArea extends React.Component {
     constructor(props) {
@@ -20,9 +21,21 @@ class InfoArea extends React.Component {
         //在组件的更新已经同步到 DOM 中之后立刻被调用
     }
     saveLog(){
-        console.log('saveLog')
+        // console.log('saveLog')
         command(SHOW_ALERT,{type:PanelSaveLog,callback:(path)=>{
             console.log('savePath:',path)
+
+            var txt='';
+            this.props.logContent.map((item,index)=>{
+                txt += `${item.value}\r\n`
+                // console.log('item:',item)
+            })
+            // = this.props.logContent;
+            console.log('txt:',txt)
+            saveString(path,txt);
+            addLog(tr(22),COLOR_GREEN);//22 保存日志成功
+            addLog(path,COLOR_GREEN);//22 保存日志成功
+            // addLog(path);//22 保存日志成功
         }})
     }
 
@@ -42,6 +55,7 @@ class InfoArea extends React.Component {
                 <div className="projectPath" style={stylePath}>{strPath}</div>
                 <ExtraButton id={0} onClick={() => {
                     shell.openItem(this.props.ruffProjectPath);
+                    addLog(`${tr(11)}: ${this.props.ruffProjectPath}`,COLOR_GREEN);//打开项目文件夹：
                 } }/>
                 <ExtraButton id={1} onClick={this.saveLog.bind(this)}/>
                 <ExtraButton id={2} onClick={()=>{
@@ -57,6 +71,7 @@ class InfoArea extends React.Component {
 }
 function select(state) {
     return {
+        logContent:state.logContent,
         rapVersion: state.config.rapVersion,
         ruffProjectPath: state.config.ruffProjectPath
     }

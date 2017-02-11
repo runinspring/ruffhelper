@@ -36,6 +36,9 @@ export default class SaveLog extends React.Component {
         var logPath = escapePath(`${textPath}/${fileName}.txt`);
         if(fs.existsSync(logPath)){
             this.setState({warn:tr(206, fileName+'.txt')})//该项目已存在
+        }else {
+            this.props.item.callback(logPath);
+            this.closePanel();
         }
         // console.log('logPath:',logPath);
     }
@@ -102,5 +105,6 @@ export default class SaveLog extends React.Component {
     }
 }
 SaveLog.propTypes = {
-    index: React.PropTypes.number.isRequired
+    index: React.PropTypes.number.isRequired,//面板的索引序号
+    item:React.PropTypes.object.isRequired//面板的信息
 };
