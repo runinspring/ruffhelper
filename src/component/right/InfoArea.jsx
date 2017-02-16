@@ -14,7 +14,7 @@ class InfoArea extends React.Component {
 
     componentDidMount() {
         //初始化渲染执行之后立刻调用
-        this.saveLog();
+        // this.saveLog();
     }
 
     componentDidUpdate(prevProps) {
@@ -23,7 +23,7 @@ class InfoArea extends React.Component {
     saveLog(){
         // console.log('saveLog')
         command(SHOW_ALERT,{type:PanelSaveLog,callback:(path)=>{
-            console.log('savePath:',path)
+            // console.log('savePath:',path)
 
             var txt='';
             this.props.logContent.map((item,index)=>{
@@ -31,7 +31,7 @@ class InfoArea extends React.Component {
                 // console.log('item:',item)
             })
             // = this.props.logContent;
-            console.log('txt:',txt)
+            // console.log('txt:',txt)
             saveString(path,txt);
             addLog(tr(22),COLOR_GREEN);//22 保存日志成功
             addLog(path,COLOR_GREEN);//22 保存日志成功

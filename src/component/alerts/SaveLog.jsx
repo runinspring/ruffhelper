@@ -5,15 +5,17 @@ import Input from '../ui/Input';
 import FolderSelector from '../ui/FolderSelector';
 import Button from '../ui/Button';
 import {command,CLOSE_ALERT} from '../../actions/AppActions.jsx';
+import config from '../../config';
 var fs = require('fs');
 export default class SaveLog extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            textPath: '',
+            textPath: config.saveLogPath,
             textName: '',
             warn:'',//警告信息
         }
+        
     }
 
     componentDidMount() {
@@ -32,6 +34,7 @@ export default class SaveLog extends React.Component {
             return;
         }else{
             this.setState({warn:""})
+            config.saveLogPath = textPath;
         }
         var logPath = escapePath(`${textPath}/${fileName}.txt`);
         if(fs.existsSync(logPath)){
