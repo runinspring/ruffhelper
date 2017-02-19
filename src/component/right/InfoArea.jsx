@@ -5,11 +5,14 @@ import {tr, cutCharToCenter} from '../../lib/Utils';
 import {saveString} from '../../lib/FileUtil';
 import {shell} from 'electron';
 import ExtraButton from './ExtraButton';
-import {command, addLog,LOG_CLEAN,COLOR_RED,COLOR_GREEN,SHOW_ALERT } from '../../actions/AppActions';
+import {command, addLog, LOG_CLEAN, COLOR_RED, COLOR_GREEN, SHOW_ALERT,CHANGE_CONFIG} from '../../actions/AppActions';
 import {PanelSaveLog} from '../../component/Alerts';
 class InfoArea extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            switchType: true
+        }
     }
 
     componentDidMount() {
@@ -20,31 +23,36 @@ class InfoArea extends React.Component {
     componentDidUpdate(prevProps) {
         //在组件的更新已经同步到 DOM 中之后立刻被调用
     }
-    saveLog(){
-        // console.log('saveLog')
-        command(SHOW_ALERT,{type:PanelSaveLog,callback:(path)=>{
-            // console.log('savePath:',path)
 
-            var txt='';
-            this.props.logContent.map((item,index)=>{
-                txt += `${item.value}\r\n`
-                // console.log('item:',item)
-            })
-            // = this.props.logContent;
-            // console.log('txt:',txt)
-            saveString(path,txt);
-            addLog(tr(22),COLOR_GREEN);//22 保存日志成功
-            addLog(path,COLOR_GREEN);//22 保存日志成功
-            // addLog(path);//22 保存日志成功
-        }})
+    saveLog() {
+        // console.log('saveLog')
+        command(SHOW_ALERT, {
+            type: PanelSaveLog, callback: (path)=> {
+                // console.log('savePath:',path)
+
+                var txt = '';
+                this.props.logContent.map((item, index)=> {
+                    txt += `${item.value}\r\n`
+                    // console.log('item:',item)
+                })
+                // = this.props.logContent;
+                // console.log('txt:',txt)
+                saveString(path, txt);
+                addLog(tr(22), COLOR_GREEN);//22 保存日志成功
+                addLog(path, COLOR_GREEN);//22 保存日志成功
+                // addLog(path);//22 保存日志成功
+            }
+        })
     }
 
     render() {
         var projectPath = this.props.ruffProjectPath;
         // console.log(11, projectPath)
         var strPath = projectPath ? projectPath : tr(54);//54 请先选择 Ruff 项目
-        strPath = `[${cutCharToCenter(strPath, 48)}]`
+        strPath = `[${cutCharToCenter(strPath, 49)}]`
         var stylePath = projectPath ? {} : {color: '#ffccff'}
+
+        // console.log('switchClass:')
         return (
             <div className="infoArea unselectable">
                 <div className="rapVersion">
@@ -55,23 +63,29 @@ class InfoArea extends React.Component {
                 <div className="projectPath" style={stylePath}>{strPath}</div>
                 <ExtraButton id={0} onClick={() => {
                     shell.openItem(this.props.ruffProjectPath);
-                    addLog(`${tr(11)}: ${this.props.ruffProjectPath}`,COLOR_GREEN);//打开项目文件夹：
+                    addLog(`${tr(11)}: ${this.props.ruffProjectPath}`, COLOR_GREEN);//打开项目文件夹：
                 } }/>
                 <ExtraButton id={1} onClick={this.saveLog.bind(this)}/>
-                <ExtraButton id={2} onClick={()=>{
+                <ExtraButton id={2} onClick={()=> {
                     command(LOG_CLEAN);
-                    setTimeout(()=>{
+                    setTimeout(()=> {
                         addLog(tr(200, tr(16)), COLOR_RED);////200 执行命令：清除调试日志
-                    },100)
+                    }, 100)
                 }}/>
+                <ExtraButton id={3} switchType={this.state.switchType} onClick={()=> {
+                    command(CHANGE_CONFIG,{autoRapLog:!this.state.switchType});
+                    this.setState({switchType:!this.state.switchType})
+                }}/>
+
                 <div style={{clear: 'both'}}/>
             </div>
         )
     }
 }
+// <Button style={{margin: '1px 1px 1px 2px',padding:'0px', width: '33px',height:'16px'}} value={switchValue}/>
 function select(state) {
     return {
-        logContent:state.logContent,
+        logContent: state.logContent,
         rapVersion: state.config.rapVersion,
         ruffProjectPath: state.config.ruffProjectPath
     }

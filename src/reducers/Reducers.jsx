@@ -14,7 +14,7 @@ let initConfig = {
     // ruffSDKLocation: '',//sdk的位置
     histrory: List([]),// 打开的历史记录，最多10个 {name:'',path:''}
     // autoCmdLog: false,//命令行区域自动滚屏
-    // autoRapLog: true,//rap log 区域自动滚屏
+    autoRapLog: true,//rap log 区域自动滚屏
     ip: '',//本机ip
     port: ''//rap log 服务器用的端口
 }
@@ -68,6 +68,7 @@ var config = function (state = initConfig, action) {
             return result;
         case CHANGE_CONFIG:
             result = Object.assign({}, result, action.data);
+            // console.log('result:',result)
             return result;
         default:
             return state;

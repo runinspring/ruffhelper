@@ -1,14 +1,18 @@
 import React, {PropTypes} from 'react';
 import Button from '../ui/Button';
+import ToggleSwitch from '../ui/ToggleSwitch';
 import {tr} from '../../lib/Utils';
 
 export default class ExtraButton extends React.Component {
     constructor(props) {
         super(props)
         this.datas = [
-            {iconName: 'icon-folder',doc:tr(11)},
-            {iconName: 'icon-save',doc:tr(17)},
-            {iconName: 'icon-delete',doc:tr(16)}]
+            {iconName: 'icon-folder', doc: tr(11)},
+            {iconName: 'icon-save', doc: tr(17)},
+            {iconName: 'icon-delete', doc: tr(16)},
+            {iconName: '', doc: tr(23)}
+        ];
+
     }
 
     componentDidMount() {
@@ -29,7 +33,7 @@ export default class ExtraButton extends React.Component {
 
         tip.style.top = rect.bottom + 9 + 'px';
         tip.style.left = rect.left - tip.getBoundingClientRect().width + 36 + 'px';
-        // console.log('tip:',rect);
+        // console.log('tip:', rect);
     }
 
     hideInfo() {
@@ -46,6 +50,26 @@ export default class ExtraButton extends React.Component {
         var content = this.datas[id].doc;
         // console.log('style:',buttonStyle);
 
+        var getButton = ()=> {
+            if (this.props.id != 3) {
+                return <Button style={buttonStyle}
+                               iconName={iconName}
+                               iconSize={this.props.iconSize}
+                               onClick={this.props.onClick}
+                               onMouseOver={this.showInfo.bind(this)}
+                               onMouseOut={this.hideInfo.bind(this)}
+                />
+            } else {
+                var switchValue = this.props.switchType ? 'on' : 'off';
+                return <ToggleSwitch style={{margin: '1px 1px 1px 0px', width: '28px'}}
+                                     toggle={this.props.switchType} padding='2px 0 0 0'
+                                     valueOn='ON' valueOff='OFF'
+                                     onClick={this.props.onClick}
+                                     onMouseOver={this.showInfo.bind(this)}
+                                     onMouseOut={this.hideInfo.bind(this)}
+                />
+            }
+        }
         return (
             <div className="extraButton" style={this.props.style}>
                 <div className="absolute">
@@ -54,13 +78,7 @@ export default class ExtraButton extends React.Component {
                         <div className="infoContent">{content}</div>
                     </div>
                 </div>
-                <Button style={buttonStyle}
-                        iconName={iconName}
-                        iconSize={this.props.iconSize}
-                        onClick={this.props.onClick}
-                        onMouseOver={this.showInfo.bind(this)}
-                        onMouseOut={this.hideInfo.bind(this)}
-                />
+                {getButton()}
             </div>
         )
     }
@@ -71,5 +89,6 @@ ExtraButton.propTypes = {
     // style:PropTypes.object,//整体的样式
     onClick: PropTypes.func,
     buttonStyle: PropTypes.object,//里面图标的样式
+    switchType: PropTypes.bool,//自动滚屏的开关
 }
 // {/*shell.openItem(this.props.ruffProjectPath);*/}

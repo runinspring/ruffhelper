@@ -45,7 +45,7 @@ class C2_OpenProject extends React.Component {
 
     onOpenFolderEnd(openPath) {
         // this.isOpen = false;
-        console.log('打开文件夹的路径:', openPath);
+        // console.log('打开文件夹的路径:', openPath);
         // console.log('历史记录:', this.props.histrory);
         var hisExist = false;//历史里是否有
         var projectPath = escapePath(openPath);

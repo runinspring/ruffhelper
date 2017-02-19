@@ -43,6 +43,20 @@ input::-webkit-input-placeholder {
 .JButton:focus {
     outline: none;
 }
+.JToggleSwitch{
+    text-align: center;
+    font-weight: lighter;
+    color: rgba(94, 253, 255, 0.8);
+}
+.JToggleSwitch .on{
+    background: rgba(76, 193, 253, 0.5);
+}
+.JToggleSwitch .off{
+    background: rgba(76, 193, 253, 0.3);
+}
+.JToggleSwitch:hover{
+    background: rgba(76, 193, 253, 0.6);
+}
 
 /*.JSelector{!*文件夹选择器*!*/
 /*text-align: center;*/

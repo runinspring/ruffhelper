@@ -24,7 +24,7 @@ locale_strings[19] = '保存日志到本地';
 locale_strings[20] = '选择要保存的位置';
 locale_strings[21] = '保存日志的文件名';
 locale_strings[22] = '日志保存成功';
-locale_strings[23] = '自动滚屏';
+locale_strings[23] = '日志自动滚屏';
 locale_strings[24] = '系统中未安装 rap, 请前往 https://ruff.io/zh-cn/ 下载安装';
 
 
