@@ -87,7 +87,7 @@ class C3_NewProject extends React.Component {
     render() {
         var type = this.props.type;
         if (type == 0) {
-            return <div />
+            return <div ref="tree"/>
         }
         // console.log(this.state)
         var self = this;

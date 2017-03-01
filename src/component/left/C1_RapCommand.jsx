@@ -89,7 +89,8 @@ class C1_RapCommand extends React.Component {
             if (type == 1) {
                 var style = {
                     animation: `widthShow 0.4s ease ${index * 0.04}s`,
-                    animationFillMode: 'both'
+                    // animationFillMode: 'both'
+                    animationFillMode: 'backwards'
                 };
             } else {
                 style = {
@@ -97,6 +98,7 @@ class C1_RapCommand extends React.Component {
                     animationFillMode: 'forwards'
                 }
             }
+
             //
             return (
                 <div key={'cmd' + index} style={style}>
