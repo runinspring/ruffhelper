@@ -202,13 +202,13 @@ body {
 }
 
 .right .logArea {
-    margin-top: 100px;
+    margin-top: 4px;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 2px 4px 2px 2px;
-    height: 400px;
+    padding: 2px 4px 2px 0px;
+    height: 490px;
     border-radius: 6px;
-    background: rgba(150, 150, 150,0.3);
+    background: rgba(150, 150, 150,0.1);
 
 }
 .right .logArea .content {
